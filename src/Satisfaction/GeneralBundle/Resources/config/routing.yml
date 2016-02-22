@@ -1,0 +1,3 @@
+satisfaction_general_homepage:
+    path:     /home
+    defaults: { _controller: SatisfactionGeneralBundle:Default:index }

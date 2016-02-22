@@ -1,0 +1,58 @@
+Satisfaction\FormBundle\Entity\Ticket:
+  type: entity
+  table: returns
+  id:
+    id:
+      type: integer
+      generator: { strategy: AUTO }
+  fields:
+    numticket:
+      type: integer
+      length: 99
+    email:
+      type: text
+      length: 99
+      nullable: true
+    conformite:
+      type: integer
+      length: 2
+      nullable: true
+    delais:
+      type: integer
+      length: 2
+      nullable: true
+    accompagnement:
+      type: integer
+      length: 2
+      nullable: true
+    satisfaction:
+      type: integer
+      length: 2
+      nullable: true
+    sujet:
+      type: text
+      nullable: true
+    description:
+      type: text
+      nullable: true
+    commentaires:
+      type: text
+      nullable: true
+    week:
+      type: integer
+      length: 2
+      nullable: true
+    year:
+      type: integer
+      length: 4
+      nullable: true
+    month:
+      type: integer
+      length: 2
+      nullable: true
+    first_send:
+      type: datetime
+      nullable: true
+    second_send:
+      type: datetime
+      nullable: true

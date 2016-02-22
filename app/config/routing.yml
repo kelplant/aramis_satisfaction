@@ -1,0 +1,12 @@
+satisfaction_form:
+    resource: "@SatisfactionFormBundle/Resources/config/routing.yml"
+    prefix:   /
+
+satisfaction_general:
+    resource: "@SatisfactionGeneralBundle/Resources/config/routing.yml"
+    prefix:   /
+
+app:
+    resource: "@AppBundle/Controller/"
+    type:     annotation
+
