@@ -1,10 +1,12 @@
 satisfaction_form_homepage:
     path:     /form
-    defaults: { _controller: SatisfactionFormBundle:Default:index }
+    defaults: {_controller: SatisfactionFormBundle:Default:index}
 
 satisfaction_form_homepage_num:
    path:      /form/{numticket}
    defaults: {_controller: SatisfactionFormBundle:Default:index}
+
+
 
 
 

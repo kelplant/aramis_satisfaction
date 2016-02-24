@@ -12,8 +12,8 @@ class DefaultController extends Controller
     public function indexAction()
     {
 
-        $id=1;
-        $email='Xavier.arroues@aramisauto.com';
+        //$id=1;
+        $email='xavier.arroues@aramisauto.com';
 
         $repository = $this->getDoctrine()->getRepository('SatisfactionFormBundle:Ticket');
 
@@ -21,9 +21,7 @@ class DefaultController extends Controller
         $collection = $repository->findByEmail($email);
 
         if (!$collection) {
-            throw $this->createNotFoundException(
-                'No product found for id '.$id
-            );
+            return $this->render('SatisfactionGeneralBundle:Default:notickets.html.twig');
         }
         //exit(\Doctrine\Common\Util\Debug::dump($collection));
 
