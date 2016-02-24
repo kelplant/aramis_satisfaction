@@ -53,7 +53,7 @@ class TicketType extends AbstractType
                 'choices' => array('1' => '1', '2' => '2', '3' => '3', '4' => '4', '5' => '5', '6' => '6','7' => '7', '8' => '8', '9' => '9', '10' => '10'),
                 'expanded' => true,
                 'multiple' => false,
-                'data' => 5,
+                'read_only' => true,
                 'attr' => array(
                     'class' => 'form-control'
                 )
@@ -66,7 +66,7 @@ class TicketType extends AbstractType
                 'choices' => array('1' => '1', '2' => '2', '3' => '3', '4' => '4', '5' => '5'),
                 'expanded' => true,
                 'multiple' => false,
-
+                'read_only' => true,
                 'attr' => array(
                     'class' => 'form-control'
                 )
@@ -79,7 +79,7 @@ class TicketType extends AbstractType
                 'choices' => array('1' => '1', '2' => '2', '3' => '3', '4' => '4', '5' => '5'),
                 'expanded' => true,
                 'multiple' => false,
-                'data' => 3,
+                'read_only' => true,
                 'attr' => array(
                     'class' => 'form-control'
                 )
@@ -92,13 +92,14 @@ class TicketType extends AbstractType
                 'choices' => array('1' => '1', '2' => '2', '3' => '3', '4' => '4', '5' => '5'),
                 'expanded' => true,
                 'multiple' => false,
-                'data' => 3,
+                'read_only' => true,
                 'attr' => array(
                     'class' => 'form-control'
                 )
             ))
             ->add('Commentaires', 'textarea', array(
                 'label' => 'Commentaires',
+                'read_only' => true,
                 'label_attr' => array(
                     'class' => 'col-sm-2 control-label'
                 ),

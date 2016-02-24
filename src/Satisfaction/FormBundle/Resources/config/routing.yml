@@ -1,12 +1,15 @@
+satisfaction_form_homepage_satupdate:
+   path:      /form/satupdate
+   defaults: {_controller: SatisfactionFormBundle:Default:satupdate}
+
 satisfaction_form_homepage:
     path:     /form
     defaults: {_controller: SatisfactionFormBundle:Default:index}
 
 satisfaction_form_homepage_num:
    path:      /form/{numticket}
-   defaults: {_controller: SatisfactionFormBundle:Default:index}
+   defaults: {_controller: SatisfactionFormBundle:Default:index, numticket: 0}
 
-
-
-
-
+satisfaction_form_homepage_view:
+   path:      /form/view/{numticket}
+   defaults: {_controller: SatisfactionFormBundle:Default:view}

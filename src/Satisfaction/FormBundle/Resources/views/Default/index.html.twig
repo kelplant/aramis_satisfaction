@@ -1,7 +1,7 @@
 {% extends '::base.html.twig' %}
 {% block title %} Formulaire {% endblock %}
 {% block body %}
-    <br><br><br><br>
+
     <div class="container">
         {{ form_start(satisfactionForm, {'attr':{'class': 'form-horizontal'}}) }}
             {{ form_errors(satisfactionForm) }}
@@ -63,6 +63,13 @@
             </div>
 
         {{ form_row(satisfactionForm._token) }}
+        <div style="display: none">
+            {{ form_row(satisfactionForm.numticket) }}
+        </div>
+
+        <div style="display: none">
+            {{ form_row(satisfactionForm.id) }}
+        </div>
 
         <div class="center-block">
                 {{ form_row(satisfactionForm.Envoyer) }}
