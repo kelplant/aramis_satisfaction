@@ -9,7 +9,7 @@ use Symfony\Component\Form\FormInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
 
-class TicketType extends AbstractType
+class TicketTypeView extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder,  array $options)
     {
@@ -113,10 +113,10 @@ class TicketType extends AbstractType
             ->add('id', 'hidden', array(
                 'label' => 'id'
             ))
-            ->add('Envoyer', 'submit', array(
-                'label' => 'Envoyer',
+            ->add('Modifier', 'submit', array(
+                'label' => 'Modifier',
                 'attr' => array(
-                    'class' => 'btn btn-success'
+                    'class' => 'btn btn-warning'
                 )
             ))
         ;

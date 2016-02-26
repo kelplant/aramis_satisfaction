@@ -1,5 +1,6 @@
 Satisfaction\FormBundle\Entity\Ticket:
   type: entity
+  repositoryClass: Satisfaction\FormBundle\Entity\TicketRepository
   table: returns
   id:
     id:

@@ -16,22 +16,42 @@ class DefaultController extends Controller
     public function indexAction()
     {
 
-
-
         //$id=1;
         $email='xavier.arroues@aramisauto.com';
 
         $repository = $this->getDoctrine()->getManager()->getRepository('SatisfactionFormBundle:Ticket');
-        //$collection = $repository->emailandsatisfaction($email);
-        $collection = $repository->findByEmail($email);
+        $all = $repository->findByEmail($email);
 
-        if (!$collection) {
+
+        $em = $this->getDoctrine()->getManager();
+        $query_todo = $em->createQuery(
+            'SELECT p
+                FROM SatisfactionFormBundle:Ticket p
+                WHERE p.email = :email
+                AND p.satisfaction IS NULL
+                ORDER BY p.id ASC'
+        )->setParameter('email', $email);
+        $todo = $query_todo->getResult();
+
+        $query_done = $em->createQuery(
+            'SELECT p
+                FROM SatisfactionFormBundle:Ticket p
+                WHERE p.email = :email
+                AND p.satisfaction IS NOT NULL
+                ORDER BY p.id ASC'
+        )->setParameter('email', $email);
+        $done = $query_done->getResult();
+
+
+
+        if (!$all) {
             return $this->render('SatisfactionGeneralBundle:Default:notickets.html.twig');
         }
-        //exit(\Doctrine\Common\Util\Debug::dump($collection));
 
         return $this->render('SatisfactionGeneralBundle:Default:index.html.twig', array(
-            'collection' => $collection
+            'all' => $all,
+            'todo' => $todo,
+            'done' => $done,
         ));
     }
 }

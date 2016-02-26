@@ -5,7 +5,7 @@
         <title>{% block title %}{% endblock %}- Aramis Satisfaction</title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link rel="stylesheet" href="{{ asset('css/bootstrap.min.css') }}">
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+        <link rel="stylesheet" href="{{ asset('css/font-awesome.min.css') }}">
         <link rel="stylesheet" href="{{ asset('css/aramis.css') }}">
         {% block stylesheets %}{% endblock %}
         <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
@@ -14,7 +14,7 @@
         {% block nav %}{% include 'nav.html.twig' %} {% endblock %}
         {% block body %}{% endblock %}
         {% block javascripts %}{% endblock %}
-        <script src="//code.jquery.com/jquery.min.js"></script>
-        <script src="{{ asset('js/bootstrap.min.js') }}
+        <script src="{{ asset('js/jquery-1.12.1.min.js') }}"></script>
+        <script src="{{ asset('js/bootstrap.min.js') }}"></script>
     </body>
 </html>

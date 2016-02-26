@@ -2,11 +2,25 @@
 {% block title %} Accueil {% endblock %}
 {% block body %}
     <div class="container">
-        <ul>
-        {% for ticket in collection %}
-            <li><a href="{{ path('satisfaction_form_homepage_view', {'numticket':  ticket.NumTicket }) }}">{{ ticket.NumTicket }}</a></li>
-        {% endfor %}
-        </ul>
+        <div class="row">
+            <div class="col-md-6">
+                <div class="text-center">Tickets à Noter</div>
+                <ul>
+                    {% for ticket in todo %}
+                        <li><a href="{{ path('satisfaction_form_homepage_new', {'numticket':  ticket.NumTicket }) }}">{{ ticket.NumTicket }}</a></li>
+                    {% endfor %}
+                </ul>
+            </div>
+            <div class="col-md-6">
+                <div class="text-center">Tickets déjà Notés</div>
+                <ul>
+                    {% for ticket in done %}
+                        <li><a href="{{ path('satisfaction_form_homepage_view', {'numticket':  ticket.NumTicket }) }}">{{ ticket.NumTicket }}</a></li>
+                    {% endfor %}
+                </ul>
+
+            </div>
+        </div>
 
 
     </div>

@@ -13,3 +13,11 @@ satisfaction_form_homepage_num:
 satisfaction_form_homepage_view:
    path:      /form/view/{numticket}
    defaults: {_controller: SatisfactionFormBundle:Default:view}
+
+satisfaction_form_homepage_new:
+   path:      /form/new/{numticket}
+   defaults: {_controller: SatisfactionFormBundle:Default:new}
+
+satisfaction_form_homepage_edit:
+   path:      /form/edit/{numticket}
+   defaults: {_controller: SatisfactionFormBundle:Default:edit}

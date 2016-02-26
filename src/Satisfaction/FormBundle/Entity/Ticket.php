@@ -10,7 +10,7 @@ namespace Satisfaction\FormBundle\Entity;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * @ORM\Entity
+ * @ORM\Entity(repsositoryClass="TicketRepository")
  */
 
 class Ticket {

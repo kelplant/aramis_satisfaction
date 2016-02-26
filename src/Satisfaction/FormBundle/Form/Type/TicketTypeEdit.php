@@ -9,7 +9,7 @@ use Symfony\Component\Form\FormInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
 
-class TicketType extends AbstractType
+class TicketTypeEdit extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder,  array $options)
     {
@@ -17,13 +17,13 @@ class TicketType extends AbstractType
         $builder
             ->add('NumTicket', 'integer', array(
                 'label' => 'Numéro Ticket',
-                'read_only' => true,
                 'label_attr' => array(
                     'class' => 'col-sm-2 control-label'
                 ),
                 'attr' => array(
                     'class' => 'form-control'
-                )
+                ),
+                'read_only' => true,
             ))
             ->add('Sujet', 'text', array(
                 'label' => 'Sujet',
@@ -43,7 +43,7 @@ class TicketType extends AbstractType
                 'attr' => array(
                     'class' => 'form-control'
                 ),
-                'read_only' => true
+                'read_only' => true,
             ))
             ->add('Satisfaction', 'choice', array(
                 'label' => 'Satisfaction',
@@ -56,7 +56,7 @@ class TicketType extends AbstractType
                 'required' => true,
                 'attr' => array(
                     'class' => 'form-control'
-                )
+                ),
             ))
             ->add('Conformite', 'choice', array(
                 'label' => 'Conformité',
@@ -69,7 +69,7 @@ class TicketType extends AbstractType
                 'required' => true,
                 'attr' => array(
                     'class' => 'form-control'
-                )
+                ),
             ))
             ->add('Accompagnement', 'choice', array(
                 'label' => 'Accompagnement',
@@ -82,7 +82,7 @@ class TicketType extends AbstractType
                 'required' => true,
                 'attr' => array(
                     'class' => 'form-control'
-                )
+                ),
             ))
             ->add('Delais', 'choice', array(
                 'label' => 'Délais',
@@ -95,17 +95,17 @@ class TicketType extends AbstractType
                 'required' => true,
                 'attr' => array(
                     'class' => 'form-control'
-                )
+                ),
             ))
             ->add('Commentaires', 'textarea', array(
                 'label' => 'Commentaires',
-                'required' => false,
                 'label_attr' => array(
                     'class' => 'col-sm-2 control-label'
                 ),
+                'required' => false,
                 'attr' => array(
                     'class' => 'form-control'
-                )
+                ),
             ))
             ->add('numticket', 'hidden', array(
                 'label' => 'numticket'
@@ -117,7 +117,7 @@ class TicketType extends AbstractType
                 'label' => 'Envoyer',
                 'attr' => array(
                     'class' => 'btn btn-success'
-                )
+                ),
             ))
         ;
     }

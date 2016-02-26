@@ -6,21 +6,32 @@ use Doctrine\ORM\EntityRepository;
 
 class TicketRepository extends EntityRepository
 {
-    public function emailandsatisfaction($email)
+    public function getAllTodoByEmail($email)
     {
-        $repository = $this->getDoctrine()->getRepository('SatisfactionFormBundle:Ticket');
-        $qb = $this->createQueryBuilder('a');
-
-        $qb->where('a.email = :email')
-            ->setParameter('email', $email)
-            ->andWhere('a.satisfaction = :sat')
-            ->setParameter('sat', 'NULL')
-            ->orderBy('a.date', 'DESC')
-        ;
+        $qb = $this->createQueryBuilder('j')
+            ->where('j.email = :email')
+            ->setParameters(array(
+                'email', $email
+            ));
 
         return $qb
             ->getQuery()
             ->getResult()
             ;
     }
+
+//    public function getAllDoneByEmail($email)
+//    {
+//        $qb = $this->createQueryBuilder('a')
+//            ->where('a.email = :email')
+//            ->andWhere('a.satisfaction IS NOT NULL')
+//            ->setParameters([
+//                'email', $email
+//            ]);
+//
+//        return $qb
+//            ->getQuery()
+//            ->getResult()
+//            ;
+//    }
 }
