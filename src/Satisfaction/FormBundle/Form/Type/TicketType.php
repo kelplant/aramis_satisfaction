@@ -7,17 +7,37 @@ use Symfony\Component\Form\FormBuilderInterface;
 use Satisfaction\FormBundle\Entity\Client;
 use Symfony\Component\Form\FormInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
+use Symfony\Component\HttpFoundation\Request;
 
+use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Satisfaction\FormBundle\Entity\Ticket;
+use Satisfaction\FormBundle\Entity;
 
 class TicketType extends AbstractType
 {
+    private $choices_5;
+
+    private $choices_10;
+
+    private $listID;
+
+    public function __construct(array $choices_5,$choices_10,$listID)
+    {
+        $this->choices_5 = $choices_5;
+        $this->choices_10 = $choices_10;
+        print_r($listID);
+        $this->listID = $listID;
+
+    }
+
     public function buildForm(FormBuilderInterface $builder,  array $options)
     {
-
         $builder
-            ->add('NumTicket', 'integer', array(
+            ->add('numticket', 'choice', array(
                 'label' => 'Numéro Ticket',
-                'read_only' => true,
+                'choices' => $this->listID,
+                'read_only' => false,
+                'multiple' => false,
                 'label_attr' => array(
                     'class' => 'col-sm-2 control-label'
                 ),
@@ -50,7 +70,7 @@ class TicketType extends AbstractType
                 'label_attr' => array(
                     'class' => 'col-sm-2 control-label'
                 ),
-                'choices' => array('1' => '1', '2' => '2', '3' => '3', '4' => '4', '5' => '5', '6' => '6','7' => '7', '8' => '8', '9' => '9', '10' => '10'),
+                'choices' => $this->choices_10,
                 'expanded' => true,
                 'multiple' => false,
                 'required' => true,
@@ -63,7 +83,7 @@ class TicketType extends AbstractType
                 'label_attr' => array(
                     'class' => 'col-sm-2 control-label'
                 ),
-                'choices' => array('1' => '1', '2' => '2', '3' => '3', '4' => '4', '5' => '5'),
+                'choices' => $this->choices_5,
                 'expanded' => true,
                 'multiple' => false,
                 'required' => true,
@@ -76,7 +96,7 @@ class TicketType extends AbstractType
                 'label_attr' => array(
                     'class' => 'col-sm-2 control-label'
                 ),
-                'choices' => array('1' => '1', '2' => '2', '3' => '3', '4' => '4', '5' => '5'),
+                'choices' => $this->choices_5,
                 'expanded' => true,
                 'multiple' => false,
                 'required' => true,
@@ -89,7 +109,7 @@ class TicketType extends AbstractType
                 'label_attr' => array(
                     'class' => 'col-sm-2 control-label'
                 ),
-                'choices' => array('1' => '1', '2' => '2', '3' => '3', '4' => '4', '5' => '5'),
+                'choices' => $this->choices_5,
                 'expanded' => true,
                 'multiple' => false,
                 'required' => true,
@@ -107,14 +127,12 @@ class TicketType extends AbstractType
                     'class' => 'form-control'
                 )
             ))
-            ->add('numticket', 'hidden', array(
-                'label' => 'numticket'
-            ))
+
             ->add('id', 'hidden', array(
                 'label' => 'id'
             ))
-            ->add('Envoyer', 'submit', array(
-                'label' => 'Envoyer',
+            ->add('Selectionner', 'submit', array(
+                'label' => 'Selectionner',
                 'attr' => array(
                     'class' => 'btn btn-success'
                 )

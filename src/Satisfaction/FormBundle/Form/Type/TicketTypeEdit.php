@@ -11,6 +11,16 @@ use Symfony\Component\OptionsResolver\OptionsResolver;
 
 class TicketTypeEdit extends AbstractType
 {
+    private $choices_5;
+
+    private $choices_10;
+
+    public function __construct(array $choices_5,$choices_10)
+    {
+        $this->choices_5 = $choices_5;
+        $this->choices_10 = $choices_10;
+    }
+
     public function buildForm(FormBuilderInterface $builder,  array $options)
     {
 
@@ -50,7 +60,7 @@ class TicketTypeEdit extends AbstractType
                 'label_attr' => array(
                     'class' => 'col-sm-2 control-label'
                 ),
-                'choices' => array('1' => '1', '2' => '2', '3' => '3', '4' => '4', '5' => '5', '6' => '6','7' => '7', '8' => '8', '9' => '9', '10' => '10'),
+                'choices' => $this->choices_10,
                 'expanded' => true,
                 'multiple' => false,
                 'required' => true,
@@ -63,7 +73,7 @@ class TicketTypeEdit extends AbstractType
                 'label_attr' => array(
                     'class' => 'col-sm-2 control-label'
                 ),
-                'choices' => array('1' => '1', '2' => '2', '3' => '3', '4' => '4', '5' => '5'),
+                'choices' => $this->choices_5,
                 'expanded' => true,
                 'multiple' => false,
                 'required' => true,
@@ -76,7 +86,7 @@ class TicketTypeEdit extends AbstractType
                 'label_attr' => array(
                     'class' => 'col-sm-2 control-label'
                 ),
-                'choices' => array('1' => '1', '2' => '2', '3' => '3', '4' => '4', '5' => '5'),
+                'choices' => $this->choices_5,
                 'expanded' => true,
                 'multiple' => false,
                 'required' => true,
@@ -89,7 +99,7 @@ class TicketTypeEdit extends AbstractType
                 'label_attr' => array(
                     'class' => 'col-sm-2 control-label'
                 ),
-                'choices' => array('1' => '1', '2' => '2', '3' => '3', '4' => '4', '5' => '5'),
+                'choices' => $this->choices_5,
                 'expanded' => true,
                 'multiple' => false,
                 'required' => true,

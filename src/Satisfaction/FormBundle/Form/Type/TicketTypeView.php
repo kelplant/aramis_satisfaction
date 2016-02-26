@@ -5,12 +5,21 @@ namespace Satisfaction\FormBundle\Form\Type;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Satisfaction\FormBundle\Entity\Client;
-use Symfony\Component\Form\FormInterface;
-use Symfony\Component\OptionsResolver\OptionsResolver;
+
 
 
 class TicketTypeView extends AbstractType
 {
+    private $choices_5;
+
+    private $choices_10;
+
+    public function __construct(array $choices_5,$choices_10)
+    {
+        $this->choices_5 = $choices_5;
+        $this->choices_10 = $choices_10;
+    }
+
     public function buildForm(FormBuilderInterface $builder,  array $options)
     {
 
@@ -50,7 +59,7 @@ class TicketTypeView extends AbstractType
                 'label_attr' => array(
                     'class' => 'col-sm-2 control-label'
                 ),
-                'choices' => array('1' => '1', '2' => '2', '3' => '3', '4' => '4', '5' => '5', '6' => '6','7' => '7', '8' => '8', '9' => '9', '10' => '10'),
+                'choices' => $this->choices_10,
                 'expanded' => true,
                 'multiple' => false,
                 'read_only' => true,
@@ -63,7 +72,7 @@ class TicketTypeView extends AbstractType
                 'label_attr' => array(
                     'class' => 'col-sm-2 control-label'
                 ),
-                'choices' => array('1' => '1', '2' => '2', '3' => '3', '4' => '4', '5' => '5'),
+                'choices' => $this->choices_5,
                 'expanded' => true,
                 'multiple' => false,
                 'read_only' => true,
@@ -76,7 +85,7 @@ class TicketTypeView extends AbstractType
                 'label_attr' => array(
                     'class' => 'col-sm-2 control-label'
                 ),
-                'choices' => array('1' => '1', '2' => '2', '3' => '3', '4' => '4', '5' => '5'),
+                'choices' => $this->choices_5,
                 'expanded' => true,
                 'multiple' => false,
                 'read_only' => true,
@@ -89,7 +98,7 @@ class TicketTypeView extends AbstractType
                 'label_attr' => array(
                     'class' => 'col-sm-2 control-label'
                 ),
-                'choices' => array('1' => '1', '2' => '2', '3' => '3', '4' => '4', '5' => '5'),
+                'choices' => $this->choices_5,
                 'expanded' => true,
                 'multiple' => false,
                 'read_only' => true,

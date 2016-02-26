@@ -1,0 +1,70 @@
+{% block mainform %}
+<div class="container">
+    {{ form_start(satisfactionForm, {'attr':{'class': 'form-horizontal'}}) }}
+    {{ form_errors(satisfactionForm) }}
+    <div class="form-group">
+        {{ form_label(satisfactionForm.NumTicket) }}
+        {{ form_errors(satisfactionForm.NumTicket) }}
+        <div class="col-sm-8">
+            {{ form_widget(satisfactionForm.NumTicket) }}
+        </div>
+    </div>
+    <div class="form-group">
+        {{ form_label(satisfactionForm.Sujet) }}
+        {{ form_errors(satisfactionForm.Sujet) }}
+        <div class="col-sm-8">
+            {{ form_widget(satisfactionForm.Sujet) }}
+        </div>
+    </div>
+    <div class="form-group">
+        {{ form_label(satisfactionForm.Description) }}
+        {{ form_errors(satisfactionForm.Description) }}
+        <div class="col-sm-8">
+            {{ form_widget(satisfactionForm.Description) }}
+        </div>
+    </div>
+    <div class="form-group">
+        {{ form_label(satisfactionForm.Satisfaction) }}
+        {{ form_errors(satisfactionForm.Satisfaction) }}
+        <div class="col-sm-8">
+            {{ form_widget(satisfactionForm.Satisfaction) }}
+        </div>
+    </div>
+    <div class="form-group">
+        {{ form_label(satisfactionForm.Conformite) }}
+        {{ form_errors(satisfactionForm.Conformite) }}
+        <div class="col-sm-8">
+            {{ form_widget(satisfactionForm.Conformite) }}
+        </div>
+    </div>
+    <div class="form-group">
+        {{ form_label(satisfactionForm.Accompagnement) }}
+        {{ form_errors(satisfactionForm.Accompagnement) }}
+        <div class="col-sm-8">
+            {{ form_widget(satisfactionForm.Accompagnement) }}
+        </div>
+    </div>
+    <div class="form-group">
+        {{ form_label(satisfactionForm.Delais) }}
+        {{ form_errors(satisfactionForm.Delais) }}
+        <div class="col-sm-8">
+            {{ form_widget(satisfactionForm.Delais) }}
+        </div>
+    </div>
+    <div class="form-group">
+        {{ form_label(satisfactionForm.Commentaires) }}
+        {{ form_errors(satisfactionForm.Commentaires) }}
+        <div class="col-sm-8">
+            {{ form_widget(satisfactionForm.Commentaires) }}
+        </div>
+    </div>
+
+    {{ form_row(satisfactionForm._token) }}
+    <div style="display: none">
+        {{ form_row(satisfactionForm.numticket) }}
+    </div>
+
+    <div style="display: none">
+        {{ form_row(satisfactionForm.id) }}
+    </div>
+{% endblock %}

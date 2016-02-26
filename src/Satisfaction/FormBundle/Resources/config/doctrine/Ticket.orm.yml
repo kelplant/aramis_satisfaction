@@ -11,6 +11,7 @@ Satisfaction\FormBundle\Entity\Ticket:
       type: integer
       length: 99
       nullable: false
+      unique: true
     email:
       type: string
       length: 99

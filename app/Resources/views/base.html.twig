@@ -2,7 +2,7 @@
 <html>
     <head>
         <meta charset="UTF-8" />
-        <title>{% block title %}{% endblock %}- Aramis Satisfaction</title>
+        <title>{% block title %}{% endblock %} - Aramis Satisfaction</title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link rel="stylesheet" href="{{ asset('css/bootstrap.min.css') }}">
         <link rel="stylesheet" href="{{ asset('css/font-awesome.min.css') }}">
@@ -13,6 +13,8 @@
     <body>
         {% block nav %}{% include 'nav.html.twig' %} {% endblock %}
         {% block body %}{% endblock %}
+        {% block mainform %}{% endblock %}
+        {% block footform %}{% endblock %}
         {% block javascripts %}{% endblock %}
         <script src="{{ asset('js/jquery-1.12.1.min.js') }}"></script>
         <script src="{{ asset('js/bootstrap.min.js') }}"></script>

@@ -3,11 +3,7 @@
 namespace Satisfaction\GeneralBundle\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
-use Satisfaction\FormBundle\Entity\Ticket;
 use Satisfaction\FormBundle\Entity;
-use Satisfaction\FormBundle\Entity\TicketRepository;
-use Symfony\Component\HttpFoundation\Request;
-use Satisfaction\FormBundle\Form\Type\TicketType;
 
 class DefaultController extends Controller
 {
@@ -15,8 +11,6 @@ class DefaultController extends Controller
 
     public function indexAction()
     {
-
-        //$id=1;
         $email='xavier.arroues@aramisauto.com';
 
         $repository = $this->getDoctrine()->getManager()->getRepository('SatisfactionFormBundle:Ticket');

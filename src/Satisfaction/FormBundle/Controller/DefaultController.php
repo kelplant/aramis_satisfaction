@@ -12,6 +12,81 @@ use Symfony\Component\HttpFoundation\Request;
 
 class DefaultController extends Controller
 {
+    private $choices_5 =  array(
+        '1' => '1',
+        '2' => '2',
+        '3' => '3',
+        '4' => '4',
+        '5' => '5',
+    );
+
+    private $choice_10 = array(
+        '1' => '1',
+        '2' => '2',
+        '3' => '3',
+        '4' => '4',
+        '5' => '5',
+        '6' => '6',
+        '7' => '7',
+        '8' => '8',
+        '9' => '9',
+        '10' => '10',
+    );
+
+    function getTheTicket($numticket)
+    {
+        $ticket = new Ticket();
+
+        $repository = $this->getDoctrine()
+            ->getRepository('SatisfactionFormBundle:Ticket');
+
+        $ticket_look = $repository->findByNumticket($numticket);
+
+        $id = $ticket_look[0]->getId();
+        $numticket = $ticket_look[0]->getNumticket();
+        $sujet = $ticket_look[0]->getSujet();
+        $description = $ticket_look[0]->getDescription();
+        $satisfaction = $ticket_look[0]->getSatisfaction();
+        $conformite = $ticket_look[0]->getConformite();
+        $accompagnement = $ticket_look[0]->getAccompagnement();
+        $delais = $ticket_look[0]->getDelais();
+        $commentaires = $ticket_look[0]->getCommentaires();
+
+        $ticket->setId($id);
+        $ticket->setNumTicket($numticket);
+        $ticket->setSujet($sujet);
+        $ticket->setDescription($description);
+        $ticket->setSatisfaction($satisfaction);
+        $ticket->setConformite($conformite);
+        $ticket->setAccompagnement($accompagnement);
+        $ticket->setDelais($delais);
+        $ticket->setCommentaires($commentaires);
+
+        return $ticket;
+    }
+
+    function listID ($ret)
+    {
+        $email='xavier.arroues@aramisauto.com';
+        $em = $this->getDoctrine()->getManager();
+        $query_done_offered = $em->createQuery(
+            'SELECT p.numticket, p.id
+                    FROM SatisfactionFormBundle:Ticket p
+                    WHERE p.email = :email
+                    AND p.status = :status
+                    ORDER BY p.id ASC'
+        )->setParameters(array(
+            'email' => $email,
+            'status' => 'Offered',
+        ));
+        $offered = $query_done_offered->getResult();
+        if($ret='1') $tab = array_column($offered, 'id');
+        if($ret='2') $tab = array_column($offered, 'numticket');
+
+        echo "<br><br><br><br>";
+
+        return $tab ;
+    }
 
     public function satupdateAction(Request $request)
     {
@@ -41,7 +116,7 @@ class DefaultController extends Controller
         $em->flush();
 
         if(isset($req_post['Envoyer'])) {
-            $form = $this->createForm(new TicketTypeView(),$ticket, array(
+            $form = $this->createForm(new TicketTypeView($this->choices_5,$this->choice_10),$ticket, array(
                 'action' => $this->generateUrl('satisfaction_form_homepage_satupdate'),
                 'method' => 'POST',
             ));
@@ -52,7 +127,7 @@ class DefaultController extends Controller
             exit;
         }
         if(isset($req_post['Modifier'])) {
-            $form = $this->createForm(new TicketTypeEdit(),$ticket, array(
+            $form = $this->createForm(new TicketTypeEdit($this->choices_5,$this->choice_10),$ticket, array(
                 'action' => $this->generateUrl('satisfaction_form_homepage_satupdate'),
                 'method' => 'POST',
             ));
@@ -67,17 +142,19 @@ class DefaultController extends Controller
 
     public function indexAction(Request $request)
     {
-        //exit(\Doctrine\Common\Util\Debug::dump($request));
 
-        $ticket = new Ticket();
+
+        $nt = $this->listID('2');
+        $ticket = $this->getTheTicket($nt);
+        print_r($ticket);
 
         $repository = $this->getDoctrine()
-                           ->getRepository('SatisfactionFormBundle:Ticket');
+            ->getRepository('SatisfactionFormBundle:Ticket');
 
+        $form = $this->createForm(new TicketType($this->choices_5,$this->choice_10,$this->listID('2')),$ticket, array(
+            'action' => $this->generateUrl('satisfaction_form_homepage'),
+            'method' => 'POST',
 
-        $form = $this->createForm(new TicketType(),$ticket, array(
-                'action' => $this->generateUrl('satisfaction_form_homepage_satupdate'),
-                'method' => 'POST',
         ));
 
         return $this->render('SatisfactionFormBundle:Default:index.html.twig', array(
@@ -93,37 +170,12 @@ class DefaultController extends Controller
             exit;
         }
 
-        $ticket = new Ticket();
-
-        $repository = $this->getDoctrine()
-            ->getRepository('SatisfactionFormBundle:Ticket');
-
-        $ticket_look = $repository->findByNumticket($numticket);
-
-        $id = $ticket_look[0]->getId();
-        $numticket = $ticket_look[0]->getNumticket();
-        $sujet = $ticket_look[0]->getSujet();
-        $description = $ticket_look[0]->getDescription();
-        $satisfaction = $ticket_look[0]->getSatisfaction();
-        $conformite = $ticket_look[0]->getConformite();
-        $accompagnement = $ticket_look[0]->getAccompagnement();
-        $delais = $ticket_look[0]->getDelais();
-        $commentaires = $ticket_look[0]->getCommentaires();
-
-        $ticket->setId($id);
-        $ticket->setNumTicket($numticket);
-        $ticket->setSujet($sujet);
-        $ticket->setDescription($description);
-        $ticket->setSatisfaction($satisfaction);
-        $ticket->setConformite($conformite);
-        $ticket->setAccompagnement($accompagnement);
-        $ticket->setDelais($delais);
-        $ticket->setCommentaires($commentaires);
+        $ticket = $this->getTheTicket($numticket);
 
 
         //exit(\Doctrine\Common\Util\Debug::dump($ticket_look));
 
-        $form = $this->createForm(new TicketTypeView(),$ticket, array(
+        $form = $this->createForm(new TicketTypeView($this->choices_5,$this->choice_10),$ticket, array(
             'action' => $this->generateUrl('satisfaction_form_homepage_satupdate'),
             'method' => 'POST',
         ));
@@ -169,7 +221,7 @@ class DefaultController extends Controller
         $ticket->setDelais($delais);
         $ticket->setCommentaires($commentaires);
 
-        $form = $this->createForm(new TicketTypeNew(),$ticket, array(
+        $form = $this->createForm(new TicketTypeNew($this->choices_5,$this->choice_10),$ticket, array(
             'action' => $this->generateUrl('satisfaction_form_homepage_satupdate'),
             'method' => 'POST',
         ));
@@ -213,7 +265,7 @@ class DefaultController extends Controller
         $ticket->setDelais($delais);
         $ticket->setCommentaires($commentaires);
 
-        $form = $this->createForm(new TicketTypeEdit(),$ticket, array(
+        $form = $this->createForm(new TicketTypeEdit($this->choices_5,$this->choice_10),$ticket, array(
             'action' => $this->generateUrl('satisfaction_form_homepage_satupdate'),
             'method' => 'POST',
         ));
