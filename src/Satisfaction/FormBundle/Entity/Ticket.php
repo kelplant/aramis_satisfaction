@@ -29,10 +29,16 @@ class Ticket {
     protected $numticket;
 
     /**
-     * @ORM\Column(type="text")
+     * @ORM\Column(type="string")
      */
 
     protected $email;
+
+    /**
+     * @ORM\Column(type="string")
+     */
+
+    protected $status;
 
     /**
      * @ORM\Column(type="text")
@@ -346,5 +352,20 @@ class Ticket {
         $this->second_send = $second_send;
     }
 
+    /**
+     * @return mixed
+     */
+    public function getStatus()
+    {
+        return $this->status;
+    }
+
+    /**
+     * @param mixed $status
+     */
+    public function setStatus($status)
+    {
+        $this->status = $status;
+    }
 
 }

@@ -10,10 +10,15 @@ Satisfaction\FormBundle\Entity\Ticket:
     numticket:
       type: integer
       length: 99
+      nullable: false
     email:
-      type: text
+      type: string
       length: 99
-      nullable: true
+      nullable: false
+    status:
+      type: string
+      length: 10
+      nullable: false
     conformite:
       type: integer
       length: 2
@@ -32,28 +37,28 @@ Satisfaction\FormBundle\Entity\Ticket:
       nullable: true
     sujet:
       type: text
-      nullable: true
+      nullable: false
     description:
       type: text
-      nullable: true
+      nullable: false
     commentaires:
       type: text
       nullable: true
     week:
       type: integer
       length: 2
-      nullable: true
+      nullable: false
     year:
       type: integer
       length: 4
-      nullable: true
+      nullable: false
     month:
       type: integer
       length: 2
-      nullable: true
+      nullable: false
     first_send:
       type: datetime
-      nullable: true
+      nullable: false
     second_send:
       type: datetime
       nullable: true

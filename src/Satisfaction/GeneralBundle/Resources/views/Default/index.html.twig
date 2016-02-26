@@ -3,18 +3,27 @@
 {% block body %}
     <div class="container">
         <div class="row">
-            <div class="col-md-6">
-                <div class="text-center">Tickets à Noter</div>
+            <div class="col-md-4">
+                <div class="text-center">Tickets Jamais Notés</div>
                 <ul>
                     {% for ticket in todo %}
                         <li><a href="{{ path('satisfaction_form_homepage_new', {'numticket':  ticket.NumTicket }) }}">{{ ticket.NumTicket }}</a></li>
                     {% endfor %}
                 </ul>
             </div>
-            <div class="col-md-6">
-                <div class="text-center">Tickets déjà Notés</div>
+            <div class="col-md-4">
+                <div class="text-center">Tickets Notés Réouverts</div>
                 <ul>
-                    {% for ticket in done %}
+                    {% for ticket in done_offered %}
+                        <li><a href="{{ path('satisfaction_form_homepage_view', {'numticket':  ticket.NumTicket }) }}">{{ ticket.NumTicket }}</a></li>
+                    {% endfor %}
+                </ul>
+
+            </div>
+            <div class="col-md-4">
+                <div class="text-center">Tickets Notés Résolus</div>
+                <ul>
+                    {% for ticket in done_answered %}
                         <li><a href="{{ path('satisfaction_form_homepage_view', {'numticket':  ticket.NumTicket }) }}">{{ ticket.NumTicket }}</a></li>
                     {% endfor %}
                 </ul>
