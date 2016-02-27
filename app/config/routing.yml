@@ -1,11 +1,7 @@
 # app/config/routing.yml
-fos_user:
-    resource: "@FOSUserBundle/Resources/config/routing/all.xml"
-
 satisfaction_form:
     resource: "@SatisfactionFormBundle/Resources/config/routing.yml"
     prefix:   /
-
 satisfaction_general:
     resource: "@SatisfactionGeneralBundle/Resources/config/routing.yml"
     prefix:   /

@@ -4,21 +4,21 @@
     <div class="container">
         <div class="row">
             <div class="col-md-4">
-                <a href="#" class="list-group-item disabled">Tickets Jamais Notés</a>
+                <a href="#" class="list-group-item disabled"><div class="text-center">Tickets Jamais Notés</div></a>
                     {% for ticket in todo %}
-                        <a href="{{ path('satisfaction_form_homepage_new', {'numticket':  ticket.NumTicket }) }}" class="list-group-item">{{ ticket.NumTicket }} - {{ ticket.Sujet[:35] ~ '...' }}</a>
+                        <a href="{{ path('satisfaction_form_homepage_new', {'numticket':  ticket.NumTicket }) }}" class="list-group-item">{{ ticket.NumTicket }} - {{ ticket.Sujet[:33] ~ '...' }}</a>
                     {% endfor %}
             </div>
             <div class="col-md-4">
-                <a href="#" class="list-group-item disabled">Tickets Notés Réouverts</a>
+                <a href="#" class="list-group-item disabled"><div class="text-center">Tickets Notés Réouverts</div></a>
                     {% for ticket in done_offered %}
-                        <a href="{{ path('satisfaction_form_homepage_edit', {'numticket':  ticket.NumTicket }) }}" class="list-group-item">{{ ticket.NumTicket }} - {{ ticket.Sujet[:35] ~ '...' }}</a>
+                        <a href="{{ path('satisfaction_form_homepage_edit', {'numticket':  ticket.NumTicket }) }}" class="list-group-item">{{ ticket.NumTicket }} - {{ ticket.Sujet[:33] ~ '...' }}</a>
                     {% endfor %}
             </div>
             <div class="col-md-4">
-                <a href="#" class="list-group-item disabled">Tickets Notés Résolus</a>
+                <a href="#" class="list-group-item disabled"><div class="text-center">Tickets Notés Résolus</div></a>
                     {% for ticket in done_answered %}
-                        <a href="{{ path('satisfaction_form_homepage_view', {'numticket':  ticket.NumTicket }) }}" class="list-group-item">{{ ticket.NumTicket }} - {{ ticket.Sujet[:35] ~ '...' }}</a>
+                        <a href="{{ path('satisfaction_form_homepage_view', {'numticket':  ticket.NumTicket }) }}" class="list-group-item">{{ ticket.NumTicket }} - {{ ticket.Sujet[:33] ~ '...' }}</a>
                     {% endfor %}
             </div>
         </div>
