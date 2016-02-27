@@ -25,7 +25,6 @@ class TicketType extends AbstractType
     {
         $this->choices_5 = $choices_5;
         $this->choices_10 = $choices_10;
-        print_r($listID);
         $this->listID = $listID;
 
     }

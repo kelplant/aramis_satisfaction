@@ -7,17 +7,10 @@ use Satisfaction\FormBundle\Entity;
 
 class DefaultController extends Controller
 {
-
-
-    public function indexAction()
+    public function getTodo($page,$email)
     {
-        $email='xavier.arroues@aramisauto.com';
-
-        $repository = $this->getDoctrine()->getManager()->getRepository('SatisfactionFormBundle:Ticket');
-        $all = $repository->findByEmail($email);
-
-
         $em = $this->getDoctrine()->getManager();
+
         $query_todo = $em->createQuery(
             'SELECT p
                 FROM SatisfactionFormBundle:Ticket p
@@ -29,8 +22,12 @@ class DefaultController extends Controller
             'email' => $email,
             'status' => 'Offered',
         ));
-        $todo = $query_todo->getResult();
+        return $query_todo->getResult();
+    }
 
+    public function getDoneOffered($page,$email)
+    {
+        $em = $this->getDoctrine()->getManager();
         $query_done_offered = $em->createQuery(
             'SELECT p
                 FROM SatisfactionFormBundle:Ticket p
@@ -42,21 +39,47 @@ class DefaultController extends Controller
             'email' => $email,
             'status' => 'Offered',
         ));
-        $done_offered = $query_done_offered->getResult();
+        return $query_done_offered->getResult();
+    }
 
+    public function getDoneAnswered($page,$email)
+    {
+        $em = $this->getDoctrine()->getManager();
         $query_done_answered = $em->createQuery(
             'SELECT p
-                FROM SatisfactionFormBundle:Ticket p
-                WHERE p.email = :email
-                AND p.satisfaction IS NOT NULL
-                AND p.status = :status
-                ORDER BY p.id ASC'
+                    FROM SatisfactionFormBundle:Ticket p
+                    WHERE p.email = :email
+                    AND p.satisfaction IS NOT NULL
+                    AND p.status = :status
+                    ORDER BY p.id DESC'
         )->setParameters(array(
             'email' => $email,
             'status' => 'Answered',
-        ));
-        $done_answered = $query_done_answered->getResult();
 
+        ))->setMaxResults(10)
+            ->setFirstResult($page);
+
+        return $query_done_answered->getResult();
+    }
+
+    public function getSessionEmail()
+    {
+        $test = explode(';',$_SESSION['_sf2_attributes']['_security_main']);
+        $email = strtolower(substr($test[29],6,-1));
+
+        return $email;
+    }
+
+    public function indexAction()
+    {
+        $email = $this->getSessionEmail();
+
+        $repository = $this->getDoctrine()->getManager()->getRepository('SatisfactionFormBundle:Ticket');
+        $all = $repository->findByEmail($email);
+
+        $todo = $this->getTodo('0',$email);
+        $done_offered = $this->getDoneOffered('0',$email);
+        $done_answered = $this->getDoneAnswered('0',$email);
 
         if (!$all) {
             return $this->render('SatisfactionGeneralBundle:Default:notickets.html.twig');
