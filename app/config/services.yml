@@ -11,3 +11,6 @@ services:
         class: Symfony\Component\Serializer\Normalizer\GetSetMethodNormalizer
         tags:
             - { name: serializer.normalizer }
+
+    fos_user.doctrine_registry:
+            alias: doctrine
