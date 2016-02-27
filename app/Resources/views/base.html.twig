@@ -12,10 +12,12 @@
     </head>
     <body>
         {% block nav %}{% include 'nav.html.twig' %} {% endblock %}
-        {% block body %}{% endblock %}
-        {% block mainform %}{% endblock %}
-        {% block footform %}{% endblock %}
-        {% block javascripts %}{% endblock %}
+        {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
+            {% block body %}{% endblock %}
+            {% block mainform %}{% endblock %}
+            {% block footform %}{% endblock %}
+            {% block javascripts %}{% endblock %}
+        {% endif %}
         <script src="{{ asset('js/jquery-1.12.1.min.js') }}"></script>
         <script src="{{ asset('js/bootstrap.min.js') }}"></script>
     </body>

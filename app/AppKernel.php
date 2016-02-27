@@ -19,6 +19,7 @@ class AppKernel extends Kernel
             new Satisfaction\GeneralBundle\SatisfactionGeneralBundle(),
             new Satisfaction\FormBundle\SatisfactionFormBundle(),
             new FOS\UserBundle\FOSUserBundle(),
+            new FR3D\LdapBundle\FR3DLdapBundle(),
         );
 
         if (in_array($this->getEnvironment(), array('dev', 'test'), true)) {
