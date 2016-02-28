@@ -56,3 +56,16 @@
     line-height: 50px;
     margin-left: 40px;
 }
+
+.col-tab-2{
+    font-size: 12px;
+}
+.col-tab-1{
+     font-size: 12px;
+     text-align: center;
+}
+
+ .col-tab-2-title{
+     font-size: 14px;
+     text-align: center;
+ }

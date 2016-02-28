@@ -17,60 +17,60 @@
             <a href="#" class="list-group-item disabled"><div class="text-center">Tickets Jamais Notés</div></a>
             <table class="table table-striped" id="bootstrap-todo">
                 <thead>
-                <tr >
-                    <th>Ticket</th>
-                    <th>Sujet Ticket</th>
-                    <th>Edit</th>
+                <tr>
+                    <th class="col-tab-2-title">Ticket</th>
+                    <th class="col-tab-2-title">Sujet Ticket</th>
+                    <th class="col-tab-2-title">Edit</th>
                 </tr>
                 </thead>
                 <tbody>
                 {% for ticket in todo %}
                     <tr >
-                        <td style="text-align: center">{{ ticket.NumTicket }}</td>
-                        <td>{{ ticket.Sujet[:20] ~ '...' }}</td>
-                        <td style="text-align: center"><a href="{{ path('satisfaction_form_homepage_new', {'numticket':  ticket.NumTicket }) }}" "><i class="fa fa-pencil-square-o"></i></a</td>
+                        <td class="col-tab-1">{{ ticket.NumTicket }}</td>
+                        <td class="col-tab-2">{{ ticket.Sujet[:25] ~ '...' }}</td>
+                        <td class="col-tab-1"><a href="{{ path('satisfaction_form_homepage_new', {'numticket':  ticket.NumTicket }) }}" "><i class="fa fa-pencil-square-o"></i></a</td>
                     </tr>
                 {% endfor %}
                 </tbody>
             </table>
         </div>
         <div class="col-md-4">
-            <a href="#" class="list-group-item disabled"><div class="text-center">Tickets Jamais Notés</div></a>
+            <a href="#" class="list-group-item disabled"><div class="text-center">Tickets Notés Ré-Ouverts</div></a>
             <table class="table table-striped" id="bootstrap-offered">
                 <thead>
                 <tr>
-                    <th>Ticket</th>
-                    <th>Sujet Ticket</th>
-                    <th>Edit</th>
+                    <th class="col-tab-2-title">Ticket</th>
+                    <th class="col-tab-2-title">Sujet Ticket</th>
+                    <th class="col-tab-2-title">Edit</th>
                 </tr>
                 </thead>
                 <tbody>
                 {% for ticket in done_offered %}
                         <tr>
-                            <td style="text-align: center">{{ ticket.NumTicket }}</td>
-                            <td>{{ ticket.Sujet[:20] ~ '...' }}</td>
-                            <td style="text-align: center"><a href="{{ path('satisfaction_form_homepage_edit', {'numticket':  ticket.NumTicket }) }}"><i class="fa fa-pencil-square-o"></i></a></td>
+                            <td class="col-tab-1">{{ ticket.NumTicket }}</td>
+                            <td class="col-tab-2">{{ ticket.Sujet[:25] ~ '...' }}</td>
+                            <td class="col-tab-1"><a href="{{ path('satisfaction_form_homepage_edit', {'numticket':  ticket.NumTicket }) }}"><i class="fa fa-pencil-square-o"></i></a></td>
                         </tr>
                 {% endfor %}
                 </tbody>
             </table>
         </div>
         <div class="col-md-4">
-            <a href="#" class="list-group-item disabled"><div class="text-center">Tickets Jamais Notés</div></a>
+            <a href="#" class="list-group-item disabled"><div class="text-center">Tickets déjà Notés</div></a>
             <table class="table table-striped" id="bootstrap-answered">
                 <thead>
                 <tr>
-                    <th>Ticket</th>
-                    <th>Sujet Ticket</th>
-                    <th>Edit</th>
+                    <th class="col-tab-2-title">Ticket</th>
+                    <th class="col-tab-2-title">Sujet Ticket</th>
+                    <th class="col-tab-2-title">Edit</th>
                 </tr>
                 </thead>
                 <tbody>
                 {% for ticket in done_answered %}
                      <tr>
-                         <td style="text-align: center">{{ ticket.NumTicket }}</td>
-                         <td>{{ ticket.Sujet[:20] ~ '...' }}</td>
-                         <td style="text-align: center"><a href="{{ path('satisfaction_form_homepage_view', {'numticket':  ticket.NumTicket }) }}"><i class="fa fa-pencil-square-o"></i></a></td>
+                         <td class="col-tab-1">{{ ticket.NumTicket }}</td>
+                         <td class="col-tab-2">{{ ticket.Sujet[:25] ~ '...' }}</td>
+                         <td class="col-tab-1"><a href="{{ path('satisfaction_form_homepage_view', {'numticket':  ticket.NumTicket }) }}"><i class="fa fa-pencil-square-o"></i></a></td>
                      </tr>
                 {% endfor %}
                 </tbody>
@@ -84,18 +84,38 @@
     <script src="{{ asset('js/jquery.dataTables.min.js') }}" type="text/javascript"></script>
     <script>
         $(document).ready(function(){
-
-            $('#bootstrap-todo').DataTable({bFilter: false, bInfo: false, bLengthChange:false});
-            } );
-     </script>
-    <script>
-        $(document).ready(function(){
-            $('#bootstrap-offered').DataTable({bFilter: false, bInfo: false, bLengthChange:false});
-        });
-    </script>
-    <script>
-        $(document).ready(function(){
-            $('#bootstrap-answered').DataTable({bFilter: false, bInfo: false, bLengthChange:false});
+            $('#bootstrap-todo').DataTable({
+                bFilter: false,
+                bInfo: false,
+                bLengthChange:false,
+                "aoColumnDefs": [
+                    {"bSortable": false, "aTargets": [2] },
+                    { "bSortable": false, "aTargets": [1] }
+                ],
+                "aaSorting": [[ 0, "asc" ]],
+                "pageLength": 15
+            });
+            $('#bootstrap-offered').DataTable({
+                bFilter: false,
+                bInfo: false,
+                bLengthChange:false,
+                "aoColumnDefs": [
+                    { "bSortable": false, "aTargets": [2] },
+                    { "bSortable": false, "aTargets": [1] }
+                ],
+                "aaSorting": [[ 0, "asc" ]],
+                "pageLength": 15
+            });
+            $('#bootstrap-answered').DataTable({bFilter: false,
+                bInfo: false,
+                bLengthChange:false,
+                "aoColumnDefs": [
+                    { "bSortable": false, "aTargets": [2] },
+                    { "bSortable": false, "aTargets": [1] }
+                ],
+                "aaSorting": [[ 0, "desc" ]],
+                "pageLength": 15
+            });
         });
     </script>
 
