@@ -7,24 +7,18 @@
         <link rel="stylesheet" href="{{ asset('css/bootstrap.min.css') }}">
         <link rel="stylesheet" href="{{ asset('css/font-awesome.min.css') }}">
         <link rel="stylesheet" href="{{ asset('css/aramis.css') }}">
-        <link href="{{ asset('css/jquery.bdt.css') }}" type="text/css" rel="stylesheet">
-        <link href="{{ asset('css/style.css') }}" type="text/css" rel="stylesheet">
-        <script src="{{ asset('js/jquery-1.12.1.min.js') }}"></script>
-        <script src="{{ asset('js/bootstrap.min.js') }}"></script>
-        <script src="{{ asset('js/jquery.sortelements.js') }}" type="text/javascript"></script>
-        <script src="{{ asset('js/jquery.bdt.js') }}" type="text/javascript"></script>
         {% block stylesheets %}{% endblock %}
         <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
     </head>
     <body>
-    <div class="box clearfix">
         {% block nav %}{% include 'nav.html.twig' %} {% endblock %}
         {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
             {% block body %}{% endblock %}
             {% block mainform %}{% endblock %}
             {% block footform %}{% endblock %}
+            <script src="{{ asset('js/jquery-1.12.1.min.js') }}"></script>
+            <script src="{{ asset('js/bootstrap.min.js') }}"></script>
             {% block javascripts %}{% endblock %}
         {% endif %}
-    </div>
     </body>
 </html>

@@ -1,5 +1,14 @@
 {% extends '::base.html.twig' %}
 {% block title %} Accueil {% endblock %}
+{% block stylesheets %}
+    <link href="{{ asset('css/select.dataTables.min.css') }}" type="text/css" rel="stylesheet">
+    <link href="{{ asset('css/editor.dataTables.min.css') }}" type="text/css" rel="stylesheet">
+    <link href="{{ asset('css/style.css') }}" type="text/css" rel="stylesheet">
+    <link href="{{ asset('css/jquery.dataTables.min.css') }}" type="text/css" rel="stylesheet">
+    <link href="{{ asset('css/buttons.dataTables.min.css') }}" type="text/css" rel="stylesheet">
+    <link href="{{ asset('css/dataTables.bootstrap.min.css') }}" type="text/css" rel="stylesheet">
+{% endblock %}
+
 {% block body %}
 
 <div class="container">
@@ -18,7 +27,7 @@
                 {% for ticket in todo %}
                     <tr >
                         <td style="text-align: center">{{ ticket.NumTicket }}</td>
-                        <td>{{ ticket.Sujet[:30] ~ '...' }}</td>
+                        <td>{{ ticket.Sujet[:20] ~ '...' }}</td>
                         <td style="text-align: center"><a href="{{ path('satisfaction_form_homepage_new', {'numticket':  ticket.NumTicket }) }}" "><i class="fa fa-pencil-square-o"></i></a</td>
                     </tr>
                 {% endfor %}
@@ -39,7 +48,7 @@
                 {% for ticket in done_offered %}
                         <tr>
                             <td style="text-align: center">{{ ticket.NumTicket }}</td>
-                            <td>{{ ticket.Sujet[:30] ~ '...' }}</td>
+                            <td>{{ ticket.Sujet[:20] ~ '...' }}</td>
                             <td style="text-align: center"><a href="{{ path('satisfaction_form_homepage_edit', {'numticket':  ticket.NumTicket }) }}"><i class="fa fa-pencil-square-o"></i></a></td>
                         </tr>
                 {% endfor %}
@@ -60,7 +69,7 @@
                 {% for ticket in done_answered %}
                      <tr>
                          <td style="text-align: center">{{ ticket.NumTicket }}</td>
-                         <td>{{ ticket.Sujet[:30] ~ '...' }}</td>
+                         <td>{{ ticket.Sujet[:20] ~ '...' }}</td>
                          <td style="text-align: center"><a href="{{ path('satisfaction_form_homepage_view', {'numticket':  ticket.NumTicket }) }}"><i class="fa fa-pencil-square-o"></i></a></td>
                      </tr>
                 {% endfor %}
@@ -72,191 +81,23 @@
 {% endblock %}
 
 {% block javascripts %}
+    <script src="{{ asset('js/jquery.dataTables.min.js') }}" type="text/javascript"></script>
     <script>
-        $(document).ready( function () {
-            $('#bootstrap-todo').bdt();
-            $('#bootstrap-offered').bdt();
-            $('#bootstrap-answered').bdt();
+        $(document).ready(function(){
+
+            $('#bootstrap-todo').DataTable({bFilter: false, bInfo: false, bLengthChange:false});
+            } );
+     </script>
+    <script>
+        $(document).ready(function(){
+            $('#bootstrap-offered').DataTable({bFilter: false, bInfo: false, bLengthChange:false});
+        });
+    </script>
+    <script>
+        $(document).ready(function(){
+            $('#bootstrap-answered').DataTable({bFilter: false, bInfo: false, bLengthChange:false});
         });
     </script>
 
-
 {% endblock %}
 
-
-{#{% extends '::base.html.twig' %}#}
-{#{% block title %} Accueil {% endblock %}#}
-{#{% block body %}#}
-    {#<div class="container">#}
-        {#<div class="row">#}
-            {#<div class="col-md-4">#}
-                {#<a href="#" class="list-group-item disabled"><div class="text-center">Tickets Jamais Notés</div></a>#}
-                {#<div id="wraptodo">#}
-                    {#{% for ticket in todfo %}#}
-                        {#<a href="{{ path('satisfaction_form_homepage_new', {'numticket':  ticket.NumTicket }) }}" class="list-group-item">{{ ticket.NumTicket }} - {{ ticket.Sujet[:33] ~ '...' }}</a>#}
-                    {#{% endfor %}#}
-                {#</div>#}
-            {#</div>#}
-            {#<div class="col-md-4">#}
-                {#<a href="#" class="list-group-item disabled"><div class="text-center">Tickets Notés Réouverts</div></a>#}
-                {#{% for ticket in done_offered %}#}
-                    {#<a href="{{ path('satisfaction_form_homepage_edit', {'numticket':  ticket.NumTicket }) }}" class="list-group-item">{{ ticket.NumTicket }} - {{ ticket.Sujet[:33] ~ '...' }}</a>#}
-                {#{% endfor %}#}
-            {#</div>#}
-            {#<div class="col-md-4">#}
-                {#<a href="#" class="list-group-item disabled"><div class="text-center">Tickets Notés Résolus</div></a>#}
-                {#<div id="wrapanswered">#}
-                    {#{% for ticket in done_answered %}#}
-                        {#<a href="{{ path('satisfaction_form_homepage_view', {'numticket':  ticket.NumTicket }) }}" class="list-group-item">{{ ticket.NumTicket }} - {{ ticket.Sujet[:33] ~ '...' }}</a>#}
-                    {#{% endfor %}#}
-                {#</div>#}
-            {#</div>#}
-        {#</div>#}
-
-        {#<div class="row">#}
-            {#<div class="col-md-2">#}
-                {#<div class="text-right">#}
-                    {#<div class="prevtodo">Prev</div>#}
-                {#</div>#}
-            {#</div>#}
-            {#<div class="col-md-2">#}
-                {#<div class="text-left">#}
-                    {#<div class="nexttodo">Next</div>#}
-                {#</div>#}
-            {#</div>#}
-            {#<div class="col-md-2">#}
-                {#<div class="text-right">#}
-                    {#<div class="prevtodo">Prev</div>#}
-                {#</div>#}
-            {#</div>#}
-            {#<div class="col-md-2">#}
-                {#<div class="text-left">#}
-                    {#<div class="nexttodo">Next</div>#}
-                {#</div>#}
-            {#</div>#}
-            {#<div class="col-md-2">#}
-                {#<div class="text-right">#}
-                    {#<div class="prevanswered">Prev</div>#}
-                {#</div>#}
-            {#</div>#}
-            {#<div class="col-md-2">#}
-                {#<div class="text-left">#}
-                    {#<div class="nextanswered">Next</div>#}
-                {#</div>#}
-            {#</div>#}
-        {#</div>#}
-    {#</div>#}
-{#{% endblock %}#}
-
-{#{% block javascripts %}#}
-    {#<script type="text/javascript">#}
-        {#var $elanswered = $("#wrapanswered > a");#}
-        {#var pageSizeanswered = 10;#}
-
-        {#$elanswered.slice(0, pageSizeanswered).css({background: 'white', display: 'block'});#}
-        {#$elanswered.slice(pageSizeanswered, $elanswered.length).css({background: 'white', display: 'none'});#}
-
-        {#function addSliceanswered(numanswered){#}
-            {#return numanswered + pageSizeanswered;#}
-        {#}#}
-
-        {#function subtractSliceanswered(numanswered){#}
-            {#return numanswered - pageSizeanswered;#}
-        {#}#}
-
-        {#var sliceanswered = [0, pageSizeanswered];#}
-
-        {#$('.nextanswered').click(function(){#}
-            {#if (sliceanswered[1] < $elanswered.length ){#}
-                {#sliceanswered = sliceanswered.map(addSliceanswered);#}
-            {#}#}
-            {#showSliceanswered(sliceanswered);#}
-        {#});#}
-
-        {#$('.prevanswered').click(function(){#}
-            {#if (sliceanswered[0] > 0 ){#}
-                {#sliceanswered = sliceanswered.map(subtractSliceanswered);#}
-            {#}#}
-            {#showSliceanswered(sliceanswered);#}
-        {#});#}
-
-        {#function showSliceanswered(sliceanswered){#}
-            {#$elanswered.css('display', 'none');#}
-            {#$elanswered.slice(sliceanswered[0], sliceanswered[1]).css('display','block');#}
-        {#}#}
-    {#</script>#}
-
-    {#<script type="text/javascript">#}
-        {#var $eltodo = $("#wraptodo > a");#}
-        {#var pageSizetodo = 10;#}
-
-        {#$eltodo.slice(0, pageSizetodo).css({background: 'white', display: 'block'});#}
-        {#$eltodo.slice(pageSizetodo, $eltodo.length).css({background: 'white', display: 'none'});#}
-
-        {#function addSlicetodo(numtodo){#}
-            {#return numtodo + pageSizetodo;#}
-        {#}#}
-
-        {#function subtractSlicetodo(numtodo){#}
-            {#return numtodo - pageSizetodo;#}
-        {#}#}
-
-        {#var slicetodo = [0, pageSizetodo];#}
-
-        {#$('.nexttodo').click(function(){#}
-            {#if (slicetodo[1] < $eltodo.length ){#}
-                {#slicetodo = slicetodo.map(addSlicetodo);#}
-            {#}#}
-            {#showSlicetodo(slicetodo);#}
-        {#});#}
-
-        {#$('.prevtodo').click(function(){#}
-            {#if (slicetodo[0] > 0 ){#}
-                {#slicetodo = slicetodo.map(subtractSlicetodo);#}
-            {#}#}
-            {#showSlicetodo(slicetodo);#}
-        {#});#}
-
-        {#function showSlicetodo(slicetodo){#}
-            {#$eltodo.css('display', 'none');#}
-            {#$eltodo.slice(slicetodo[0], slicetodo[1]).css('display','block');#}
-        {#}#}
-    {#</script>#}
-    {#<script type="text/javascript">#}
-        {#var $eldone_offered = $("#wrapdone_offered > a");#}
-        {#var pageSizedone_offered = 10;#}
-
-        {#$eldone_offered.slice(0, pageSizedone_offered).css({background: 'white', display: 'block'});#}
-        {#$eldone_offered.slice(pageSizedone_offered, $eldone_offered.length).css({background: 'white', display: 'none'});#}
-
-        {#function addSlicedone_offered(numdone_offered){#}
-            {#return numdone_offered + pageSizedone_offered;#}
-        {#}#}
-
-        {#function subtractSlicedone_offered(numdone_offered){#}
-            {#return numdone_offered - pageSizedone_offered;#}
-        {#}#}
-
-        {#var slicedone_offered = [0, pageSizedone_offered];#}
-
-        {#$('.nextdone_offered').click(function(){#}
-            {#if (slicedone_offered[1] < $eldone_offered.length ){#}
-                {#slicedone_offered = slicedone_offered.map(addSlicedone_offered);#}
-            {#}#}
-            {#showSlicedone_offered(slicedone_offered);#}
-        {#});#}
-
-        {#$('.prevdone_offered').click(function(){#}
-            {#if (slicedone_offered[0] > 0 ){#}
-                {#slicedone_offered = slicedone_offered.map(subtractSlicedone_offered);#}
-            {#}#}
-            {#showSlicedone_offered(slicedone_offered);#}
-        {#});#}
-
-        {#function showSlicedone_offered(slicedone_offered){#}
-            {#$eldone_offered.css('display', 'none');#}
-            {#$eldone_offered.slice(slicedone_offered[0], slicedone_offered[1]).css('display','block');#}
-        {#}#}
-    {#</script>#}
-
-{#{% endblock %}#}
