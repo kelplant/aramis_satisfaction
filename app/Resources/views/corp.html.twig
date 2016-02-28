@@ -3,6 +3,25 @@
     {{ form_start(satisfactionForm, {'attr':{'class': 'form-horizontal'}}) }}
     {{ form_errors(satisfactionForm) }}
     <div class="form-group">
+        <div class="col-sm-2"></div>
+        <div class=" col-sm-8 corp-message-2">
+            <div class="form-group alert-info corp-message-1">
+                Bonjour, Merci à vous d'avoir prit le temps de venir jusqu'ici nous faire un retour sur le traitement de votre ticket.<br>
+                Dans le cas ou votre retour ne serait pas positif merci de nous laisser un commentaire afin que nous puissions nous améliorer.
+            </div>
+        </div>
+    </div>
+    {% if message is defined %}
+        <div class="form-group">
+            <div class="col-sm-2"></div>
+            <div class=" col-sm-8 corp-message-3">
+                <div class="form-group alert-success corp-message-1">
+                {{ message }}
+                </div>
+            </div>
+        </div>
+    {% endif %}
+    <div class="form-group">
         {{ form_label(satisfactionForm.NumTicket) }}
         {{ form_errors(satisfactionForm.NumTicket) }}
         <div class="col-sm-8">

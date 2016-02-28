@@ -47,7 +47,7 @@ class TicketType extends AbstractType
                 'data' => $this->data_num,
                 'multiple' => false,
                 'label_attr' => array(
-                    'class' => 'col-sm-2 control-label'
+                    'class' => 'col-sm-2 control-label',
                 ),
                 'attr' => array(
                     'class' => 'form-control',
@@ -57,83 +57,84 @@ class TicketType extends AbstractType
             ->add('Sujet', 'text', array(
                 'label' => 'Sujet',
                 'label_attr' => array(
-                    'class' => 'col-sm-2 control-label'
+                    'class' => 'col-sm-2 control-label',
                 ),
                 'attr' => array(
-                    'class' => 'form-control'
+                    'class' => 'form-control',
                 ),
                 'read_only' => true
             ))
             ->add('Description', 'textarea', array(
                 'label' => 'Description',
                 'label_attr' => array(
-                    'class' => 'col-sm-2 control-label'
+                    'class' => 'col-sm-2 control-label',
+                    'rows' => '5',
                 ),
                 'attr' => array(
-                    'class' => 'form-control'
+                    'class' => 'form-control',
                 ),
                 'read_only' => true
             ))
             ->add('Satisfaction', 'choice', array(
                 'label' => 'Satisfaction',
                 'label_attr' => array(
-                    'class' => 'col-sm-2 control-label'
+                    'class' => 'col-sm-2 control-label',
                 ),
                 'choices' => $this->choices_10,
                 'expanded' => true,
                 'multiple' => false,
                 'required' => true,
                 'attr' => array(
-                    'class' => 'form-control'
+                    'class' => 'form-control',
                 )
             ))
             ->add('Conformite', 'choice', array(
                 'label' => 'Conformité',
                 'label_attr' => array(
-                    'class' => 'col-sm-2 control-label'
+                    'class' => 'col-sm-2 control-label',
                 ),
                 'choices' => $this->choices_5,
                 'expanded' => true,
                 'multiple' => false,
                 'required' => true,
                 'attr' => array(
-                    'class' => 'form-control'
+                    'class' => 'form-control',
                 )
             ))
             ->add('Accompagnement', 'choice', array(
                 'label' => 'Accompagnement',
                 'label_attr' => array(
-                    'class' => 'col-sm-2 control-label'
+                    'class' => 'col-sm-2 control-label',
                 ),
                 'choices' => $this->choices_5,
                 'expanded' => true,
                 'multiple' => false,
                 'required' => true,
                 'attr' => array(
-                    'class' => 'form-control'
+                    'class' => 'form-control',
                 )
             ))
             ->add('Delais', 'choice', array(
                 'label' => 'Délais',
                 'label_attr' => array(
-                    'class' => 'col-sm-2 control-label'
+                    'class' => 'col-sm-2 control-label',
                 ),
                 'choices' => $this->choices_5,
                 'expanded' => true,
                 'multiple' => false,
                 'required' => true,
                 'attr' => array(
-                    'class' => 'form-control'
+                    'class' => 'form-control',
                 )
             ))
             ->add('Commentaires', 'textarea', array(
                 'label' => 'Commentaires',
                 'required' => false,
                 'label_attr' => array(
-                    'class' => 'col-sm-2 control-label'
+                    'class' => 'col-sm-2 control-label',
                 ),
                 'attr' => array(
-                    'class' => 'form-control'
+                    'class' => 'form-control',
                 )
             ))
 
@@ -143,7 +144,7 @@ class TicketType extends AbstractType
             ->add('Envoyer', 'submit', array(
                 'label' => 'Envoyer',
                 'attr' => array(
-                    'class' => 'btn btn-success'
+                    'class' => 'btn btn-success',
                 )
             ))
         ;

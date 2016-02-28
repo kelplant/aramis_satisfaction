@@ -125,8 +125,6 @@ class DefaultController extends Controller
 
     public function satupdateAction(Request $request)
     {
-        echo "<br><br><br><br><br>";
-        echo "Retour Mettre du bootstrap";
 
         $req_post = $this->get('request')->request->get('ticket');
 
@@ -134,6 +132,9 @@ class DefaultController extends Controller
 
 
         if(isset($req_post['Envoyer'])) {
+
+            $message= "Formulaire correctement enregistré";
+
             $form = $this->createForm(new TicketTypeView($this->choices_5,$this->choice_10),$ticket, array(
                 'action' => $this->generateUrl('satisfaction_form_homepage_satupdate'),
                 'method' => 'POST',
@@ -141,6 +142,7 @@ class DefaultController extends Controller
 
             return $this->render('SatisfactionFormBundle:Default:indexView.html.twig', array(
                 'satisfactionForm' => $form->createView(),
+                'message' => $message,
             ));
             exit;
         }

@@ -11,3 +11,11 @@
         {{ form_end(satisfactionForm) }}
     </div>
 {% endblock %}
+{% block javascripts %}
+
+<script>
+    $(document).ready(function() {
+        $(':radio:not(:checked)').attr('disabled', true);
+    });
+</script>
+{% endblock %}

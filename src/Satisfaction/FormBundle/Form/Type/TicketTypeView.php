@@ -28,104 +28,106 @@ class TicketTypeView extends AbstractType
                 'label' => 'Numéro Ticket',
                 'read_only' => true,
                 'label_attr' => array(
-                    'class' => 'col-sm-2 control-label'
+                    'class' => 'col-sm-2 control-label',
                 ),
                 'attr' => array(
-                    'class' => 'form-control'
+                    'class' => 'form-control',
                 )
             ))
             ->add('Sujet', 'text', array(
                 'label' => 'Sujet',
                 'label_attr' => array(
-                    'class' => 'col-sm-2 control-label'
+                    'class' => 'col-sm-2 control-label',
                 ),
                 'attr' => array(
-                    'class' => 'form-control'
+                    'class' => 'form-control',
                 ),
                 'read_only' => true
             ))
             ->add('Description', 'textarea', array(
                 'label' => 'Description',
                 'label_attr' => array(
-                    'class' => 'col-sm-2 control-label'
+                    'class' => 'col-sm-2 control-label',
                 ),
                 'attr' => array(
-                    'class' => 'form-control'
+                    'class' => 'form-control',
+                    'rows' => '5',
                 ),
                 'read_only' => true
             ))
             ->add('Satisfaction', 'choice', array(
                 'label' => 'Satisfaction',
                 'label_attr' => array(
-                    'class' => 'col-sm-2 control-label'
+                    'class' => 'col-sm-2 control-label',
                 ),
                 'choices' => $this->choices_10,
                 'expanded' => true,
                 'multiple' => false,
                 'read_only' => true,
                 'attr' => array(
-                    'class' => 'form-control'
+                    'class' => 'form-control',
                 )
             ))
             ->add('Conformite', 'choice', array(
                 'label' => 'Conformité',
                 'label_attr' => array(
-                    'class' => 'col-sm-2 control-label'
+                    'class' => 'col-sm-2 control-label',
                 ),
                 'choices' => $this->choices_5,
                 'expanded' => true,
                 'multiple' => false,
                 'read_only' => true,
                 'attr' => array(
-                    'class' => 'form-control'
+                    'class' => 'form-control',
                 )
             ))
             ->add('Accompagnement', 'choice', array(
                 'label' => 'Accompagnement',
                 'label_attr' => array(
-                    'class' => 'col-sm-2 control-label'
+                    'class' => 'col-sm-2 control-label',
                 ),
                 'choices' => $this->choices_5,
                 'expanded' => true,
                 'multiple' => false,
                 'read_only' => true,
                 'attr' => array(
-                    'class' => 'form-control'
+                    'class' => 'form-control',
+                    'disabled'=> true,
                 )
             ))
             ->add('Delais', 'choice', array(
                 'label' => 'Délais',
                 'label_attr' => array(
-                    'class' => 'col-sm-2 control-label'
+                    'class' => 'col-sm-2 control-label',
                 ),
                 'choices' => $this->choices_5,
                 'expanded' => true,
                 'multiple' => false,
                 'read_only' => true,
                 'attr' => array(
-                    'class' => 'form-control'
+                    'class' => 'form-control',
                 )
             ))
             ->add('Commentaires', 'textarea', array(
                 'label' => 'Commentaires',
                 'read_only' => true,
                 'label_attr' => array(
-                    'class' => 'col-sm-2 control-label'
+                    'class' => 'col-sm-2 control-label',
                 ),
                 'attr' => array(
-                    'class' => 'form-control'
+                    'class' => 'form-control',
                 )
             ))
             ->add('numticket', 'hidden', array(
-                'label' => 'numticket'
+                'label' => 'numticket',
             ))
             ->add('id', 'hidden', array(
-                'label' => 'id'
+                'label' => 'id',
             ))
             ->add('Modifier', 'submit', array(
                 'label' => 'Modifier',
                 'attr' => array(
-                    'class' => 'btn btn-warning'
+                    'class' => 'btn btn-warning',
                 )
             ))
         ;
