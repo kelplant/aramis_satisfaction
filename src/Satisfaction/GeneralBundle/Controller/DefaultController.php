@@ -17,7 +17,7 @@ class DefaultController extends Controller
                 WHERE p.email = :email
                 AND p.satisfaction IS NULL
                 AND p.status = :status
-                ORDER BY p.id ASC'
+                ORDER BY p.numticket ASC'
         )->setParameters(array(
             'email' => $email,
             'status' => 'Offered',
@@ -34,7 +34,7 @@ class DefaultController extends Controller
                 WHERE p.email = :email
                 AND p.satisfaction IS NOT NULL
                 AND p.status = :status
-                ORDER BY p.id ASC'
+                ORDER BY p.numticket ASC'
         )->setParameters(array(
             'email' => $email,
             'status' => 'Offered',
@@ -51,13 +51,13 @@ class DefaultController extends Controller
                     WHERE p.email = :email
                     AND p.satisfaction IS NOT NULL
                     AND p.status = :status
-                    ORDER BY p.id DESC'
+                    ORDER BY p.numticket DESC'
         )->setParameters(array(
             'email' => $email,
             'status' => 'Answered',
 
-        ))->setMaxResults(10)
-            ->setFirstResult($page);
+        ))->setMaxResults(9999999999);
+            //->setFirstResult($page);
 
         return $query_done_answered->getResult();
     }

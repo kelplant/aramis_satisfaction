@@ -21,12 +21,20 @@ class TicketType extends AbstractType
 
     private $listID;
 
-    public function __construct(array $choices_5,$choices_10,$listID)
+    private $nt;
+
+    private $data_num;
+
+    public function __construct(array $choices_5,$choices_10,$listID,$nt)
     {
         $this->choices_5 = $choices_5;
         $this->choices_10 = $choices_10;
         $this->listID = $listID;
+        $this->nt = $nt;
+        if(strlen($nt[0])>= "1") $this->data_num = $nt[0];
+        if(strlen($nt[0])<= "1") $this->data_num = $nt;
 
+        echo $this->data_num;
     }
 
     public function buildForm(FormBuilderInterface $builder,  array $options)
@@ -36,12 +44,14 @@ class TicketType extends AbstractType
                 'label' => 'Numéro Ticket',
                 'choices' => $this->listID,
                 'read_only' => false,
+                'data' => $this->data_num,
                 'multiple' => false,
                 'label_attr' => array(
                     'class' => 'col-sm-2 control-label'
                 ),
                 'attr' => array(
-                    'class' => 'form-control'
+                    'class' => 'form-control',
+                    'onChange'=> 'submit()',
                 )
             ))
             ->add('Sujet', 'text', array(
@@ -130,8 +140,8 @@ class TicketType extends AbstractType
             ->add('id', 'hidden', array(
                 'label' => 'id'
             ))
-            ->add('Selectionner', 'submit', array(
-                'label' => 'Selectionner',
+            ->add('Envoyer', 'submit', array(
+                'label' => 'Envoyer',
                 'attr' => array(
                     'class' => 'btn btn-success'
                 )

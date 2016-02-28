@@ -59,7 +59,7 @@ Satisfaction\FormBundle\Entity\Ticket:
       nullable: false
     first_send:
       type: datetime
-      nullable: false
+      nullable: true
     second_send:
       type: datetime
       nullable: true

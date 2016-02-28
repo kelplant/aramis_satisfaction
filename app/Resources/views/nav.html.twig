@@ -15,7 +15,7 @@
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
             <ul class="nav navbar-nav">
                 <li><a href="{{ path('satisfaction_general_homepage') }}"><i class="fa fa-home"></i>  Tableau de Bord</a> </li>
-                <li><a href="{{ path('satisfaction_form_homepage_num', {'numticket': '0'}) }}"><i class="fa fa-bell"></i>  Formulaire</a> </li>
+                <li><a href="{{ path('satisfaction_form_homepage', {'numticket': '0'}) }}"><i class="fa fa-bell"></i>  Formulaire</a> </li>
             </ul>
             <ul class="nav navbar-nav navbar-right">
                 <li>{% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}

@@ -54,6 +54,7 @@ class DefaultController extends Controller
         $ticket->setAccompagnement($req_post['Accompagnement']);
         $ticket->setDelais($req_post['Delais']);
         $ticket->setCommentaires($req_post['Commentaires']);
+        $ticket->setStatus('Answered');
         $em->flush();
 
         return $ticket;
@@ -110,7 +111,7 @@ class DefaultController extends Controller
                     FROM SatisfactionFormBundle:Ticket p
                     WHERE p.email = :email
                     AND p.status = :status
-                    ORDER BY p.id ASC'
+                    ORDER BY p.numticket ASC'
         )->setParameters(array(
             'email' => $email,
             'status' => 'Offered',
@@ -118,8 +119,6 @@ class DefaultController extends Controller
         $offered = $query_done_offered->getResult();
         if($ret='1') $tab = array_column($offered, 'id');
         if($ret='2') $tab = array_column($offered, 'numticket');
-
-        echo "<br><br><br><br>";
 
         return $tab ;
     }
@@ -159,21 +158,33 @@ class DefaultController extends Controller
 
     }
 
-    public function indexAction(Request $request)
+    public function indexAction(Request $request, $numticket)
     {
 
-        $nt = $this->listID('2');
-        $ticket = $this->getTheTicket($nt);
-        print_r($ticket);
+        echo "<br><br><br><br>";
 
-        $repository = $this->getDoctrine()->getRepository('SatisfactionFormBundle:Ticket');
+        if($numticket != '0')
+        {
 
-        $form = $this->createForm(new TicketType($this->choices_5,$this->choice_10,$this->listID('2')),$ticket, array(
-            'action' => $this->generateUrl('satisfaction_form_homepage'),
-            'method' => 'POST',
+            $ticket = $this->getTheTicket($numticket);
 
-        ));
+            $form = $this->createForm(new TicketType($this->choices_5,$this->choice_10,$this->listID('2'),$numticket),$ticket, array(
+                'action' => $this->generateUrl('satisfaction_form_homepage'),
+                'method' => 'POST',
 
+            ));
+        }
+        else
+        {
+            $nt = $this->listID('2');
+            $ticket = $this->getTheTicket($nt);
+
+            $form = $this->createForm(new TicketType($this->choices_5,$this->choice_10,$this->listID('2'),$nt),$ticket, array(
+                'action' => $this->generateUrl('satisfaction_form_homepage'),
+                'method' => 'POST',
+
+            ));
+        }
         return $this->render('SatisfactionFormBundle:Default:index.html.twig', array(
             'satisfactionForm' => $form->createView(),
         ));
@@ -193,8 +204,6 @@ class DefaultController extends Controller
             'action' => $this->generateUrl('satisfaction_form_homepage_satupdate'),
             'method' => 'POST',
         ));
-
-        //exit(\Doctrine\Common\Util\Debug::dump($ticket));
 
         return $this->render('SatisfactionFormBundle:Default:indexView.html.twig', array(
             'satisfactionForm' => $form->createView(),

@@ -25,7 +25,7 @@ security:
             form_login:
                 provider: fos_userbundle
                 csrf_provider: form.csrf_provider
-                always_use_default_target_path: true
+                always_use_default_target_path: false
                 default_target_path: /profile
             logout: true
             anonymous: true
@@ -33,4 +33,7 @@ security:
         - { path: ^/login$, role: IS_AUTHENTICATED_ANONYMOUSLY }
         - { path: ^/home$, role: ROLE_USER }
         - { path: ^/form$, role: ROLE_USER }
+        - { path: ^/form/view/, role: ROLE_USER }
+        - { path: ^/form/edit/, role: ROLE_USER }
+        - { path: ^/form/new/, role: ROLE_USER }
         - { path: ^/$, role: ROLE_USER }

@@ -1,0 +1,58 @@
+
+ .bdt tr:last-child th {
+    text-align: center;
+}
+.bdt > tbody > tr > td, .bdt > tbody > tr > th, .bdt > tfoot > tr > td, .bdt > tfoot > tr > th, .bdt > thead > tr > td, .bdt > thead > tr > th {
+
+}
+.pagination {
+
+}
+
+.pagination > .disabled > span, .pagination > .disabled > span:hover, .pagination > .disabled > span:focus, .pagination > .disabled > a, .pagination > .disabled > a:hover, .pagination > .disabled > a:focus {
+    border-color: #fff;
+}
+
+.pagination > li {
+    display: inline-block;
+    margin: 0 2px;
+}
+
+.pagination > li > a, .pagination > li > span {
+    border: none;
+}
+
+.pagination > li > a, .pagination > li > span {
+    background: #ebecf2;
+    height: 26px;
+    line-height: 26px;
+    padding: 0;
+    text-align: center;
+    width: 26px;
+    color: #333;
+}
+
+.pagination > li > a:hover, .pagination > li > span:hover {
+    background: #E2E3EC;
+}
+
+.pagination > li:last-child > a, .pagination > li:last-child > span {
+    border-bottom-right-radius: 0;
+    border-top-right-radius: 0;
+    color: #363f45;
+}
+
+.pagination > li:first-child > a, .pagination > li:first-child > span {
+    border-bottom-left-radius: 0;
+    border-top-left-radius: 0;
+}
+
+.pagination > li.active > a, .pagination > li.active > span {
+    font-weight: 700;
+}
+
+.table-info {
+    font-size: 12px;
+    line-height: 50px;
+    margin-left: 40px;
+}
