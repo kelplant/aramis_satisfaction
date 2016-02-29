@@ -9,6 +9,12 @@
                 {{ form_label(satisfactionForm.numticket) }}
                 {{ form_errors(satisfactionForm.numticket) }}
                 <div class="col-sm-8">
+                    {% for ffff in satisfactionForm.numticket %}
+                        ffff<td>
+                            {{ form_widget(ffff) }}
+                            {{ form_label(ffff) }}
+                        </td>
+                    {% endfor %}
                     {{ form_widget(satisfactionForm.numticket) }}
                 </div>
             </div>

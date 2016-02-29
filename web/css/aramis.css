@@ -10,3 +10,41 @@
     margin-left: 15px;
     text-align: center;
 }
+.col-tab-2{
+    font-size: 12px;
+}
+.col-tab-1{
+    font-size: 12px;
+    text-align: center;
+}
+
+.col-tab-2-title{
+    font-size: 14px;
+    text-align: center;
+}
+*[data-href] {
+    cursor: pointer;
+}
+tr:hover td{
+    background: rgba(86, 86, 86, 0.72);
+    color: #FFFFFF;
+}
+.home-droite{
+    background-color: rgba(170, 205, 78, 0.16) !important;
+    text-align: center !important;
+    color:#000!important;
+
+}
+.home-gauche{
+    background-color: rgba(247, 17, 8, 0.15) !important;
+    text-align: center !important;
+    color:#000!important;
+
+}
+.home-middle{
+    background-color: rgba(247, 176, 33, 0.13) !important;
+    text-align: center !important;
+    color:#000!important;
+
+}
+

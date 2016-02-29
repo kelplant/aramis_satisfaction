@@ -92,4 +92,10 @@ class DefaultController extends Controller
             'done_answered' => $done_answered,
         ));
     }
+    public function sendAction()
+    {
+        $template ='';
+        $ticket = '';
+        $this->get('app.mailer')->sendContactMessage($template,$ticket);
+    }
 }

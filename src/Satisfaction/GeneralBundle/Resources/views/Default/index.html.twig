@@ -3,21 +3,19 @@
 {% block stylesheets %}
     <link href="{{ asset('css/jquery.dataTables.min.css') }}" type="text/css" rel="stylesheet">
     <link href="{{ asset('css/dataTables.bootstrap.min.css') }}" type="text/css" rel="stylesheet">
-    <link href="{{ asset('css/style.css') }}" type="text/css" rel="stylesheet">
 {% endblock %}
 
 {% block body %}
 
 <div class="container">
     <div class="row">
-        <div class="col-md-4">
-            <a href="#" class="list-group-item disabled"><div class="text-center">Tickets Jamais Notés</div></a>
+        <div class="col-md-4 danger">
+            <div class="home-gauche list-group-item disabled" data-href="#"> Tickets Jamais Notés</div>
             <table class="table table-striped" id="bootstrap-todo">
                 <thead>
                 <tr>
                     <th class="col-tab-2-title">Ticket</th>
                     <th class="col-tab-2-title">Sujet Ticket</th>
-                    {#<th class="col-tab-2-title">Edit</th>#}
                 </tr>
                 </thead>
                 <tbody>
@@ -25,20 +23,18 @@
                     <tr data-href="{{ path('satisfaction_form_homepage_new', {'numticket':  ticket.NumTicket }) }}">
                         <td class="col-tab-1">{{ ticket.NumTicket }}</td>
                         <td class="col-tab-2">{{ ticket.Description[:35] ~ '...' }}</td>
-                        {#<td class="col-tab-1"><a href="{{ path('satisfaction_form_homepage_new', {'numticket':  ticket.NumTicket }) }}" "><i class="fa fa-pencil-square-o"></i></a</td>#}
                     </tr>
                 {% endfor %}
                 </tbody>
             </table>
         </div>
         <div class="col-md-4">
-            <a href="#" class="list-group-item disabled"><div class="text-center">Tickets Notés Ré-Ouverts</div></a>
-            <table  class="hover"  id="bootstrap-offered">
+            <a href="#" class="list-group-item disabled home-middle">Tickets Notés Ré-Ouverts</a>
+            <table  class="table-striped"  id="bootstrap-offered">
                 <thead>
                 <tr>
                     <th class="col-tab-2-title">Ticket</th>
                     <th class="col-tab-2-title">Sujet Ticket</th>
-                    {#<th class="col-tab-2-title">Edit</th>#}
                 </tr>
                 </thead>
                 <tbody>
@@ -46,29 +42,26 @@
                         <tr data-href="{{ path('satisfaction_form_homepage_edit', {'numticket':  ticket.NumTicket }) }}">
                             <td class="col-tab-1">{{ ticket.NumTicket }}</td>
                             <td class="col-tab-2">{{ ticket.Description[:35] ~ '...' }}</td>
-                            {#<td class="col-tab-1"><a href="{{ path('satisfaction_form_homepage_edit', {'numticket':  ticket.NumTicket }) }}"><i class="fa fa-pencil-square-o"></i></a></td>#}
-                        </tr>
+                         </tr>
                 {% endfor %}
                 </tbody>
             </table>
         </div>
         <div class="col-md-4">
-            <a href="#" class="list-group-item disabled"><div class="text-center">Tickets déjà Notés</div></a>
+            <a href="#" class="list-group-item disabled home-droite">Tickets déjà Notés</a>
             <table class="table table-striped" id="bootstrap-answered">
                 <thead>
                 <tr>
                     <th class="col-tab-2-title">Ticket</th>
                     <th class="col-tab-2-title">Sujet Ticket</th>
-                    {#<th class="col-tab-2-title">Edit</th>#}
                 </tr>
                 </thead>
                 <tbody>
                 {% for ticket in done_answered %}
-                     <tr data-href="{{ path('satisfaction_form_homepage_view', {'numticket':  ticket.NumTicket }) }}">
+                     <tr id="test" data-href="{{ path('satisfaction_form_homepage_view', {'numticket':  ticket.NumTicket }) }}">
                          <td class="col-tab-1">{{ ticket.NumTicket }}</td>
                          <td class="col-tab-2">{{ ticket.Description[:35] ~ '...' }}</td>
-                         {#<td class="col-tab-1"><a href="{{ path('satisfaction_form_homepage_view', {'numticket':  ticket.NumTicket }) }}"><i class="fa fa-pencil-square-o"></i></a></td>#}
-                     </tr>
+                      </tr>
                 {% endfor %}
                 </tbody>
             </table>
@@ -139,6 +132,7 @@
                 return false;
             });
         });
+
     </script>
 
 {% endblock %}
