@@ -20,7 +20,7 @@
                 </thead>
                 <tbody>
                 {% for ticket in todo %}
-                    <tr data-href="{{ path('satisfaction_form_homepage_new', {'numticket':  ticket.NumTicket }) }}">
+                    <tr class="testtest" id="generalBtr" data-href="{{ path('satisfaction_form_homepage_new', {'numticket':  ticket.NumTicket }) }}">
                         <td class="col-tab-1">{{ ticket.NumTicket }}</td>
                         <td class="col-tab-2">{{ ticket.Description[:35] ~ '...' }}</td>
                     </tr>
@@ -30,7 +30,7 @@
         </div>
         <div class="col-md-4">
             <a href="#" class="list-group-item disabled home-middle">Tickets Notés Ré-Ouverts</a>
-            <table  class="table-striped"  id="bootstrap-offered">
+            <table class="table-striped" id="bootstrap-offered">
                 <thead>
                 <tr>
                     <th class="col-tab-2-title">Ticket</th>
@@ -39,7 +39,7 @@
                 </thead>
                 <tbody>
                 {% for ticket in done_offered %}
-                        <tr data-href="{{ path('satisfaction_form_homepage_edit', {'numticket':  ticket.NumTicket }) }}">
+                        <tr  id="generalBtr" data-href="{{ path('satisfaction_form_homepage_edit', {'numticket':  ticket.NumTicket }) }}">
                             <td class="col-tab-1">{{ ticket.NumTicket }}</td>
                             <td class="col-tab-2">{{ ticket.Description[:35] ~ '...' }}</td>
                          </tr>
@@ -58,7 +58,7 @@
                 </thead>
                 <tbody>
                 {% for ticket in done_answered %}
-                     <tr id="test" data-href="{{ path('satisfaction_form_homepage_view', {'numticket':  ticket.NumTicket }) }}">
+                     <tr id="generalBtr" data-href="{{ path('satisfaction_form_homepage_view', {'numticket':  ticket.NumTicket }) }}">
                          <td class="col-tab-1">{{ ticket.NumTicket }}</td>
                          <td class="col-tab-2">{{ ticket.Description[:35] ~ '...' }}</td>
                       </tr>
@@ -80,7 +80,7 @@
                 bInfo: false,
                 bLengthChange:false,
                 "aoColumnDefs": [
-                    //{"bSortable": false, "aTargets": [2] },
+                    { "bSortable": true, "aTargets": [0] },
                     { "bSortable": false, "aTargets": [1] }
                 ],
                 "aaSorting": [[ 0, "asc" ]],
@@ -97,7 +97,7 @@
                 bInfo: false,
                 bLengthChange:false,
                 "aoColumnDefs": [
-                    //{ "bSortable": false, "aTargets": [2] },
+                    { "bSortable": true, "aTargets": [0] },
                     { "bSortable": false, "aTargets": [1] }
                 ],
                 "aaSorting": [[ 0, "asc" ]],
@@ -113,7 +113,7 @@
                 bInfo: false,
                 bLengthChange:false,
                 "aoColumnDefs": [
-                   //{ "bSortable": false, "aTargets": [2] },
+                    { "bSortable": true, "aTargets": [0] },
                     { "bSortable": false, "aTargets": [1] }
                 ],
                 "aaSorting": [[ 0, "desc" ]],
@@ -126,13 +126,14 @@
                 }
             });
         });
-        $(function(){
-            $('*[data-href]').click(function(){
-                window.location = $(this).data('href');
-                return false;
-            });
-        });
 
+        $(function(){
+            $(document).on("click","#generalBtr",function(){
+                    window.location = $(this).data('href');
+                    return false;
+            });
+
+        });
     </script>
 
 {% endblock %}
