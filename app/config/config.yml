@@ -81,7 +81,7 @@ fos_user:
 # fr3d_ldap
 fr3d_ldap:
     driver:
-        host:     adfs.aramisauto.com
+        host:     srvdc01.aramisauto.local
         port:     389
         username: ARAMISAUTO\qwerty
         password: Qtt3kwzQ
