@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+Bonjour,<br>
+<br>
+Nous avons récemment cloturé le ticket Zendesk n°{{ numticket }} vous concernant.<br>
+Afin de nous aider à nous améliorer, pouvez-vous nous faire un retour critique et objectif en cliquant sur le lien ci-dessous et en répondant aux 5 questions posées directement dans le formulaire<br>
+Nous vous remercions par avance de prendre ces quelques secondes de votre temps.<br>
+<br>
+<a href="{{ app.request.getSchemeAndHttpHost() }}{{ path('satisfaction_form_homepage_new', {'numticket':  numticket }) }}">Formulaire de Satisfaction</a><br>
+<br>
+Cela sera vraiement très rapide poru vous et nous permettra de nous améliorer.<br>
+Si vous avez la moindre question et/ou problème d'utilisation n'hésitez pas à nous contacter.<br>
+Nous restons à votre disposition.<br>
+Vous en remerciant par avance,<br>
+<br>
+Bien Cordialement,<br>
+<br>
+L'équipe Support IT<br>
+
+</body>
+
+</html>

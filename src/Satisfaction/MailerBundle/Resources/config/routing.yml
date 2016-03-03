@@ -1,1 +1,8 @@
+satisfaction_mailer_send:
+    path:     /mail/{numticket}/{numtemplate}
+    defaults: { _controller: SatisfactionMailerBundle:Default:send }
+
+satisfaction_mailer_batch_quotidien:
+    path:     /mail/batchQuotidien
+    defaults: { _controller: SatisfactionMailerBundle:Default:batchQuotidien }
 

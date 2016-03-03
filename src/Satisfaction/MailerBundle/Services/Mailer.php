@@ -8,40 +8,27 @@ use Satisfaction\FormBundle\Entity;
 
 class Mailer
 {
-    private $from = "no-reply@aramisauto.com";
+    private $from = "xavier.arroues@aramisauto.com";
 
-    private $name = "Support Aramisauto";
+    protected $name = "Support Aramisauto";
 
     protected $mailer;
 
     protected $templating;
 
-    public function __construct(\Swift_Mailer $mailer, EngineInterface $templating)
+    public function __construct($mailer,EngineInterface $templating)
     {
         $this->mailer = $mailer;
-
         $this->templating = $templating;
-        }
+    }
 
-    public function sendContactMessage($template,$numticket)
-    {
-        $repository = $this->getDoctrine()->getManager()->getRepository('SatisfactionFormBundle:Ticket');
 
-        $ticket = $repository->findByNumticket($numticket);
-        $to = $ticket[email];
-
-        $subject = '[Support Satisfaction] Formulaire de Satisfaction ticket n°'.$numticket;
-        $body = $this->templating->render($template, array('Ticket' => $ticket));
-
-        $this->sendMessage($this->from, $to, $subject, $body);
-        }
-
-    protected function sendMessage($from, $to, $subject, $body)
+    protected function sendMessage($to, $subject, $body)
     {
         $mail = \Swift_Message::newInstance();
 
         $mail
-            ->setFrom($this->name)
+            ->setFrom($this->from)
             ->setTo($to)
             ->setSubject($subject)
             ->setBody($body)
@@ -49,4 +36,28 @@ class Mailer
 
         $this->mailer->send($mail);
     }
+
+    public function sendContactMessage($numticket,$numtemplate,$to)
+    {
+        $subject = '[Support Satisfaction] Formulaire de Satisfaction ticket n°'.$numticket;
+
+        $template = 'SatisfactionMailerBundle:Mails:EnvoiMail-'.$numtemplate.'.html.twig';
+        $body = $this->templating->render($template, array(
+            'numticket' => $numticket,
+            ));
+        $this->sendMessage($to, $subject, $body);
+    }
+    public function sendBatchMessage($list,$max_list)
+    {
+        $to = 'xavier.arroues@aramisauto.com';
+        $subject = '[Support Satisfaction] Report Batch Quotidien - '.$max_list.' emails envoyés';
+
+        $template = 'SatisfactionMailerBundle:Mails:BatchReporting.html.twig';
+        $body = $this->templating->render($template, array(
+            'list' => $list,
+            'max_list' => $max_list
+        ));
+        $this->sendMessage($to, $subject, $body);
+    }
+
 }

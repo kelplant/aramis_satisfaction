@@ -1,6 +1,3 @@
-satisfaction_form_home:
-    path:     /mail
-    defaults: { _controller: SatisfactionGeneralBundle:Default:send }
 satisfaction_general_homepage:
     path:     /
     defaults: { _controller: SatisfactionGeneralBundle:Default:index }

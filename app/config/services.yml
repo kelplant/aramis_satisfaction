@@ -15,6 +15,6 @@ services:
     fos_user.doctrine_registry:
             alias: doctrine
 
-    app.mailer:
+    mailer.mailer:
             class: Satisfaction\MailerBundle\Services\Mailer
-            arguments: [mailer, templating]
+            arguments: [@mailer, @templating]

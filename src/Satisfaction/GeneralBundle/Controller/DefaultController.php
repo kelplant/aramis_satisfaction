@@ -4,6 +4,7 @@ namespace Satisfaction\GeneralBundle\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Satisfaction\FormBundle\Entity;
+use Satisfaction\MailerBundle\Services;
 
 class DefaultController extends Controller
 {
@@ -91,11 +92,5 @@ class DefaultController extends Controller
             'done_offered' => $done_offered,
             'done_answered' => $done_answered,
         ));
-    }
-    public function sendAction()
-    {
-        $template ='';
-        $ticket = '';
-        $this->get('app.mailer')->sendContactMessage($template,$ticket);
     }
 }
