@@ -6,3 +6,6 @@ satisfaction_mailer_batch_quotidien:
     path:     /mail/batchQuotidien
     defaults: { _controller: SatisfactionMailerBundle:Default:batchQuotidien }
 
+satisfaction_mailer_batch_hebdo:
+    path:     /mail/batchHebdo
+    defaults: { _controller: SatisfactionMailerBundle:Default:batchHebdo }

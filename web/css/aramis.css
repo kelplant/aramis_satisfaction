@@ -45,6 +45,12 @@ tr:hover td{
     background-color: rgba(247, 176, 33, 0.13) !important;
     text-align: center !important;
     color:#000!important;
-
 }
+.greenIconColor {
+    color: rgba(75, 255, 0, 0.95);
+}
+.redIconColor {
+    color: red;
+}
+
 

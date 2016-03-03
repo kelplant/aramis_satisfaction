@@ -39,13 +39,16 @@ class Mailer
 
     public function sendContactMessage($numticket,$numtemplate,$to)
     {
-        $subject = '[Support Satisfaction] Formulaire de Satisfaction ticket n°'.$numticket;
+        $subject = array(
+            '1' => '[Support Satisfaction] Formulaire de Satisfaction ticket n°'.$numticket,
+            '2' => '[Relance][Support Satisfaction] Formulaire de Satisfaction ticket n°'.$numticket,
+            );
 
         $template = 'SatisfactionMailerBundle:Mails:EnvoiMail-'.$numtemplate.'.html.twig';
         $body = $this->templating->render($template, array(
             'numticket' => $numticket,
             ));
-        $this->sendMessage($to, $subject, $body);
+        $this->sendMessage($to, $subject[$numtemplate], $body);
     }
     public function sendBatchMessage($list,$max_list)
     {
