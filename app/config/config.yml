@@ -6,6 +6,7 @@ imports:
     - { resource: "@SatisfactionGeneralBundle/Resources/config/services.yml" }
     - { resource: "@SatisfactionFormBundle/Resources/config/services.yml" }
     - { resource: "@SatisfactionMailerBundle/Resources/config/services.yml" }
+    - { resource: "@SatisfactionCrawlerBundle/Resources/config/services.yml" }
 
 # Put parameters here that don't need to change on each machine where the app is deployed
 # http://symfony.com/doc/current/best_practices/configuration.html#application-related-configuration
@@ -66,11 +67,12 @@ doctrine:
 
 # Swiftmailer Configuration
 swiftmailer:
+parameters:
     transport:   "%mailer_transport%"
     host:        "%mailer_host%"
-    port:        "%mailer_port%"
-    encryption:  "%mailer_encryption%"
-    auth_mode:   "%mailer_auth_mode%"
+    port:        "587"
+    encryption:  "tls"
+    auth_mode:   "login"
     username:    "%mailer_user%"
     password:    "%mailer_password%"
     spool:     { type: memory }
@@ -84,10 +86,10 @@ fos_user:
 # fr3d_ldap
 fr3d_ldap:
     driver:
-        host:     adfs.aramisauto.com
+        host:     "%ldap_host%"
         port:     389
-        username: ARAMISAUTO\qwerty
-        password: Qtt3kwzQ
+        username: "dap_username%"
+        password: "%ldap_password%"
         useSsl:   false
 #       accountDomainName: HOST
 #       accountDomainNameShort: HOST # if you use the Backslash form set both to Hostname than the Username will be converted to HOST\User

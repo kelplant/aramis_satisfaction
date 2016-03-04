@@ -21,6 +21,7 @@ class AppKernel extends Kernel
             new FOS\UserBundle\FOSUserBundle(),
             new FR3D\LdapBundle\FR3DLdapBundle(),
             new Satisfaction\MailerBundle\SatisfactionMailerBundle(),
+            new Satisfaction\CrawlerBundle\SatisfactionCrawlerBundle(),
         );
 
         if (in_array($this->getEnvironment(), array('dev', 'test'), true)) {

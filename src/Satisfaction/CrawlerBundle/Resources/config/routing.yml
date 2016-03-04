@@ -1,0 +1,3 @@
+satisfaction_crawler_homepage:
+    path:     /crawler
+    defaults: { _controller: SatisfactionCrawlerBundle:Default:index }

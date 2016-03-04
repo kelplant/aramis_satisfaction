@@ -2,3 +2,6 @@ services:
 #    satisfaction_mailer.example:
 #        class: Satisfaction\MailerBundle\Example
 #        arguments: ["@service_id", "plain_value", %parameter%]
+    mailer.mailer:
+            class: Satisfaction\MailerBundle\Services\Mailer
+            arguments: [@mailer, @templating]
