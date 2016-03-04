@@ -67,12 +67,8 @@ doctrine:
 
 # Swiftmailer Configuration
 swiftmailer:
-parameters:
     transport:   "%mailer_transport%"
     host:        "%mailer_host%"
-    port:        "587"
-    encryption:  "tls"
-    auth_mode:   "login"
     username:    "%mailer_user%"
     password:    "%mailer_password%"
     spool:     { type: memory }
@@ -87,8 +83,8 @@ fos_user:
 fr3d_ldap:
     driver:
         host:     "%ldap_host%"
-        port:     389
-        username: "dap_username%"
+        port:     "%ldap_port%"
+        username: "%ldap_username%"
         password: "%ldap_password%"
         useSsl:   false
 #       accountDomainName: HOST

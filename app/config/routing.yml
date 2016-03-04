@@ -1,11 +1,10 @@
-satisfaction_crawler:
-    resource: "@SatisfactionCrawlerBundle/Resources/config/routing.yml"
-    prefix:   /
-
 satisfaction_mailer:
     resource: "@SatisfactionMailerBundle/Resources/config/routing.yml"
     prefix:   /
 
+satisfaction_crawler:
+    resource: "@SatisfactionCrawlerBundle/Resources/config/routing.yml"
+    prefix:   /
 # app/config/routing.yml
 satisfaction_form:
     resource: "@SatisfactionFormBundle/Resources/config/routing.yml"
