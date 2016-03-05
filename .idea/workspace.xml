@@ -2,15 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="26e34a2b-d7d5-4eff-a5a5-239fc9803e13" name="Default" comment="">
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/Satisfaction/CrawlerBundle/Entity/Ticket.php" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/Satisfaction/CrawlerBundle/Entity/TicketMetric.php" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/config/parameters.yml.dist" afterPath="$PROJECT_DIR$/app/config/parameters.yml.dist" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Satisfaction/CrawlerBundle/Controller/DefaultController.php" afterPath="$PROJECT_DIR$/src/Satisfaction/CrawlerBundle/Controller/DefaultController.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Satisfaction/FormBundle/Controller/DefaultController.php" afterPath="$PROJECT_DIR$/src/Satisfaction/FormBundle/Controller/DefaultController.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Satisfaction/FormBundle/Entity/Ticket.php" afterPath="$PROJECT_DIR$/src/Satisfaction/FormBundle/Entity/Ticket.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Satisfaction/FormBundle/Resources/config/doctrine/Ticket.orm.yml" afterPath="$PROJECT_DIR$/src/Satisfaction/FormBundle/Resources/config/doctrine/Ticket.orm.yml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Satisfaction/MailerBundle/Controller/DefaultController.php" afterPath="$PROJECT_DIR$/src/Satisfaction/MailerBundle/Controller/DefaultController.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Satisfaction/CrawlerBundle/Resources/views/Default/index.html.twig" afterPath="$PROJECT_DIR$/src/Satisfaction/CrawlerBundle/Resources/views/Default/index.html.twig" />
     </list>
     <ignored path="aramis_satisfaction.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -42,27 +36,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="routing.yml" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/config/routing.yml">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="5" column="28" selection-start-line="5" selection-start-column="28" selection-end-line="5" selection-end-column="35" />
-              <folding>
-                <marker date="1457088002036" expanded="true" signature="0:108" placeholder="satisfaction_mailer:" />
-                <marker date="1457088002036" expanded="true" signature="244:347" placeholder="satisfaction_form:" />
-                <marker date="1457088002036" expanded="true" signature="348:457" placeholder="satisfaction_general:" />
-                <marker date="1457088002036" expanded="true" signature="458:545" placeholder="fos_user_security:" />
-                <marker date="1457088002036" expanded="true" signature="546:652" placeholder="fos_user_profile:" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="parameters.yml" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/config/parameters.yml">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="19" column="0" selection-start-line="19" selection-start-column="0" selection-end-line="19" selection-end-column="0" />
+              <caret line="18" column="39" selection-start-line="18" selection-start-column="39" selection-end-line="18" selection-end-column="39" />
               <folding />
             </state>
           </provider>
@@ -72,7 +50,7 @@
         <entry file="file://$PROJECT_DIR$/app/config/parameters.yml.dist">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="24" column="24" selection-start-line="24" selection-start-column="24" selection-end-line="24" selection-end-column="24" />
+              <caret line="21" column="0" selection-start-line="21" selection-start-column="0" selection-end-line="21" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -91,8 +69,8 @@
       <file leaf-file-name="DefaultController.php" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/Satisfaction/CrawlerBundle/Controller/DefaultController.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.36158797">
-              <caret line="71" column="21" selection-start-line="71" selection-start-column="21" selection-end-line="71" selection-end-column="21" />
+            <state vertical-scroll-proportion="0.8358369">
+              <caret line="123" column="68" selection-start-line="123" selection-start-column="68" selection-end-line="123" selection-end-column="68" />
               <folding>
                 <element signature="e#56#113#0#PHP" expanded="true" />
               </folding>
@@ -127,7 +105,11 @@
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
               <caret line="68" column="21" selection-start-line="68" selection-start-column="21" selection-end-line="68" selection-end-column="21" />
-              <folding />
+              <folding>
+                <marker date="1457133473789" expanded="true" signature="0:1297" placeholder="Satisfaction\FormBundle\Entity\Ticket:" />
+                <marker date="1457133473789" expanded="true" signature="210:1297" placeholder="fields:" />
+                <marker date="1457133473789" expanded="true" signature="1228:1297" placeholder="reopens_nb:" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -164,7 +146,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/src/Satisfaction/FormBundle/Form/Type/TicketTypeView.php" />
         <option value="$PROJECT_DIR$/src/Satisfaction/FormBundle/Resources/views/Default/indexView.html.twig" />
         <option value="$PROJECT_DIR$/src/Satisfaction/FormBundle/Resources/views/Default/index.html.twig" />
         <option value="$PROJECT_DIR$/web/css/style.css" />
@@ -209,12 +190,13 @@
         <option value="$PROJECT_DIR$/app/config/routing.yml" />
         <option value="$PROJECT_DIR$/app/config/config.yml" />
         <option value="$PROJECT_DIR$/src/Satisfaction/FormBundle/Controller/DefaultController.php" />
-        <option value="$PROJECT_DIR$/app/config/parameters.yml" />
-        <option value="$PROJECT_DIR$/app/config/parameters.yml.dist" />
         <option value="$PROJECT_DIR$/src/Satisfaction/MailerBundle/Controller/DefaultController.php" />
         <option value="$PROJECT_DIR$/src/Satisfaction/FormBundle/Entity/Ticket.php" />
         <option value="$PROJECT_DIR$/src/Satisfaction/FormBundle/Resources/config/doctrine/Ticket.orm.yml" />
+        <option value="$PROJECT_DIR$/app/config/parameters.yml" />
+        <option value="$PROJECT_DIR$/app/config/parameters.yml.dist" />
         <option value="$PROJECT_DIR$/src/Satisfaction/CrawlerBundle/Controller/DefaultController.php" />
+        <option value="$PROJECT_DIR$/src/Satisfaction/CrawlerBundle/Resources/views/Default/index.html.twig" />
       </list>
     </option>
   </component>
@@ -1070,14 +1052,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/config/services.yml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="17" column="0" selection-start-line="17" selection-start-column="0" selection-end-line="17" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/Satisfaction/FormBundle/Controller/DefaultController.php">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-30.076923">
@@ -1092,22 +1066,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="8" column="39" selection-start-line="8" selection-start-column="39" selection-end-line="8" selection-end-column="39" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/config/parameters.yml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="19" column="0" selection-start-line="19" selection-start-column="0" selection-end-line="19" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/config/parameters.yml.dist">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="24" column="24" selection-start-line="24" selection-start-column="24" selection-end-line="24" selection-end-column="24" />
           <folding />
         </state>
       </provider>
@@ -1130,7 +1088,11 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="68" column="21" selection-start-line="68" selection-start-column="21" selection-end-line="68" selection-end-column="21" />
-          <folding />
+          <folding>
+            <marker date="1457133473789" expanded="true" signature="0:1297" placeholder="Satisfaction\FormBundle\Entity\Ticket:" />
+            <marker date="1457133473789" expanded="true" signature="210:1297" placeholder="fields:" />
+            <marker date="1457133473789" expanded="true" signature="1228:1297" placeholder="reopens_nb:" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -1142,10 +1104,42 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/app/config/services.yml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="17" column="0" selection-start-line="17" selection-start-column="0" selection-end-line="17" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/config/parameters.yml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="18" column="39" selection-start-line="18" selection-start-column="39" selection-end-line="18" selection-end-column="39" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/config/parameters.yml.dist">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="21" column="0" selection-start-line="21" selection-start-column="0" selection-end-line="21" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Satisfaction/CrawlerBundle/Resources/views/Default/index.html.twig">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/Satisfaction/CrawlerBundle/Controller/DefaultController.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.36158797">
-          <caret line="71" column="21" selection-start-line="71" selection-start-column="21" selection-end-line="71" selection-end-column="21" />
+        <state vertical-scroll-proportion="0.8358369">
+          <caret line="123" column="68" selection-start-line="123" selection-start-column="68" selection-end-line="123" selection-end-column="68" />
           <folding>
             <element signature="e#56#113#0#PHP" expanded="true" />
           </folding>

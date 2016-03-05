@@ -23,6 +23,7 @@ parameters:
     zendesk_api_key:   ~
     zendesk_api_user:  ~
     zendesk_api_url:   ~
+    zendesk_api_nombre_jours_crawler:   ~
 
     # A secret key that's used to generate certain security-related tokens
     secret:            ThisTokenIsNotSoSecretChangeIt
