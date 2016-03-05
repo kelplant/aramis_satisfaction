@@ -20,5 +20,9 @@ parameters:
     ldap_username:     ~
     ldap_password:     ~
 
+    zendesk_api_key:   ~
+    zendesk_api_user:  ~
+    zendesk_api_url:   ~
+
     # A secret key that's used to generate certain security-related tokens
     secret:            ThisTokenIsNotSoSecretChangeIt

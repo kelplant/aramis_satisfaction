@@ -113,6 +113,12 @@ class Ticket {
     protected $second_send;
 
     /**
+     * @ORM\Column(type="integer")
+     */
+
+    protected $reopens_nb;
+
+    /**
      * @return mixed
      */
     public function getId()
@@ -367,5 +373,22 @@ class Ticket {
     {
         $this->status = $status;
     }
+
+    /**
+     * @return mixed
+     */
+    public function getReopensNb()
+    {
+        return $this->reopens_nb;
+    }
+
+    /**
+     * @param mixed $reopens_nb
+     */
+    public function setReopensNb($reopens_nb)
+    {
+        $this->reopens_nb = $reopens_nb;
+    }
+
 
 }

@@ -22,7 +22,8 @@ class DefaultController extends Controller
             ->setParameters(array(
             'email' => 'xavier.arroues@aramisauto.com'  # supprimer pour MEP ainsi que  AND p.email = :email
         ))
-            ->setMaxResults('3');                       # supprimer pour MEP
+        #    ->setMaxResults('3')
+        ;                       # supprimer pour MEP
         return $query_todo->getResult();
     }
 

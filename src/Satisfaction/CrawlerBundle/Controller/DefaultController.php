@@ -2,123 +2,141 @@
 namespace Satisfaction\CrawlerBundle\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
-use Zendesk\API\HttpClient as ZendeskAPI;
-use Satisfaction\CrawlerBundle\Entity\Ticket;
-use Satisfaction\CrawlerBundle\Entity\TicketMetric;
-use Doctrine\Common\Util\Inflector;
-use GuzzleHttp\Client as Guzzle;
-use GuzzleHttp\Psr7\Request;
-use GuzzleHttp\Psr7\Response;
-use GuzzleHttp\Psr7\Uri;
+use Satisfaction\FormBundle\Entity\Ticket;
+use Symfony\Component\HttpFoundation\Response;
 
 class DefaultController extends Controller
 {
-    /**
-     * @param $item
-     * @return TicketMetric
-     */
-    public function createEntityFromItemMetric($item)
+    /* Note: do not put a trailing slash at the end of v2 */
+    public function curlWrap($url, $json, $action)
     {
-        $entity = new TicketMetric();
+        $ch = curl_init();
+        curl_setopt($ch, CURLOPT_FOLLOWLOCATION, true);
+        curl_setopt($ch, CURLOPT_MAXREDIRS, 10 );
+        curl_setopt($ch, CURLOPT_URL, ZDURL.$url);
+        curl_setopt($ch, CURLOPT_USERPWD, ZDUSER."/token:".ZDAPIKEY);
+        switch($action){
+            case "POST":
+                curl_setopt($ch, CURLOPT_CUSTOMREQUEST, "POST");
+                curl_setopt($ch, CURLOPT_POSTFIELDS, $json);
+                break;
+            case "GET":
+                curl_setopt($ch, CURLOPT_CUSTOMREQUEST, "GET");
+                break;
+            case "PUT":
+                curl_setopt($ch, CURLOPT_CUSTOMREQUEST, "PUT");
+                curl_setopt($ch, CURLOPT_POSTFIELDS, $json);
+                break;
+            case "DELETE":
+                curl_setopt($ch, CURLOPT_CUSTOMREQUEST, "DELETE");
+                break;
+            default:
+                break;
+        }
+        curl_setopt($ch, CURLOPT_HTTPHEADER, array('Content-type: application/json'));
+        curl_setopt($ch, CURLOPT_USERAGENT, "MozillaXYZ/1.0");
+        curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+        curl_setopt($ch, CURLOPT_TIMEOUT, 10);
+        $output = curl_exec($ch);
+        curl_close($ch);
+        $decoded = json_decode($output);
+        return $decoded;
+    }
+    function isThereATicket($numticket)
+    {
+        $repository = $this->getDoctrine()
+            ->getRepository('SatisfactionFormBundle:Ticket');
 
-        foreach ($item as  $key => $value)
-        {
-            $entity->{"set" . Inflector::camelize($key)}($value);
+        $ticket_look = $repository->findOneByNumticket($numticket);
+
+        if (isset($ticket_look)) {
+            $id = $ticket_look->getId();
+            $return = $ticket_look->getReopensNb();
+        }
+        if (!isset($ticket_look)) {
+            $return = "nothing";
         }
 
-        return $entity;
+        return $return;
     }
 
-    /**
-     * @param $item
-     * @return Ticket
-     */
-    public function createEntityFromItemTicket($item)
+    function updateTicket($numticket,$reopens_nb)
     {
-        $entity = new Ticket();
 
-        foreach ($item as  $key => $value)
-        {
-            $entity->{"set" . Inflector::camelize($key)}($value);
-        }
+        $em = $this->getDoctrine()->getManager();
+        $ticket = $em->getRepository('SatisfactionFormBundle:Ticket')->findOneByNumticket($numticket);
+        $ticket->setStatus('Offered');
+        $ticket->setReopensNb($reopens_nb);
+        $ticket->setFirstSend(null);
+        $ticket->setSecondSend(null);
+        $em->flush();
 
-        return $entity;
+        return $numticket;
     }
-    /**
-     * @param array $collection
-     * @return array
-     */
-    public function createEntityFromCollectionTicket(array $collection)
+
+    public function addTicket($numticket,$sujet,$description,$requester,$solved_at,$reopens_nb)
     {
-        $results = [];
+        $ticket = new Ticket();
+        $ticket->setNumticket($numticket);
+        $ticket->setSujet($sujet);
+        $ticket->setDescription($description);
+        $ticket->setEmail($requester);
+        $ticket->setYear(substr($solved_at,0,4));
+        $ticket->setMonth(substr($solved_at,5,2));
+        $ticket->setWeek(date("W",strtotime($solved_at)));
+        $ticket->setReopensNb($reopens_nb);
 
-        foreach ($collection as $item) {
-            $results[] = $this->createEntityFromItemTicket($item);
-        }
-
-        return $results;
-    }
-    /**
-     * @param array $collection
-     * @return array
-     */
-    public function createEntityFromCollectionMetric(array $collection)
-    {
-        $results = [];
-
-        foreach ($collection as $item) {
-            $results[] = $this->createEntityFromItemMetric($item);
-        }
-
-        return $results;
+        $em = $this->getDoctrine()->getManager();
+        $em->persist($ticket);
+        $em->flush();
+        return new Response('Created ticket id '.$ticket->getId());
     }
     public function indexAction()
     {
-//        $subdomain = "aramisauto";
-//        $username  = "zendesk@aramisauto.com";
-//        $token     = "YCrSZ5HBPH0epAsDRoyiwpmPggvD2Z0HI8Zn3q7R";
-//
-//        $client = new ZendeskAPI($subdomain, $username);
-//        $client->setAuth('basic', ['username' => $username, 'token' => $token]);
-//        $client2 = new ZendeskAPI($subdomain, $username);
-//        $client2->setAuth('basic', ['username' => $username, 'token' => $token]);
-////        $page = 0;
-////        $tickets = [];
-////        do {
-////            $collection = $client->tickets()->findAll(['per_page' => 100, 'page' => $page]);
-////            $results = $this->createEntityFromCollection($collection->tickets);
-////            $resultsCount = count($results);
-////            $tickets = array_merge($tickets, $results);
-////            $page++;
-////        } while ($resultsCount == 100);
-//
-//        $collection = $client->tickets()->findAll(['per_page' => 100, 'page' => '1']);
-//        $tickets = $this->createEntityFromCollectionTicket($collection->tickets);
-//
-//        foreach ((array)$tickets[0] as $key => $value) {
-//
-//            $key = trim(str_replace('Satisfaction\CrawlerBundle\Entity\Ticket', '', $key)).' ';
-//            $value = (is_array($value) || is_object($value))
-//                ?
-//                : htmlspecialchars($value, ENT_QUOTES);
-//            if (trim($key)== 'id') $id = $value;
-//            if (trim($key)== 'status') echo $key.' '.$value.'<br>';
-//            if (trim($key)== 'description') echo $key.' '.$value.'<br>';
-//            if (trim($key)== 'requester_id') echo $key.' '.$value.'<br>';
-//            if (trim($key)== 'submitter_id') echo $key.' '.$value.'<br>';
-//
-//
-//
-//
-//            //echo $key.' '.$xml.'<br>';
-//
-//        }
+        define("ZDAPIKEY", $this->getParameter('zendesk_api_key'));
+        define("ZDUSER", $this->getParameter('zendesk_api_user'));
+        define("ZDURL", $this->getParameter('zendesk_api_url'));
 
-        $client = new Guzzle(['base_uri' => 'https://aramisauto.zendesk.com']);
-        $res = $client->request('GET', '/api/v2/tickets/99/metrics.json', ['auth' => ['zendesk@aramisauto.com/token', 'YCrSZ5HBPH0epAsDRoyiwpmPggvD2Z0HI8Zn3q7R']]);
-        print_r($res);
-        echo $res->getStatusCode();
-        //echo $res->getHeaderLine('X-Guzzle-Redirect-History');
+        $today = date("Y-m-d");
+        $yesterday = date("Y-m-d", strtotime( '-1 days' ));
+
+        $page = 20;
+        do {
+            $data = $this->curlWrap("/tickets.json?page=".$page, null, "GET");
+            $tickets = $data->tickets;
+            $count_result = count($data->tickets);
+            for ($i=0;$i<$count_result;$i++){
+                $numticket = $tickets[$i]->id;
+                $description = $tickets[$i]->description;
+                $sujet = substr($tickets[$i]->description,0,50);
+                $requester_id = $tickets[$i]->requester_id;
+                $status = $tickets[$i]->status;
+                $updated_at = substr($tickets[$i]->updated_at,0,10);
+                if ($status == 'solved' || $updated_at >= $yesterday){
+                    $data_metrics = $this->curlWrap("/tickets/".$numticket."/metrics.json", null, "GET");
+                    $solved_at = substr($data_metrics->ticket_metric->solved_at,0,10);
+                    $reopens_nb=$data_metrics->ticket_metric->reopens;
+
+                    if ($solved_at >= $yesterday) {
+                        $data_requester = $this->curlWrap("/users/" . $requester_id . ".json", null, "GET");
+                        $requester = $data_requester->user->email;
+                        $isThereATicket = $this->isThereATicket($numticket);
+                        $test = "nothing";
+                        if ($isThereATicket === $test) {
+                            echo "1e1kd1";
+                            $exec_ticket = $this->addTicket($numticket, $sujet, $description, $requester, $solved_at, $reopens_nb);
+                        }
+                        else if ((int)$isThereATicket != (int)$reopens_nb) {
+                            echo "2eddk2";
+                            $exec_ticket = $this->updateTicket($numticket,$reopens_nb);
+                        }
+                    }
+                }
+            }
+            $page = substr($data->next_page,56) ;
+            //  sleep(5);
+        } while ($count_result == 100); # $count_result == 100
+
         return $this->render('SatisfactionCrawlerBundle:Default:index.html.twig');
     }
 

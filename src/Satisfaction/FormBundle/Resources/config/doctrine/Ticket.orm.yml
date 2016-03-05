@@ -19,7 +19,7 @@ Satisfaction\FormBundle\Entity\Ticket:
     status:
       type: string
       length: 10
-      nullable: false
+      nullable: true
     conformite:
       type: integer
       length: 2
@@ -48,18 +48,22 @@ Satisfaction\FormBundle\Entity\Ticket:
     week:
       type: integer
       length: 2
-      nullable: false
+      nullable: true
     year:
       type: integer
       length: 4
-      nullable: false
+      nullable: true
     month:
       type: integer
       length: 2
-      nullable: false
+      nullable: true
     first_send:
       type: datetime
       nullable: true
     second_send:
       type: datetime
       nullable: true
+    reopens_nb:
+      type: integer
+      length: 2
+      nullable: false
