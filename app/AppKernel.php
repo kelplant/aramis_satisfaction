@@ -18,10 +18,10 @@ class AppKernel extends Kernel
             new AppBundle\AppBundle(),
             new Satisfaction\GeneralBundle\SatisfactionGeneralBundle(),
             new Satisfaction\FormBundle\SatisfactionFormBundle(),
-            new FOS\UserBundle\FOSUserBundle(),
-            new FR3D\LdapBundle\FR3DLdapBundle(),
             new Satisfaction\MailerBundle\SatisfactionMailerBundle(),
             new Satisfaction\CrawlerBundle\SatisfactionCrawlerBundle(),
+            new LightSaml\SymfonyBridgeBundle\LightSamlSymfonyBridgeBundle(),
+            new LightSaml\SpBundle\LightSamlSpBundle(),
         );
 
         if (in_array($this->getEnvironment(), array('dev', 'test'), true)) {

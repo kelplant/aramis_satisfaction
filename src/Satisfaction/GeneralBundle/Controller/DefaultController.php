@@ -66,8 +66,7 @@ class DefaultController extends Controller
     public function getSessionEmail()
     {
         $test = explode(';',$_SESSION['_sf2_attributes']['_security_main']);
-        $email = strtolower(substr($test[29],6,-1));
-
+        $email = strtolower(substr($test[4],6,-1));
         return $email;
     }
 
