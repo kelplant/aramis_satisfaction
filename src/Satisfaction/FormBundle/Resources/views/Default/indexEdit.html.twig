@@ -11,3 +11,20 @@
         {{ form_end(satisfactionForm) }}
     </div>
 {% endblock %}
+
+{% block javascripts %}
+    <script src="{{ asset('js/jquery.dataTables.min.js') }}" type="text/javascript"></script>
+    <script src="{{ asset('js/dataTables.bootstrap.js') }}" type="text/javascript"></script>
+    <script>
+
+        $("input[name~='ticket[Satisfaction]']").bind('change', function() {
+            var satisfactionValue = parseInt($(this).val());
+            if (satisfactionValue < 5) {
+                $("#ticket_Commentaires").attr('required', 'required');
+            } else {
+                $("#ticket_Commentaires").removeAttr('required');
+            }
+        });
+    </script>
+
+{% endblock %}
