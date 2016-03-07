@@ -8,7 +8,7 @@ use Satisfaction\MailerBundle\Services;
 
 class DefaultController extends Controller
 {
-    public function getTodo($page,$email)
+    public function getTodo($email)
     {
         $em = $this->getDoctrine()->getManager();
 
@@ -26,7 +26,7 @@ class DefaultController extends Controller
         return $query_todo->getResult();
     }
 
-    public function getDoneOffered($page,$email)
+    public function getDoneOffered($email)
     {
         $em = $this->getDoctrine()->getManager();
         $query_done_offered = $em->createQuery(
@@ -43,7 +43,7 @@ class DefaultController extends Controller
         return $query_done_offered->getResult();
     }
 
-    public function getDoneAnswered($page,$email)
+    public function getDoneAnswered($email)
     {
         $em = $this->getDoctrine()->getManager();
         $query_done_answered = $em->createQuery(
@@ -66,20 +66,20 @@ class DefaultController extends Controller
     public function getSessionEmail()
     {
         $test = explode(';',$_SESSION['_sf2_attributes']['_security_main']);
-        $email = strtolower(substr($test[4],6,-1));
+        $email = trim(strtolower(substr($test[4],6,-1)));
         return $email;
     }
 
     public function indexAction()
     {
-        $email = $this->getSessionEmail();
+        echo $email = $this->getSessionEmail();
 
         $repository = $this->getDoctrine()->getManager()->getRepository('SatisfactionFormBundle:Ticket');
         $all = $repository->findByEmail($email);
 
-        $todo = $this->getTodo('0',$email);
-        $done_offered = $this->getDoneOffered('0',$email);
-        $done_answered = $this->getDoneAnswered('0',$email);
+        $todo = $this->getTodo($email);
+        $done_offered = $this->getDoneOffered($email);
+        $done_answered = $this->getDoneAnswered($email);
 
         if (!$all) {
             return $this->render('SatisfactionGeneralBundle:Default:notickets.html.twig');

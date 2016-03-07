@@ -130,7 +130,6 @@ class DefaultController extends Controller
 
         $ticket = $this->setTheTicket($request);
 
-
         if(isset($req_post['Envoyer'])) {
 
             $message= "Formulaire correctement enregistré";
