@@ -1,49 +1,216 @@
 <?php
-// src/AppBundle/Entity/User.php
-
+// AppBundle/Entity/User.php
 namespace AppBundle\Entity;
 
-use FOS\UserBundle\Model\User as BaseUser;
-use FR3D\LdapBundle\Model\LdapUserInterface as LdapUserInterface;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Security\Core\User\UserInterface;
+use FR3D\LdapBundle\Model\LdapUserInterface as LdapUserInterface;
 
 /**
  * @ORM\Entity
  * @ORM\Table(name="user")
  */
-class User extends BaseUser implements LdapUserInterface
+class User implements UserInterface, \Serializable, LdapUserInterface
 {
     /**
+     * @var int
      * @ORM\Id
      * @ORM\Column(type="integer")
      * @ORM\GeneratedValue(strategy="AUTO")
      */
     protected $id;
+
     /**
+     * @var string
      * @ORM\Column(type="string")
      */
-    protected $dn;
+    protected $username;
     /**
-     * @ORM\Column(type="string")
+     * @var string
+     * @ORM\Column(type="string", nullable=true))
      */
     protected $name;
+    /**
+     * @var string
+     * @ORM\Column(type="string", nullable=true))
+     */
+    protected $surname;
 
+    /**
+     * @var string
+     * @ORM\Column(type="string")
+     */
+    protected $email;
 
-    public function __construct()
+    /**
+     * @ORM\Column(type="string", nullable=true)
+     */
+    protected $dn;
+
+    /**
+     * @var array
+     * @ORM\Column(type="json_array")
+     */
+    protected $roles;
+
+    /**
+     * @return int
+     */
+    public function getId()
     {
-        parent::__construct();
-        if (empty($this->roles)) {
-            $this->roles[] = 'ROLE_USER';
-        }
+        return $this->id;
     }
-    public function setDn($dn) {
-        $this->dn = $dn;
+
+    /**
+     * @return array
+     */
+    public function getRoles()
+    {
+        return $this->roles;
     }
-    public function getDn() {
+
+    /**
+     * @param array $roles
+     *
+     * @return User
+     */
+    public function setRoles($roles)
+    {
+        $this->roles = $roles;
+
+        return $this;
+    }
+
+    /**
+     * @return string
+     */
+    public function getDn()
+    {
         return $this->dn;
     }
-    public function setName($name) {
+
+    /**
+     * @param string $dn
+     *
+     * @return User
+     */
+    public function setDn($dn)
+    {
+        $this->dn = $dn;
+    }
+
+    /**
+     * @return string
+     */
+    public function getUsername()
+    {
+        return $this->username;
+    }
+
+    /**
+     * @param string $username
+     *
+     * @return User
+     */
+    public function setUsername($username)
+    {
+        $this->username = $username;
+
+        return $this;
+    }
+
+    /**
+     * @return string
+     */
+    public function getEmail()
+    {
+        return $this->email;
+    }
+
+    /**
+     * @param string $email
+     *
+     * @return User
+     */
+    public function setEmail($email)
+    {
+        $this->email = $email;
+    }
+
+    /**
+     * @return string
+     */
+    public function getName()
+    {
+        return $this->name;
+    }
+
+    /**
+     * @param string $name
+     *
+     * @return User
+     */
+    public function setName($name)
+    {
         $this->name = $name;
     }
 
+    /**
+     * @return string
+     */
+    public function getSurname()
+    {
+        return $this->surname;
+    }
+
+    /**
+     * @param string $surname
+     *
+     * @return User
+     */
+    public function setSurname($surname)
+    {
+        $this->surname = $surname;
+    }
+
+
+
+
+    // -------------------------------------------
+
+    /**
+     * @return string
+     */
+    public function getPassword()
+    {
+        return '';
+    }
+
+    /**
+     * @return string|null
+     */
+    public function getSalt()
+    {
+        return '';
+    }
+
+    public function eraseCredentials()
+    {
+    }
+
+    /**
+     * @return string
+     */
+    public function serialize()
+    {
+        return serialize([$this->id, $this->username, $this->roles]);
+    }
+
+    /**
+     * @return void
+     */
+    public function unserialize($serialized)
+    {
+        list($this->id, $this->username, $this->roles) = unserialize($serialized);
+    }
 }

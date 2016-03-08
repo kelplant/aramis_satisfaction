@@ -15,13 +15,13 @@
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
             <ul class="nav navbar-nav">
                 <li><a href="{{ path('satisfaction_general_homepage') }}"><i class="fa fa-home"></i>  Tableau de Bord</a> </li>
-                <li><a href="{{ path('satisfaction_form_homepage', {'numticket': '0'}) }}"><i class="fa fa-bell"></i>  Formulaire</a> </li>
+                {#<li><a href="{{ path('satisfaction_form_homepage', {'numticket': '0'}) }}"><i class="fa fa-bell"></i>  Formulaire</a> </li>#}
             </ul>
             <ul class="nav navbar-nav navbar-right">
                 <li>{% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
-                    <a href="{{ path('fos_user_security_logout') }}">{{ 'layout.logout'|trans({}, 'FOSUserBundle') }}</a>
+                    <a href="{{ path('logout') }}">Déconnexion</a>
                 {% else %}
-                    <a href="{{ path('fos_user_security_login') }}">{{ 'layout.login'|trans({}, 'FOSUserBundle') }}</a>
+                    <a href="#">Connexion</a>
                 {% endif %}</li>
             </ul>
         </div><!-- /.navbar-collapse -->

@@ -1,34 +1,21 @@
 # app/config/security.yml
 security:
-    encoders:
-        AppBundle\Entity\User: sha512
-    role_hierarchy:
-        ROLE_ADMIN:       ROLE_USER
-        ROLE_SUPER_ADMIN: [ROLE_USER, ROLE_ADMIN, ROLE_ALLOWED_TO_SWITCH]
     providers:
-        chain_provider:
-            chain:
-                providers: [fos_userbundle, fr3d_ldapbundle]
-
-        fr3d_ldapbundle:
-            id: fr3d_ldap.security.user.provider
-
-        fos_userbundle:
-            id: fos_user.user_provider.username
+        db_provider:
+            entity:
+                class: AppBundle:User
+                property: username
     firewalls:
-        dev:
-            pattern:  ^/(_(profiler|wdt)|css|images|js)/
-            security: false
         main:
-            pattern: ^/
-            fr3d_ldap: ~
-            form_login:
-                provider: fos_userbundle
-                csrf_provider: security.csrf.token_manager
-                always_use_default_target_path: false
-                default_target_path: /
-            logout: true
-            anonymous: true
+            light_saml_sp:
+                provider: db_provider       # user provider name configured in step 9
+                user_creator: user_creator  # name of the user creator service created in step 10
+                login_path: /saml/login
+                check_path: /saml/login_check
+            logout:
+                path: /logout
+            anonymous: ~
+
     access_control:
         - { path: ^/login$, role: IS_AUTHENTICATED_ANONYMOUSLY }
         - { path: ^/home$, role: ROLE_USER }
