@@ -12,6 +12,9 @@ services:
         tags:
             - { name: serializer.normalizer }
 
+#    fos_user.doctrine_registry:
+#            alias: doctrine
+
     mailer.mailer:
             class: Satisfaction\MailerBundle\Services\Mailer
             arguments: [@mailer, @templating]

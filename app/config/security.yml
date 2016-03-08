@@ -3,7 +3,7 @@ security:
     providers:
         db_provider:
             entity:
-                class: AppBundle:UserSaml
+                class: AppBundle:User
                 property: username
     firewalls:
         main:
