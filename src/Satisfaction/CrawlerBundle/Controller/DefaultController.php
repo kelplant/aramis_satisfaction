@@ -83,9 +83,16 @@ class DefaultController extends Controller
 
         $nbJoursCrawl = $this->getParameter('zendesk_api_nombre_jours_crawler');
 
-        $yesterday = date("Y-m-d", strtotime( '-'.(int)$nbJoursCrawl.' days' ));
-        $startTime = mktime(0, 0, 0, date('m'), date('d')-((int)$nbJoursCrawl+1), date('Y'));
-
+        $demandTime = mktime(0, 0, 0, date('m'), date('d')-((int)$nbJoursCrawl+1), date('Y'));
+        $actualTime = time();
+        $startTime = $actualTime ;
+        if ($nbJoursCrawl == '0'){
+            $crawler_last_execute = $this->get('parameters_store')->getParam('crawler_last_execute');
+            $startTime = $crawler_last_execute ;
+        }
+        elseif ($nbJoursCrawl != '0'){
+            $startTime = $demandTime;
+        }
         do {
             $data = $this->curlWrap("/incremental/tickets.json?start_time=".$startTime, null, "GET");
             $tickets = $data->tickets;
@@ -94,7 +101,7 @@ class DefaultController extends Controller
                 if ($tickets[$i]->status == 'solved'){
                     $data_metrics = $this->curlWrap("/tickets/".$tickets[$i]->id."/metrics.json", null, "GET");
                     $reopens_nb=$data_metrics->ticket_metric->reopens;
-                    if (substr($data_metrics->ticket_metric->solved_at,0,10) >= $yesterday) {
+                    if (substr($data_metrics->ticket_metric->solved_at,0,10) >= date("Y-m-d",$startTime)) {
                         $data_requester = $this->curlWrap("/users/" .  $tickets[$i]->requester_id . ".json", null, "GET");
                         $isThereATicket = $this->isThereATicket($tickets[$i]->id);
                         $nothingInBase = "nothing";
@@ -117,8 +124,8 @@ class DefaultController extends Controller
                 }
             }
             $startTime = substr($data->next_page,74) ;
-        } while ($count_result == 1000); # $count_result == 1000
-
+        } while ($count_result == 1000);
+        $this->get('parameters_store')->setParam('crawler_last_execute',$actualTime);
         $time_end = microtime(true);
 
         echo "Done in " . round($time_end - $time_start, 1) . " sec";

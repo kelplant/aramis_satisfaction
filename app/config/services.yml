@@ -30,3 +30,8 @@ services:
         arguments:
             - "@=service('doctrine').getManager()"
             - "@lightsaml_sp.username_mapper.simple"
+
+    parameters_store:
+        class: AppBundle\Store\ParametersStore
+        arguments:
+            - "@=service('doctrine').getManager()"
