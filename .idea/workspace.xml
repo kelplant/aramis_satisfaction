@@ -2,9 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="26e34a2b-d7d5-4eff-a5a5-239fc9803e13" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/config/config.yml" afterPath="$PROJECT_DIR$/app/config/config.yml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/AppBundle/Security/User/UserCreator.php" afterPath="$PROJECT_DIR$/src/AppBundle/Security/User/UserCreator.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Satisfaction/GeneralBundle/Controller/DefaultController.php" afterPath="$PROJECT_DIR$/src/Satisfaction/GeneralBundle/Controller/DefaultController.php" />
     </list>
     <ignored path="aramis_satisfaction.iws" />
@@ -33,18 +30,6 @@
             <state vertical-scroll-proportion="0.0">
               <caret line="18" column="39" selection-start-line="18" selection-start-column="39" selection-end-line="18" selection-end-column="39" />
               <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="DefaultController.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/Satisfaction/CrawlerBundle/Controller/DefaultController.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-42.384617">
-              <caret line="87" column="34" selection-start-line="87" selection-start-column="34" selection-end-line="87" selection-end-column="34" />
-              <folding>
-                <element signature="e#56#113#0#PHP" expanded="true" />
-              </folding>
             </state>
           </provider>
         </entry>
@@ -96,10 +81,10 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="UserCreator.php" pinned="false" current-in-tab="true">
+      <file leaf-file-name="UserCreator.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/AppBundle/Security/User/UserCreator.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.5075107">
+            <state vertical-scroll-proportion="-18.192308">
               <caret line="34" column="7" selection-start-line="34" selection-start-column="7" selection-end-line="34" selection-end-column="7" />
               <folding>
                 <element signature="e#85#111#0#PHP" expanded="true" />
@@ -108,16 +93,16 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="DefaultController.php" pinned="false" current-in-tab="false">
+      <file leaf-file-name="DefaultController.php" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/Satisfaction/GeneralBundle/Controller/DefaultController.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-22.884615">
-              <caret line="71" column="0" selection-start-line="71" selection-start-column="0" selection-end-line="71" selection-end-column="0" />
+            <state vertical-scroll-proportion="0.7113734">
+              <caret line="72" column="0" selection-start-line="72" selection-start-column="0" selection-end-line="72" selection-end-column="0" />
               <folding>
                 <element signature="e#57#114#0#PHP" expanded="true" />
-                <marker date="1457484119212" expanded="true" signature="383:606" placeholder="SELECT p FRO... SatisfactionFormBundle" />
-                <marker date="1457484119212" expanded="true" signature="926:1153" placeholder="SELECT p FRO... SatisfactionFormBundle" />
-                <marker date="1457484119212" expanded="true" signature="1483:1731" placeholder="SELECT p FRO... SatisfactionFormBundle" />
+                <marker date="1457484833670" expanded="true" signature="383:606" placeholder="SELECT p FRO... SatisfactionFormBundle" />
+                <marker date="1457484833670" expanded="true" signature="926:1153" placeholder="SELECT p FRO... SatisfactionFormBundle" />
+                <marker date="1457484833670" expanded="true" signature="1483:1731" placeholder="SELECT p FRO... SatisfactionFormBundle" />
               </folding>
             </state>
           </provider>
@@ -210,8 +195,8 @@
         <option value="$PROJECT_DIR$/src/Satisfaction/CrawlerBundle/Controller/DefaultController.php" />
         <option value="$PROJECT_DIR$/app/config/parameters.yml" />
         <option value="$PROJECT_DIR$/app/config/config.yml" />
-        <option value="$PROJECT_DIR$/src/Satisfaction/GeneralBundle/Controller/DefaultController.php" />
         <option value="$PROJECT_DIR$/src/AppBundle/Security/User/UserCreator.php" />
+        <option value="$PROJECT_DIR$/src/Satisfaction/GeneralBundle/Controller/DefaultController.php" />
       </list>
     </option>
   </component>
@@ -1837,9 +1822,30 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/app/config/config.yml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="116" column="0" selection-start-line="116" selection-start-column="0" selection-end-line="116" selection-end-column="0" />
+          <folding>
+            <marker date="1457483587374" expanded="true" signature="3444:3959" placeholder="light_saml_symfony_bridge:" />
+            <marker date="1457483587374" expanded="true" signature="3879:3959" placeholder="store:" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/AppBundle/Security/User/UserCreator.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-18.192308">
+          <caret line="34" column="7" selection-start-line="34" selection-start-column="7" selection-end-line="34" selection-end-column="7" />
+          <folding>
+            <element signature="e#85#111#0#PHP" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/Satisfaction/CrawlerBundle/Controller/DefaultController.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-42.384617">
+        <state vertical-scroll-proportion="1.1824034">
           <caret line="87" column="34" selection-start-line="87" selection-start-column="34" selection-end-line="87" selection-end-column="34" />
           <folding>
             <element signature="e#56#113#0#PHP" expanded="true" />
@@ -1855,36 +1861,15 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/config/config.yml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="116" column="0" selection-start-line="116" selection-start-column="0" selection-end-line="116" selection-end-column="0" />
-          <folding>
-            <marker date="1457483587374" expanded="true" signature="3444:3959" placeholder="light_saml_symfony_bridge:" />
-            <marker date="1457483587374" expanded="true" signature="3879:3959" placeholder="store:" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/Satisfaction/GeneralBundle/Controller/DefaultController.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-22.884615">
-          <caret line="71" column="0" selection-start-line="71" selection-start-column="0" selection-end-line="71" selection-end-column="0" />
+        <state vertical-scroll-proportion="0.7113734">
+          <caret line="72" column="0" selection-start-line="72" selection-start-column="0" selection-end-line="72" selection-end-column="0" />
           <folding>
             <element signature="e#57#114#0#PHP" expanded="true" />
-            <marker date="1457484119212" expanded="true" signature="383:606" placeholder="SELECT p FRO... SatisfactionFormBundle" />
-            <marker date="1457484119212" expanded="true" signature="926:1153" placeholder="SELECT p FRO... SatisfactionFormBundle" />
-            <marker date="1457484119212" expanded="true" signature="1483:1731" placeholder="SELECT p FRO... SatisfactionFormBundle" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/AppBundle/Security/User/UserCreator.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.5075107">
-          <caret line="34" column="7" selection-start-line="34" selection-start-column="7" selection-end-line="34" selection-end-column="7" />
-          <folding>
-            <element signature="e#85#111#0#PHP" expanded="true" />
+            <marker date="1457484833670" expanded="true" signature="383:606" placeholder="SELECT p FRO... SatisfactionFormBundle" />
+            <marker date="1457484833670" expanded="true" signature="926:1153" placeholder="SELECT p FRO... SatisfactionFormBundle" />
+            <marker date="1457484833670" expanded="true" signature="1483:1731" placeholder="SELECT p FRO... SatisfactionFormBundle" />
           </folding>
         </state>
       </provider>

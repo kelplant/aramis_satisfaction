@@ -65,8 +65,7 @@ class DefaultController extends Controller
 
     public function getSessionEmail()
     {
-        $test = explode(';',$_SESSION['_sf2_attributes']['_security_main']);
-        $username = trim(strtolower(substr($test[4],5,-1)));
+        $username = $this->getUser()->getUsername();
         $user = $this->getDoctrine()->getRepository('AppBundle:User')->findOneByUsername($username);
         $email = $user->getEmail();
         return $email;
@@ -74,7 +73,7 @@ class DefaultController extends Controller
 
     public function indexAction()
     {
-        echo $email = $this->getSessionEmail();
+        $email = $this->getSessionEmail();
 
         $repository = $this->getDoctrine()->getManager()->getRepository('SatisfactionFormBundle:Ticket');
         $all = $repository->findByEmail($email);
