@@ -66,7 +66,9 @@ class DefaultController extends Controller
     public function getSessionEmail()
     {
         $test = explode(';',$_SESSION['_sf2_attributes']['_security_main']);
-        $email = trim(strtolower(substr($test[4],6,-1)));
+        $username = trim(strtolower(substr($test[4],5,-1)));
+        $user = $this->getDoctrine()->getRepository('AppBundle:User')->findOneByUsername($username);
+        $email = $user->getEmail();
         return $email;
     }
 

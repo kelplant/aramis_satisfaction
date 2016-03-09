@@ -35,18 +35,17 @@ class UserCreator implements UserCreatorInterface
      */
     public function createUser(Response $response)
     {
-        $email = $this->usernameMapper->getUsername($response);
+        $winuser= $this->usernameMapper->getUsername($response);
         $assertions = $response->getAllAssertions();
         $items = $assertions[0]->getAllItems();
-        $users = $items[1]->getAllAttributes()[0]->getAllAttributeValues()[0];
+        $email = $items[1]->getAllAttributes()[1]->getAllAttributeValues()[0];
         $nom = $items[1]->getAllAttributes()[2]->getAllAttributeValues()[0];
         $prenom = $items[1]->getAllAttributes()[3]->getAllAttributeValues()[0];
-        $base_dn = $items[1]->getAllAttributes()[4]->getAllAttributeValues()[0];
         $user = new User();
         $user
-            ->setUsername($email)
+            ->setUsername($winuser)
             ->setRoles(['ROLE_USER'])
-            ->setEmail($users)
+            ->setEmail($email)
         ;
 
         $this->objectManager->persist($user);
