@@ -1,16 +1,11 @@
 <?php
-// src/Satisfaction/FormBundle/Entity/Ticket.php
-/**
- * @ORM\Entity(repositoryClass="Satisfaction\FormBundle\Entity\TicketRepository")
- * @ORM\Table(name="Ticket")
- * @ORM\HasLifecycleCallbacks()
- */
 namespace Satisfaction\FormBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * @ORM\Entity(repsositoryClass="TicketRepository")
+ * @ORM\Entity()
+ * @ORM\Table(name="Ticket")
  */
 
 class Ticket {
