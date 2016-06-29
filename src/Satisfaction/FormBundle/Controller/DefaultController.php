@@ -40,12 +40,12 @@ class DefaultController extends Controller
     );
 
     /**
-     * @param $request
+     * @param Request $request
      * @return Ticket
      */
-    function setTheTicket($request)
+    function setTheTicket(Request $request)
     {
-        $req_post = $this->get('request')->request->get('ticket');
+        $req_post = $request->request->get('ticket');
         $em = $this->getDoctrine()->getManager();
         $ticket = $em->getRepository('SatisfactionFormBundle:Ticket')->find($req_post['id']);
 
@@ -150,7 +150,7 @@ class DefaultController extends Controller
     public function satupdateAction(Request $request)
     {
 
-        $req_post = $this->get('request')->request->get('ticket');
+        $req_post = $request->request->get('ticket');
 
         $ticket = $this->setTheTicket($request);
 
@@ -181,11 +181,10 @@ class DefaultController extends Controller
     }
 
     /**
-     * @param Request $request
      * @param $numticket
      * @return \Symfony\Component\HttpFoundation\Response
      */
-    public function indexAction(Request $request, $numticket)
+    public function indexAction($numticket)
     {
 
         echo "<br><br><br><br>";
@@ -216,11 +215,10 @@ class DefaultController extends Controller
     }
 
     /**
-     * @param Request $request
      * @param $numticket
      * @return \Symfony\Component\HttpFoundation\Response
      */
-    public function viewAction(Request $request, $numticket)
+    public function viewAction($numticket)
     {
         if ($numticket== '0' OR !isset($numticket)) {
             return $this->render('SatisfactionGeneralBundle:Default:notickets.html.twig');
@@ -239,11 +237,10 @@ class DefaultController extends Controller
     }
 
     /**
-     * @param Request $request
      * @param $numticket
      * @return \Symfony\Component\HttpFoundation\Response
      */
-    public function newAction(Request $request, $numticket)
+    public function newAction($numticket)
     {
         if ($numticket== '0' OR !isset($numticket)) {
             return $this->render('SatisfactionGeneralBundle:Default:notickets.html.twig');
@@ -263,11 +260,10 @@ class DefaultController extends Controller
     }
 
     /**
-     * @param Request $request
      * @param $numticket
      * @return \Symfony\Component\HttpFoundation\Response
      */
-    public function editAction(Request $request, $numticket)
+    public function editAction($numticket)
     {
         if ($numticket== '0' OR !isset($numticket)) {
             return $this->render('SatisfactionGeneralBundle:Default:notickets.html.twig');

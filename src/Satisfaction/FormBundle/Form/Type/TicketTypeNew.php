@@ -2,7 +2,7 @@
 
 namespace Satisfaction\FormBundle\Form\Type;
 
-use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\Extension\Core\Type\BaseType;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\Extension\Core\Type\HiddenType;
 use Symfony\Component\Form\Extension\Core\Type\IntegerType;
@@ -13,7 +13,7 @@ use Symfony\Component\Form\FormBuilderInterface;
 use Satisfaction\FormBundle\Entity\Ticket;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
-class TicketTypeNew extends AbstractType
+class TicketTypeNew extends BaseType
 {
 
     public function buildForm(FormBuilderInterface $builder,  array $options)
