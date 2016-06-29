@@ -6,8 +6,6 @@
   <component name="ChangeListManager">
     <list default="true" id="26e34a2b-d7d5-4eff-a5a5-239fc9803e13" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Satisfaction/FormBundle/Controller/DefaultController.php" afterPath="$PROJECT_DIR$/src/Satisfaction/FormBundle/Controller/DefaultController.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Satisfaction/FormBundle/Form/Type/TicketTypeEdit.php" afterPath="$PROJECT_DIR$/src/Satisfaction/FormBundle/Form/Type/TicketTypeEdit.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Satisfaction/FormBundle/Form/Type/TicketTypeView.php" afterPath="$PROJECT_DIR$/src/Satisfaction/FormBundle/Form/Type/TicketTypeView.php" />
     </list>
     <ignored path="aramis_satisfaction.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -114,25 +112,25 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="DefaultController.php" pinned="false" current-in-tab="false">
+      <file leaf-file-name="DefaultController.php" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/Satisfaction/FormBundle/Controller/DefaultController.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-11.115385">
-              <caret line="23" column="0" selection-start-line="23" selection-start-column="0" selection-end-line="23" selection-end-column="0" />
+            <state vertical-scroll-proportion="0.2366167">
+              <caret line="19" column="5" selection-start-line="19" selection-start-column="5" selection-end-line="19" selection-end-column="5" />
               <folding>
-                <element signature="e#7224#7275#0#PHP" expanded="true" />
-                <element signature="e#7594#7649#1#PHP" expanded="true" />
-                <element signature="e#7955#8007#0#PHP" expanded="true" />
-                <marker date="1467228499392" expanded="true" signature="3118:3330" placeholder="SELECT p.num... SatisfactionFormBundle" />
+                <element signature="e#7611#7662#0#PHP" expanded="true" />
+                <element signature="e#7981#8036#1#PHP" expanded="true" />
+                <element signature="e#8342#8394#0#PHP" expanded="true" />
+                <marker date="1467229087208" expanded="true" signature="3117:3329" placeholder="SELECT p.num... SatisfactionFormBundle" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="TicketTypeView.php" pinned="false" current-in-tab="true">
+      <file leaf-file-name="TicketTypeView.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/Satisfaction/FormBundle/Form/Type/TicketTypeView.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.5642398">
+            <state vertical-scroll-proportion="-20.26923">
               <caret line="131" column="42" selection-start-line="131" selection-start-column="42" selection-end-line="131" selection-end-column="42" />
               <folding>
                 <element signature="e#53#109#0#PHP" expanded="true" />
@@ -217,9 +215,9 @@
         <option value="$PROJECT_DIR$/src/Satisfaction/FormBundle/Form/Type/TicketType.php" />
         <option value="$PROJECT_DIR$/src/Satisfaction/FormBundle/Form/Type/TicketTypeNew.php" />
         <option value="$PROJECT_DIR$/src/Satisfaction/FormBundle/Entity/Ticket.php" />
-        <option value="$PROJECT_DIR$/src/Satisfaction/FormBundle/Controller/DefaultController.php" />
         <option value="$PROJECT_DIR$/src/Satisfaction/FormBundle/Form/Type/TicketTypeEdit.php" />
         <option value="$PROJECT_DIR$/src/Satisfaction/FormBundle/Form/Type/TicketTypeView.php" />
+        <option value="$PROJECT_DIR$/src/Satisfaction/FormBundle/Controller/DefaultController.php" />
       </list>
     </option>
   </component>
@@ -1061,19 +1059,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Satisfaction/FormBundle/Controller/DefaultController.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-11.115385">
-          <caret line="23" column="0" selection-start-line="23" selection-start-column="0" selection-end-line="23" selection-end-column="0" />
-          <folding>
-            <element signature="e#7224#7275#0#PHP" expanded="true" />
-            <element signature="e#7594#7649#1#PHP" expanded="true" />
-            <element signature="e#7955#8007#0#PHP" expanded="true" />
-            <marker date="1467228499392" expanded="true" signature="3118:3330" placeholder="SELECT p.num... SatisfactionFormBundle" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/Satisfaction/FormBundle/Form/Type/TicketType.php">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-18.923077">
@@ -1106,10 +1091,23 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/Satisfaction/FormBundle/Form/Type/TicketTypeView.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.5642398">
+        <state vertical-scroll-proportion="-20.26923">
           <caret line="131" column="42" selection-start-line="131" selection-start-column="42" selection-end-line="131" selection-end-column="42" />
           <folding>
             <element signature="e#53#109#0#PHP" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Satisfaction/FormBundle/Controller/DefaultController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.2366167">
+          <caret line="19" column="5" selection-start-line="19" selection-start-column="5" selection-end-line="19" selection-end-column="5" />
+          <folding>
+            <element signature="e#7611#7662#0#PHP" expanded="true" />
+            <element signature="e#7981#8036#1#PHP" expanded="true" />
+            <element signature="e#8342#8394#0#PHP" expanded="true" />
+            <marker date="1467229087208" expanded="true" signature="3117:3329" placeholder="SELECT p.num... SatisfactionFormBundle" />
           </folding>
         </state>
       </provider>

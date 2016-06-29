@@ -18,7 +18,6 @@ class DefaultController extends Controller
      */
     function setTheTicket($item)
     {
-
         $em = $this->getDoctrine()->getManager();
         $ticket = $em->getRepository('SatisfactionFormBundle:Ticket')->findOneById($item['id']);
 
@@ -123,7 +122,18 @@ class DefaultController extends Controller
     public function satupdateAction(Request $request)
     {
 
-        $req_post = $request->request->get('ticket_type_new');
+        if($request->request->get('ticket_type_new') != null)
+        {
+            $req_post = $request->request->get('ticket_type_new');
+        }
+        if($request->request->get('ticket_type_view') != null)
+        {
+            $req_post = $request->request->get('ticket_type_view');
+        }
+        if($request->request->get('ticket_type_edit') != null)
+        {
+            $req_post = $request->request->get('ticket_type_edit');
+        }
 
         $ticket = $this->setTheTicket($req_post);
 
