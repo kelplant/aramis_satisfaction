@@ -10,7 +10,7 @@ use FR3D\LdapBundle\Model\LdapUserInterface as LdapUserInterface;
  * @ORM\Entity
  * @ORM\Table(name="user")
  */
-class User implements UserInterface, \Serializable, LdapUserInterface
+class User implements UserInterface
 {
     /**
      * @var int
