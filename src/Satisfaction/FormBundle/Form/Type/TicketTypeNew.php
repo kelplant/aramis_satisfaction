@@ -5,7 +5,7 @@ namespace Satisfaction\FormBundle\Form\Type;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Satisfaction\FormBundle\Entity\Ticket;
-
+use Symfony\Component\OptionsResolver\OptionsResolver;
 
 class TicketTypeNew extends AbstractType
 {
@@ -135,16 +135,11 @@ class TicketTypeNew extends AbstractType
         ;
     }
 
-    public function getName()
+    public function configureOptions(OptionsResolver $resolver)
     {
-        return 'ticket';
+        $resolver->setDefaults(array(
+            'data_class' => 'Satisfaction\FormBundle\Entity\Ticket',
+        ));
     }
-
-//    public function configureOptions(OptionsResolver $resolver)
-//    {
-//        $resolver->setDefaults(array(
-//            'data_class' => 'Satisfaction\FormBundle\Entity\Ticket',
-//        ));
-//    }
 }
 ?>

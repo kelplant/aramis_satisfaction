@@ -133,16 +133,11 @@ class TicketTypeEdit extends AbstractType
         ;
     }
 
-    public function getName()
+    public function configureOptions(OptionsResolver $resolver)
     {
-        return 'ticket';
+        $resolver->setDefaults(array(
+            'data_class' => 'Satisfaction\FormBundle\Entity\Ticket',
+        ));
     }
-
-//    public function configureOptions(OptionsResolver $resolver)
-//    {
-//        $resolver->setDefaults(array(
-//            'data_class' => 'Satisfaction\FormBundle\Entity\Ticket',
-//        ));
-//    }
 }
 ?>

@@ -18,6 +18,8 @@ security:
 
     access_control:
         - { path: ^/login$, role: IS_AUTHENTICATED_ANONYMOUSLY }
+        - { path: ^/mail/$, role: ROLE_USER }
+        - { path: ^/crawler/$, role: ROLE_USER }
         - { path: ^/home$, role: ROLE_USER }
         - { path: ^/form$, role: ROLE_USER }
         - { path: ^/form/view/, role: ROLE_USER }
