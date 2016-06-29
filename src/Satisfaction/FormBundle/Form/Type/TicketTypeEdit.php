@@ -17,18 +17,20 @@ use Symfony\Component\OptionsResolver\OptionsResolver;
 
 class TicketTypeEdit extends AbstractType
 {
-    private $choices_5;
-
-    private $choices_10;
-
-    public function __construct(array $choices_5,$choices_10)
-    {
-        $this->choices_5 = $choices_5;
-        $this->choices_10 = $choices_10;
-    }
-
     public function buildForm(FormBuilderInterface $builder,  array $options)
     {
+        $choice_10 = array(
+            '1' => '1',
+            '2' => '2',
+            '3' => '3',
+            '4' => '4',
+            '5' => '5',
+            '6' => '6',
+            '7' => '7',
+            '8' => '8',
+            '9' => '9',
+            '10' => '10',
+        );
 
         $builder
             ->add('NumTicket', IntegerType::class, array(
@@ -38,8 +40,8 @@ class TicketTypeEdit extends AbstractType
                 ),
                 'attr' => array(
                     'class' => 'form-control',
+                    'readonly' => true,
                 ),
-                'read_only' => true,
             ))
             ->add('Sujet', TextType::class, array(
                 'label' => 'Sujet',
@@ -48,8 +50,8 @@ class TicketTypeEdit extends AbstractType
                 ),
                 'attr' => array(
                     'class' => 'form-control',
+                    'readonly' => true,
                 ),
-                'read_only' => true
             ))
             ->add('Description', TextareaType::class, array(
                 'label' => 'Description',
@@ -59,15 +61,15 @@ class TicketTypeEdit extends AbstractType
                 'attr' => array(
                     'class' => 'form-control',
                     'rows' => '5',
+                    'readonly' => true,
                 ),
-                'read_only' => true,
             ))
             ->add('Satisfaction', ChoiceType::class, array(
                 'label' => 'Satisfaction',
                 'label_attr' => array(
                     'class' => 'col-sm-2 control-label',
                 ),
-                'choices' => $this->choices_10,
+                'choices' => $choice_10,
                 'expanded' => true,
                 'multiple' => false,
                 'required' => true,
@@ -80,7 +82,7 @@ class TicketTypeEdit extends AbstractType
                 'label_attr' => array(
                     'class' => 'col-sm-2 control-label',
                 ),
-                'choices' => $this->choices_10,
+                'choices' => $choice_10,
                 'expanded' => true,
                 'multiple' => false,
                 'required' => true,
@@ -93,7 +95,7 @@ class TicketTypeEdit extends AbstractType
                 'label_attr' => array(
                     'class' => 'col-sm-2 control-label',
                 ),
-                'choices' => $this->choices_10,
+                'choices' => $choice_10,
                 'expanded' => true,
                 'multiple' => false,
                 'required' => true,
@@ -106,7 +108,7 @@ class TicketTypeEdit extends AbstractType
                 'label_attr' => array(
                     'class' => 'col-sm-2 control-label',
                 ),
-                'choices' => $this->choices_10,
+                'choices' => $choice_10,
                 'expanded' => true,
                 'multiple' => false,
                 'required' => true,

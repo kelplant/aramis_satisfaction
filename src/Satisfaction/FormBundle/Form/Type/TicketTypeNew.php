@@ -39,8 +39,8 @@ class TicketTypeNew extends AbstractType
                 ),
                 'attr' => array(
                     'class' => 'form-control',
+                    'readonly' => true,
                 ),
-                'read_only' => true,
             ))
             ->add('Sujet', TextType::class, array(
                 'label' => 'Sujet',
@@ -49,8 +49,8 @@ class TicketTypeNew extends AbstractType
                 ),
                 'attr' => array(
                     'class' => 'form-control',
+                    'readonly' => true,
                 ),
-                'read_only' => true
             ))
             ->add('Description', TextareaType::class, array(
                 'label' => 'Description',
@@ -60,8 +60,8 @@ class TicketTypeNew extends AbstractType
                 'attr' => array(
                     'class' => 'form-control',
                     'rows' => '5',
+                    'readonly' => true,
                 ),
-                'read_only' => true,
             ))
             ->add('Satisfaction', ChoiceType::class, array(
                 'label' => 'Satisfaction',

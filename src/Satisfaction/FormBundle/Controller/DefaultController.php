@@ -12,6 +12,9 @@ use Symfony\Component\HttpFoundation\Request;
 
 class DefaultController extends Controller
 {
+    /**
+     * @var array
+     */
     private $choices_5 =  array(
         '1' => '1',
         '2' => '2',
@@ -20,6 +23,9 @@ class DefaultController extends Controller
         '5' => '5',
     );
 
+    /**
+     * @var array
+     */
     private $choice_10 = array(
         '1' => '1',
         '2' => '2',
@@ -33,6 +39,10 @@ class DefaultController extends Controller
         '10' => '10',
     );
 
+    /**
+     * @param $request
+     * @return Ticket
+     */
     function setTheTicket($request)
     {
         $req_post = $this->get('request')->request->get('ticket');
@@ -60,7 +70,10 @@ class DefaultController extends Controller
         return $ticket;
     }
 
-
+    /**
+     * @param $numticket
+     * @return Ticket
+     */
     function getTheTicket($numticket)
     {
 
@@ -94,6 +107,9 @@ class DefaultController extends Controller
         return $ticket;
     }
 
+    /**
+     * @return string
+     */
     public function getSessionEmail()
     {
         $test = explode(';',$_SESSION['_sf2_attributes']['_security_main']);
@@ -102,6 +118,10 @@ class DefaultController extends Controller
         return $email;
     }
 
+    /**
+     * @param $ret
+     * @return array
+     */
     function listID ($ret)
     {
         $email = $this->getSessionEmail();
@@ -123,6 +143,10 @@ class DefaultController extends Controller
         return $tab ;
     }
 
+    /**
+     * @param Request $request
+     * @return \Symfony\Component\HttpFoundation\Response
+     */
     public function satupdateAction(Request $request)
     {
 
@@ -134,10 +158,9 @@ class DefaultController extends Controller
 
             $message= "Formulaire correctement enregistré";
 
-            $form = $this->createForm(new TicketTypeView($this->choices_5,$this->choice_10),$ticket, array(
+            $form = $this->createForm(TicketTypeView::class, $ticket, array(
                 'action' => $this->generateUrl('satisfaction_form_homepage_satupdate'),
-                'method' => 'POST',
-            ));
+                'method' => 'POST',));
 
             return $this->render('SatisfactionFormBundle:Default:indexView.html.twig', array(
                 'satisfactionForm' => $form->createView(),
@@ -146,19 +169,22 @@ class DefaultController extends Controller
             exit;
         }
         if(isset($req_post['Modifier'])) {
-            $form = $this->createForm(new TicketTypeEdit($this->choices_5,$this->choice_10),$ticket, array(
+            $form = $this->createForm(TicketTypeEdit::class, $ticket, array(
                 'action' => $this->generateUrl('satisfaction_form_homepage_satupdate'),
-                'method' => 'POST',
-            ));
+                'method' => 'POST',));
 
             return $this->render('SatisfactionFormBundle:Default:indexEdit.html.twig', array(
                 'satisfactionForm' => $form->createView(),
             ));
             exit;
         }
-
     }
 
+    /**
+     * @param Request $request
+     * @param $numticket
+     * @return \Symfony\Component\HttpFoundation\Response
+     */
     public function indexAction(Request $request, $numticket)
     {
 
@@ -169,22 +195,19 @@ class DefaultController extends Controller
 
             $ticket = $this->getTheTicket($numticket);
 
-            $form = $this->createForm(new TicketType($this->choices_5,$this->choice_10,$this->listID('2'),$numticket),$ticket, array(
-                'action' => $this->generateUrl('satisfaction_form_homepage'),
-                'method' => 'POST',
-
-            ));
+            $form = $this->createForm(TicketType::class, $ticket, array(
+                'action' => $this->generateUrl('satisfaction_form_homepage_satupdate'),
+                'method' => 'POST',));
         }
         else
         {
             $nt = $this->listID('2');
             $ticket = $this->getTheTicket($nt);
 
-            $form = $this->createForm(new TicketType($this->choices_5,$this->choice_10,$this->listID('2'),$nt),$ticket, array(
-                'action' => $this->generateUrl('satisfaction_form_homepage'),
-                'method' => 'POST',
+            $form = $this->createForm(TicketType::class, $ticket, array(
+                'action' => $this->generateUrl('satisfaction_form_homepage_satupdate'),
+                'method' => 'POST',));
 
-            ));
         }
         return $this->render('SatisfactionFormBundle:Default:index.html.twig', array(
             'satisfactionForm' => $form->createView(),
@@ -192,6 +215,11 @@ class DefaultController extends Controller
 
     }
 
+    /**
+     * @param Request $request
+     * @param $numticket
+     * @return \Symfony\Component\HttpFoundation\Response
+     */
     public function viewAction(Request $request, $numticket)
     {
         if ($numticket== '0' OR !isset($numticket)) {
@@ -201,16 +229,20 @@ class DefaultController extends Controller
 
         $ticket = $this->getTheTicket($numticket);
 
-        $form = $this->createForm(new TicketTypeView($this->choices_5,$this->choice_10),$ticket, array(
+        $form = $this->createForm(TicketTypeView::class, $ticket, array(
             'action' => $this->generateUrl('satisfaction_form_homepage_satupdate'),
-            'method' => 'POST',
-        ));
+            'method' => 'POST',));
 
         return $this->render('SatisfactionFormBundle:Default:indexView.html.twig', array(
             'satisfactionForm' => $form->createView(),
         ));
-
     }
+
+    /**
+     * @param Request $request
+     * @param $numticket
+     * @return \Symfony\Component\HttpFoundation\Response
+     */
     public function newAction(Request $request, $numticket)
     {
         if ($numticket== '0' OR !isset($numticket)) {
@@ -229,6 +261,12 @@ class DefaultController extends Controller
         ));
 
     }
+
+    /**
+     * @param Request $request
+     * @param $numticket
+     * @return \Symfony\Component\HttpFoundation\Response
+     */
     public function editAction(Request $request, $numticket)
     {
         if ($numticket== '0' OR !isset($numticket)) {
@@ -238,10 +276,9 @@ class DefaultController extends Controller
 
         $ticket = $this->getTheTicket($numticket);
 
-        $form = $this->createForm(new TicketTypeEdit($this->choices_5,$this->choice_10),$ticket, array(
+        $form = $this->createForm(TicketTypeEdit::class, $ticket, array(
             'action' => $this->generateUrl('satisfaction_form_homepage_satupdate'),
-            'method' => 'POST',
-        ));
+            'method' => 'POST',));
 
         return $this->render('SatisfactionFormBundle:Default:indexEdit.html.twig', array(
             'satisfactionForm' => $form->createView(),

@@ -45,7 +45,6 @@ class TicketType extends BaseType
             ->add('numticket', ChoiceType::class, array(
                 'label' => 'Numéro Ticket',
                 'choices' => $this->listID,
-                'read_only' => false,
                 'data' => $this->data_num,
                 'multiple' => false,
                 'label_attr' => array(
@@ -54,6 +53,7 @@ class TicketType extends BaseType
                 'attr' => array(
                     'class' => 'form-control',
                     'onChange'=> 'submit()',
+                    'readonly' => true,
                 )
             ))
             ->add('Sujet', TextType::class, array(
@@ -63,8 +63,8 @@ class TicketType extends BaseType
                 ),
                 'attr' => array(
                     'class' => 'form-control',
+                    'readonly' => true,
                 ),
-                'read_only' => true
             ))
             ->add('Description', TextareaType::class, array(
                 'label' => 'Description',
@@ -74,8 +74,8 @@ class TicketType extends BaseType
                 ),
                 'attr' => array(
                     'class' => 'form-control',
+                    'readonly' => true,
                 ),
-                'read_only' => true
             ))
             ->add('Satisfaction', ChoiceType::class, array(
                 'label' => 'Satisfaction',
