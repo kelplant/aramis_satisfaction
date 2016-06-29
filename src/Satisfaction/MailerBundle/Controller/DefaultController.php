@@ -45,10 +45,12 @@ class DefaultController extends Controller
         $query_todo = $em->createQuery(
             'UPDATE SatisfactionFormBundle:Ticket p
                 SET p.first_send = :dateEnvoi
+                SET p.status = :status
                 WHERE p.numticket = :numticket'
         )->setParameters(array(
             'dateEnvoi' => $dateEnvoi,
-            'numticket' => $numticket
+            'status'    => 'Offered',
+            'numticket' => $numticket,
         ));
         return $query_todo->getResult();
     }
