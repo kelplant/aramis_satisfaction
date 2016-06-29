@@ -171,7 +171,7 @@ class Ticket {
      */
     public function getSujet()
     {
-        return $this->sujet;
+        return $this->sujet.'...';
     }
 
     /**

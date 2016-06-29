@@ -16,14 +16,8 @@ class DefaultController extends Controller
             'SELECT p.numticket
                 FROM SatisfactionFormBundle:Ticket p
                 WHERE p.first_send IS NULL
-                AND p.email = :email
                 ORDER BY p.numticket ASC'
-        )
-            ->setParameters(array(
-            'email' => 'xavier.arroues@aramisauto.com'  # supprimer pour MEP ainsi que  AND p.email = :email
-        ))
-        #    ->setMaxResults('3')
-        ;                       # supprimer pour MEP
+        );
         return $query_todo->getResult();
     }
 
@@ -36,18 +30,15 @@ class DefaultController extends Controller
                 FROM SatisfactionFormBundle:Ticket p
                 WHERE p.second_send IS NULL
                 AND p.first_send <= :dateminRelance
-                AND p.email = :email
                 ORDER BY p.numticket ASC'
         )
             ->setParameters(array(
-            'email' => 'xavier.arroues@aramisauto.com', # supprimer pour MEP ainsi que  AND p.email = :email
             'dateminRelance' => $dateminRelance
-        ))
-            ->setMaxResults('1');                       # supprimer pour MEP
+        ));
         return $query_todo->getResult();
     }
 
-    public function setDatePremierEnvoi($numticket,$dateEnvoi)
+    public function setDatePremierEnvoi($numticket, $dateEnvoi)
     {
         $em = $this->getDoctrine()->getManager();
 
@@ -62,7 +53,7 @@ class DefaultController extends Controller
         return $query_todo->getResult();
     }
 
-    public function setDateSecondEnvoi($numticket,$dateEnvoi)
+    public function setDateSecondEnvoi($numticket, $dateEnvoi)
     {
         $em = $this->getDoctrine()->getManager();
 
@@ -77,15 +68,14 @@ class DefaultController extends Controller
         return $query_todo->getResult();
     }
 
-
-    public function sendAction($numticket,$numtemplate)
+    public function sendAction($numticket, $numtemplate)
     {
 
         $repository = $this->getDoctrine()->getManager()->getRepository('SatisfactionFormBundle:Ticket');
         $all = $repository->findByNumticket($numticket);
         $to = $all[0]->getEmail();
 
-        $this->get('mailer.mailer')->sendContactMessage($numticket,$numtemplate,$to);
+        $this->get('mailer.mailer')->sendContactMessage($numticket, $numtemplate, $to, $this->getParameter('from_email_adress'));
 
         return $this->render('SatisfactionMailerBundle:Default:index.html.twig');
     }
@@ -93,18 +83,18 @@ class DefaultController extends Controller
     public function batchQuotidienAction()
     {
         $list = $this->getListPremierEnvoi();
-        $max_list = count($list)-1;
+        $max_list = count($list) - 1;
         $report = '';
         $dateEnvoi = date("Y-m-d");
         for ($i=0; $i<=$max_list; $i++)
         {
             $report .= $list[$i]['numticket'].',';
-            $send_list = $this->sendAction($list[$i]['numticket'],'1');
-            $update_date = $this->setDatePremierEnvoi($list[$i]['numticket'],$dateEnvoi);
+            $this->sendAction($list[$i]['numticket'], '1');
+            $this->setDatePremierEnvoi($list[$i]['numticket'], $dateEnvoi);
 
         }
         $max_list = $max_list + 1;
-        $this->get('mailer.mailer')->sendBatchMessage($report,$max_list);
+        $this->get('mailer.mailer')->sendBatchMessage($this->getParameter('batch_reporting_email'), $report, $max_list, $this->getParameter('from_email_adress'));
 
         return $this->render('SatisfactionMailerBundle:Default:index.html.twig');
     }
@@ -114,19 +104,18 @@ class DefaultController extends Controller
         $dateEnvoi = date("Y-m-d");
         $dateminRelance = date('Y-m-d', strtotime($dateEnvoi. ' - 7 days'));
         $list = $this->getListSecondEnvoi($dateminRelance);
-        print_r($list);
-        $max_list = count($list)-1;
+        $max_list = count($list) - 1;
         $report = '';
         $dateEnvoi = date("Y-m-d");
         for ($i=0; $i<=$max_list; $i++)
         {
             $report .= $list[$i]['numticket'].',';
-            $send_list = $this->sendAction($list[$i]['numticket'],'2');
-            $update_date = $this->setDateSecondEnvoi($list[$i]['numticket'],$dateEnvoi);
+            $this->sendAction($list[$i]['numticket'], '2');
+            $this->setDateSecondEnvoi($list[$i]['numticket'], $dateEnvoi);
 
         }
         $max_list = $max_list + 1;
-        $this->get('mailer.mailer')->sendBatchMessage($report,$max_list);
+        $this->get('mailer.mailer')->sendBatchMessage($this->getParameter('batch_reporting_email'), $report, $max_list, $this->getParameter('from_email_adress'));
 
         return $this->render('SatisfactionMailerBundle:Default:index.html.twig');
     }

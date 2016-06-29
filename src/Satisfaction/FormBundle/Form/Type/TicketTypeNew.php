@@ -4,7 +4,7 @@ namespace Satisfaction\FormBundle\Form\Type;
 
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
-use Satisfaction\FormBundle\Entity\Client;
+use Satisfaction\FormBundle\Entity\Ticket;
 
 
 class TicketTypeNew extends AbstractType
@@ -23,7 +23,7 @@ class TicketTypeNew extends AbstractType
     {
 
         $builder
-            ->add('NumTicket', 'integer', array(
+            ->add('NumTicket', 'string', array(
                 'label' => 'Numéro Ticket',
                 'label_attr' => array(
                     'class' => 'col-sm-2 control-label',
@@ -73,10 +73,10 @@ class TicketTypeNew extends AbstractType
                 'label_attr' => array(
                     'class' => 'col-sm-2 control-label',
                 ),
-                'choices' => $this->choices_5,
+                'choices' => $this->choices_10,
                 'expanded' => true,
                 'multiple' => false,
-                'data' => '3',
+                'data' => '5',
                 'required' => true,
                 'attr' => array(
                     'class' => 'form-control',
@@ -87,10 +87,10 @@ class TicketTypeNew extends AbstractType
                 'label_attr' => array(
                     'class' => 'col-sm-2 control-label',
                 ),
-                'choices' => $this->choices_5,
+                'choices' => $this->choices_10,
                 'expanded' => true,
                 'multiple' => false,
-                'data' => '3',
+                'data' => '5',
                 'required' => true,
                 'attr' => array(
                     'class' => 'form-control',
@@ -101,10 +101,10 @@ class TicketTypeNew extends AbstractType
                 'label_attr' => array(
                     'class' => 'col-sm-2 control-label',
                 ),
-                'choices' => $this->choices_5,
+                'choices' => $this->choices_10,
                 'expanded' => true,
                 'multiple' => false,
-                'data' => '3',
+                'data' => '5',
                 'required' => true,
                 'attr' => array(
                     'class' => 'form-control',

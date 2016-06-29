@@ -74,7 +74,7 @@ class TicketTypeEdit extends AbstractType
                 'label_attr' => array(
                     'class' => 'col-sm-2 control-label',
                 ),
-                'choices' => $this->choices_5,
+                'choices' => $this->choices_10,
                 'expanded' => true,
                 'multiple' => false,
                 'required' => true,
@@ -87,7 +87,7 @@ class TicketTypeEdit extends AbstractType
                 'label_attr' => array(
                     'class' => 'col-sm-2 control-label',
                 ),
-                'choices' => $this->choices_5,
+                'choices' => $this->choices_10,
                 'expanded' => true,
                 'multiple' => false,
                 'required' => true,
@@ -100,7 +100,7 @@ class TicketTypeEdit extends AbstractType
                 'label_attr' => array(
                     'class' => 'col-sm-2 control-label',
                 ),
-                'choices' => $this->choices_5,
+                'choices' => $this->choices_10,
                 'expanded' => true,
                 'multiple' => false,
                 'required' => true,

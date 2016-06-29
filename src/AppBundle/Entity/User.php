@@ -62,41 +62,13 @@ class User implements UserInterface, \Serializable, LdapUserInterface
     }
 
     /**
-     * @return array
-     */
-    public function getRoles()
-    {
-        return $this->roles;
-    }
-
-    /**
-     * @param array $roles
-     *
+     * @param int $id
      * @return User
      */
-    public function setRoles($roles)
+    public function setId($id)
     {
-        $this->roles = $roles;
-
+        $this->id = $id;
         return $this;
-    }
-
-    /**
-     * @return string
-     */
-    public function getDn()
-    {
-        return $this->dn;
-    }
-
-    /**
-     * @param string $dn
-     *
-     * @return User
-     */
-    public function setDn($dn)
-    {
-        $this->dn = $dn;
     }
 
     /**
@@ -109,13 +81,47 @@ class User implements UserInterface, \Serializable, LdapUserInterface
 
     /**
      * @param string $username
-     *
      * @return User
      */
     public function setUsername($username)
     {
         $this->username = $username;
+        return $this;
+    }
 
+    /**
+     * @return string
+     */
+    public function getName()
+    {
+        return $this->name;
+    }
+
+    /**
+     * @param string $name
+     * @return User
+     */
+    public function setName($name)
+    {
+        $this->name = $name;
+        return $this;
+    }
+
+    /**
+     * @return string
+     */
+    public function getSurname()
+    {
+        return $this->surname;
+    }
+
+    /**
+     * @param string $surname
+     * @return User
+     */
+    public function setSurname($surname)
+    {
+        $this->surname = $surname;
         return $this;
     }
 
@@ -129,52 +135,49 @@ class User implements UserInterface, \Serializable, LdapUserInterface
 
     /**
      * @param string $email
-     *
      * @return User
      */
     public function setEmail($email)
     {
         $this->email = $email;
+        return $this;
     }
 
     /**
-     * @return string
+     * @return mixed
      */
-    public function getName()
+    public function getDn()
     {
-        return $this->name;
+        return $this->dn;
     }
 
     /**
-     * @param string $name
-     *
+     * @param mixed $dn
      * @return User
      */
-    public function setName($name)
+    public function setDn($dn)
     {
-        $this->name = $name;
+        $this->dn = $dn;
+        return $this;
     }
 
     /**
-     * @return string
+     * @return array
      */
-    public function getSurname()
+    public function getRoles()
     {
-        return $this->surname;
+        return $this->roles;
     }
 
     /**
-     * @param string $surname
-     *
+     * @param array $roles
      * @return User
      */
-    public function setSurname($surname)
+    public function setRoles($roles)
     {
-        $this->surname = $surname;
+        $this->roles = $roles;
+        return $this;
     }
-
-
-
 
     // -------------------------------------------
 

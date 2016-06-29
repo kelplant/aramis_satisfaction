@@ -8,8 +8,6 @@ use Satisfaction\FormBundle\Entity;
 
 class Mailer
 {
-    private $from = "xavier.arroues@aramisauto.com";
-
     protected $name = "Support Aramisauto";
 
     protected $mailer;
@@ -23,12 +21,12 @@ class Mailer
     }
 
 
-    protected function sendMessage($to, $subject, $body)
+    protected function sendMessage($to, $subject, $body, $from)
     {
         $mail = \Swift_Message::newInstance();
 
         $mail
-            ->setFrom($this->from)
+            ->setFrom($from)
             ->setTo($to)
             ->setSubject($subject)
             ->setBody($body)
@@ -37,22 +35,22 @@ class Mailer
         $this->mailer->send($mail);
     }
 
-    public function sendContactMessage($numticket,$numtemplate,$to)
+    public function sendContactMessage($numticket, $numtemplate, $to, $from)
     {
         $subject = array(
             '1' => '[Support Satisfaction] Formulaire de Satisfaction ticket n°'.$numticket,
             '2' => '[Relance][Support Satisfaction] Formulaire de Satisfaction ticket n°'.$numticket,
             );
 
-        $template = 'SatisfactionMailerBundle:Mails:EnvoiMail-'.$numtemplate.'.html.twig';
+        $template = 'SatisfactionMailerBundle:Mails:envoiMail-'.$numtemplate.'.html.twig';
         $body = $this->templating->render($template, array(
             'numticket' => $numticket,
             ));
-        $this->sendMessage($to, $subject[$numtemplate], $body);
+        $this->sendMessage($to, $subject[$numtemplate], $body, $from);
     }
-    public function sendBatchMessage($list,$max_list)
+
+    public function sendBatchMessage($to, $list, $max_list, $from)
     {
-        $to = 'xavier.arroues@aramisauto.com';
         $subject = '[Support Satisfaction] Report Batch Quotidien - '.$max_list.' emails envoyés';
 
         $template = 'SatisfactionMailerBundle:Mails:BatchReporting.html.twig';
@@ -60,7 +58,7 @@ class Mailer
             'list' => $list,
             'max_list' => $max_list
         ));
-        $this->sendMessage($to, $subject, $body);
+        $this->sendMessage($to, $subject, $body, $from);
     }
 
 }

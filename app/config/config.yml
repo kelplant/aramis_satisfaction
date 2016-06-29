@@ -73,34 +73,9 @@ swiftmailer:
     password:    "%mailer_password%"
     spool:     { type: memory }
 
-# FosUserBundle
-#fos_user:
-#    db_driver: orm # other valid values are 'mongodb', 'couchdb' and 'propel'
-#    firewall_name: main
-#    user_class: AppBundle\Entity\UserFos
-
-# fr3d_ldap
-#fr3d_ldap:
-#    driver:
-#        host:     "%ldap_host%"
-#        port:     "%ldap_port%"
-#        username: "%ldap_username%"
-#        password: "%ldap_password%"
-#        useSsl:   false
-##       accountDomainName: HOST
-##       accountDomainNameShort: HOST # if you use the Backslash form set both to Hostname than the Username will be converted to HOST\User
-#    user:
-#        baseDn: OU=Aramis Auto,DC=aramisauto,DC=local
-#        filter: (&(ObjectClass=Person))
-#        attributes:
-#           - { ldap_attr: samaccountname,  user_method: setUsername } # champ login
-#           - { ldap_attr: sn, user_method: setName }
-#           - { ldap_attr: preferredlanguage, user_method: setLanguage }
-#           - { ldap_attr: mail, user_method: setEmail } # setter dans BaseUser
-
 light_saml_symfony_bridge:
     own:
-        entity_id: https://nasxa02.clphoto.fr:8080
+        entity_id: "%light_saml_entity_id%"
         credentials:
                     -
                         certificate: "%kernel.root_dir%/config/saml.crt"
@@ -109,10 +84,10 @@ light_saml_symfony_bridge:
     party:
         idp:
             files:
-                - "%kernel.root_dir%/config/federationmetadata-9.xml"
+                - "%kernel.root_dir%/config/%federation_metadata_file%"
 
     store:
-        id_state: id_store  # name of id store service created in step 6
+        id_state: app.id_store  # name of id store service created in step 6
 
 light_saml_sp:
     username_mapper:

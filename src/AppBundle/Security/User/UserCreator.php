@@ -39,13 +39,17 @@ class UserCreator implements UserCreatorInterface
         $assertions = $response->getAllAssertions();
         $items = $assertions[0]->getAllItems();
         $email = $items[1]->getAllAttributes()[1]->getAllAttributeValues()[0];
-        $nom = $items[1]->getAllAttributes()[2]->getAllAttributeValues()[0];
-        $prenom = $items[1]->getAllAttributes()[3]->getAllAttributeValues()[0];
+        $dn = $items[1]->getAllAttributes()[2]->getAllAttributeValues()[0];
+        $name = $items[1]->getAllAttributes()[3]->getAllAttributeValues()[0];
+        $surname = $items[1]->getAllAttributes()[4]->getAllAttributeValues()[0];
+
         $user = new User();
         $user
             ->setUsername($winuser)
             ->setRoles(['ROLE_USER'])
             ->setEmail($email)
+            ->setDn($dn)
+            ->setSurname($nodsdm)
         ;
 
         $this->objectManager->persist($user);
