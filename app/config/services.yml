@@ -17,7 +17,7 @@ services:
 
     mailer.mailer:
             class: Satisfaction\MailerBundle\Services\Mailer
-            arguments: [@mailer, @templating]
+            arguments: ['@mailer', '@templating']
 
     id_store:
         class: AppBundle\Store\IdStore
