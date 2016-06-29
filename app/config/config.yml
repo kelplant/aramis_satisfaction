@@ -87,7 +87,7 @@ light_saml_symfony_bridge:
                 - "%kernel.root_dir%/config/%federation_metadata_file%"
 
     store:
-        id_state: app.id_store  # name of id store service created in step 6
+        id_state: id_store  # name of id store service created in step 6
 
 light_saml_sp:
     username_mapper:
