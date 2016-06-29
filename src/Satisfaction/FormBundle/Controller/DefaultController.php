@@ -220,10 +220,9 @@ class DefaultController extends Controller
 
         $ticket = $this->getTheTicket($numticket);
 
-        $form = $this->createForm(new TicketTypeNew($this->choices_5,$this->choice_10),$ticket, array(
+        $form = $this->createForm(TicketTypeNew::class, $ticket, array(
             'action' => $this->generateUrl('satisfaction_form_homepage_satupdate'),
-            'method' => 'POST',
-        ));
+            'method' => 'POST',));
 
         return $this->render('SatisfactionFormBundle:Default:indexNew.html.twig', array(
             'satisfactionForm' => $form->createView(),
