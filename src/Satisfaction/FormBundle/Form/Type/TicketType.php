@@ -2,18 +2,20 @@
 
 namespace Satisfaction\FormBundle\Form\Type;
 
-use Symfony\Component\Form\AbstractType;
-use Symfony\Component\Form\FormBuilderInterface;
-use Satisfaction\FormBundle\Entity\Client;
-use Symfony\Component\Form\FormInterface;
-use Symfony\Component\OptionsResolver\OptionsResolver;
-use Symfony\Component\HttpFoundation\Request;
 
-use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Symfony\Component\Form\Extension\Core\Type\BaseType;
+use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
+use Symfony\Component\Form\Extension\Core\Type\HiddenType;
+use Symfony\Component\Form\Extension\Core\Type\SubmitType;
+use Symfony\Component\Form\Extension\Core\Type\TextareaType;
+use Symfony\Component\Form\Extension\Core\Type\TextType;
+use Symfony\Component\Form\FormBuilderInterface;
 use Satisfaction\FormBundle\Entity\Ticket;
+use Symfony\Component\OptionsResolver\OptionsResolver;
+
 use Satisfaction\FormBundle\Entity;
 
-class TicketType extends AbstractType
+class TicketType extends BaseType
 {
     private $choices_5;
 
@@ -40,7 +42,7 @@ class TicketType extends AbstractType
     public function buildForm(FormBuilderInterface $builder,  array $options)
     {
         $builder
-            ->add('numticket', 'choice', array(
+            ->add('numticket', ChoiceType::class, array(
                 'label' => 'Numéro Ticket',
                 'choices' => $this->listID,
                 'read_only' => false,
@@ -54,7 +56,7 @@ class TicketType extends AbstractType
                     'onChange'=> 'submit()',
                 )
             ))
-            ->add('Sujet', 'text', array(
+            ->add('Sujet', TextType::class, array(
                 'label' => 'Sujet',
                 'label_attr' => array(
                     'class' => 'col-sm-2 control-label',
@@ -64,7 +66,7 @@ class TicketType extends AbstractType
                 ),
                 'read_only' => true
             ))
-            ->add('Description', 'textarea', array(
+            ->add('Description', TextareaType::class, array(
                 'label' => 'Description',
                 'label_attr' => array(
                     'class' => 'col-sm-2 control-label',
@@ -75,7 +77,7 @@ class TicketType extends AbstractType
                 ),
                 'read_only' => true
             ))
-            ->add('Satisfaction', 'choice', array(
+            ->add('Satisfaction', ChoiceType::class, array(
                 'label' => 'Satisfaction',
                 'label_attr' => array(
                     'class' => 'col-sm-2 control-label',
@@ -88,7 +90,7 @@ class TicketType extends AbstractType
                     'class' => 'form-control',
                 )
             ))
-            ->add('Conformite', 'choice', array(
+            ->add('Conformite', ChoiceType::class, array(
                 'label' => 'Conformité',
                 'label_attr' => array(
                     'class' => 'col-sm-2 control-label',
@@ -101,7 +103,7 @@ class TicketType extends AbstractType
                     'class' => 'form-control',
                 )
             ))
-            ->add('Accompagnement', 'choice', array(
+            ->add('Accompagnement', ChoiceType::class, array(
                 'label' => 'Accompagnement',
                 'label_attr' => array(
                     'class' => 'col-sm-2 control-label',
@@ -114,7 +116,7 @@ class TicketType extends AbstractType
                     'class' => 'form-control',
                 )
             ))
-            ->add('Delais', 'choice', array(
+            ->add('Delais', ChoiceType::class, array(
                 'label' => 'Délais',
                 'label_attr' => array(
                     'class' => 'col-sm-2 control-label',
@@ -127,7 +129,7 @@ class TicketType extends AbstractType
                     'class' => 'form-control',
                 )
             ))
-            ->add('Commentaires', 'textarea', array(
+            ->add('Commentaires', TextareaType::class, array(
                 'label' => 'Commentaires',
                 'required' => false,
                 'label_attr' => array(
@@ -138,10 +140,10 @@ class TicketType extends AbstractType
                 )
             ))
 
-            ->add('id', 'hidden', array(
+            ->add('id', HiddenType::class, array(
                 'label' => 'id'
             ))
-            ->add('Envoyer', 'submit', array(
+            ->add('Envoyer', SubmitType::class, array(
                 'label' => 'Envoyer',
                 'attr' => array(
                     'class' => 'btn btn-success',

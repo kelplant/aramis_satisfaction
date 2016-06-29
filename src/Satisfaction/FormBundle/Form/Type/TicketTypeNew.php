@@ -3,6 +3,12 @@
 namespace Satisfaction\FormBundle\Form\Type;
 
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
+use Symfony\Component\Form\Extension\Core\Type\HiddenType;
+use Symfony\Component\Form\Extension\Core\Type\IntegerType;
+use Symfony\Component\Form\Extension\Core\Type\SubmitType;
+use Symfony\Component\Form\Extension\Core\Type\TextareaType;
+use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Satisfaction\FormBundle\Entity\Ticket;
 use Symfony\Component\OptionsResolver\OptionsResolver;
@@ -23,7 +29,7 @@ class TicketTypeNew extends AbstractType
     {
 
         $builder
-            ->add('NumTicket', 'string', array(
+            ->add('NumTicket', IntegerType::class, array(
                 'label' => 'Numéro Ticket',
                 'label_attr' => array(
                     'class' => 'col-sm-2 control-label',
@@ -33,7 +39,7 @@ class TicketTypeNew extends AbstractType
                 ),
                 'read_only' => true,
             ))
-            ->add('Sujet', 'text', array(
+            ->add('Sujet', TextType::class, array(
                 'label' => 'Sujet',
                 'label_attr' => array(
                     'class' => 'col-sm-2 control-label',
@@ -43,7 +49,7 @@ class TicketTypeNew extends AbstractType
                 ),
                 'read_only' => true
             ))
-            ->add('Description', 'textarea', array(
+            ->add('Description', TextareaType::class, array(
                 'label' => 'Description',
                 'label_attr' => array(
                     'class' => 'col-sm-2 control-label',
@@ -54,7 +60,7 @@ class TicketTypeNew extends AbstractType
                 ),
                 'read_only' => true,
             ))
-            ->add('Satisfaction', 'choice', array(
+            ->add('Satisfaction', ChoiceType::class, array(
                 'label' => 'Satisfaction',
                 'label_attr' => array(
                     'class' => 'col-sm-2 control-label',
@@ -68,7 +74,7 @@ class TicketTypeNew extends AbstractType
                     'class' => 'form-control',
                 ),
             ))
-            ->add('Conformite', 'choice', array(
+            ->add('Conformite', ChoiceType::class, array(
                 'label' => 'Conformité',
                 'label_attr' => array(
                     'class' => 'col-sm-2 control-label',
@@ -82,7 +88,7 @@ class TicketTypeNew extends AbstractType
                     'class' => 'form-control',
                 ),
             ))
-            ->add('Accompagnement', 'choice', array(
+            ->add('Accompagnement', ChoiceType::class, array(
                 'label' => 'Accompagnement',
                 'label_attr' => array(
                     'class' => 'col-sm-2 control-label',
@@ -96,7 +102,7 @@ class TicketTypeNew extends AbstractType
                     'class' => 'form-control',
                 ),
             ))
-            ->add('Delais', 'choice', array(
+            ->add('Delais', ChoiceType::class, array(
                 'label' => 'Délais',
                 'label_attr' => array(
                     'class' => 'col-sm-2 control-label',
@@ -110,7 +116,7 @@ class TicketTypeNew extends AbstractType
                     'class' => 'form-control',
                 ),
             ))
-            ->add('Commentaires', 'textarea', array(
+            ->add('Commentaires', TextareaType::class, array(
                 'label' => 'Commentaires',
                 'label_attr' => array(
                     'class' => 'col-sm-2 control-label',
@@ -120,13 +126,13 @@ class TicketTypeNew extends AbstractType
                     'class' => 'form-control',
                 ),
             ))
-            ->add('numticket', 'hidden', array(
+            ->add('numticket', HiddenType::class, array(
                 'label' => 'numticket'
             ))
-            ->add('id', 'hidden', array(
+            ->add('id', HiddenType::class, array(
                 'label' => 'id',
             ))
-            ->add('Envoyer', 'submit', array(
+            ->add('Envoyer', SubmitType::class, array(
                 'label' => 'Envoyer',
                 'attr' => array(
                     'class' => 'btn btn-success',
