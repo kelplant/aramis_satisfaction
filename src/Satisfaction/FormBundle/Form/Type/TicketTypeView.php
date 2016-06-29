@@ -129,7 +129,7 @@ class TicketTypeView extends BaseType
             ->add('numticket', HiddenType::class, array(
                 'label' => 'numticket',
             ))
-            ->add('id', 'hidden', array(
+            ->add('id',  HiddenType::class, array(
                 'label' => 'id',
             ))
             ->add('Modifier', SubmitType::class, array(

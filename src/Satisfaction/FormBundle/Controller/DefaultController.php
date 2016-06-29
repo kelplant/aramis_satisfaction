@@ -13,57 +13,30 @@ use Symfony\Component\HttpFoundation\Request;
 class DefaultController extends Controller
 {
     /**
-     * @var array
-     */
-    private $choices_5 =  array(
-        '1' => '1',
-        '2' => '2',
-        '3' => '3',
-        '4' => '4',
-        '5' => '5',
-    );
-
-    /**
-     * @var array
-     */
-    private $choice_10 = array(
-        '1' => '1',
-        '2' => '2',
-        '3' => '3',
-        '4' => '4',
-        '5' => '5',
-        '6' => '6',
-        '7' => '7',
-        '8' => '8',
-        '9' => '9',
-        '10' => '10',
-    );
-
-    /**
-     * @param Request $request
+     * @param $item
      * @return Ticket
      */
-    function setTheTicket(Request $request)
+    function setTheTicket($item)
     {
-        $req_post = $request->request->get('ticket');
+
         $em = $this->getDoctrine()->getManager();
-        $ticket = $em->getRepository('SatisfactionFormBundle:Ticket')->find($req_post['id']);
+        $ticket = $em->getRepository('SatisfactionFormBundle:Ticket')->findOneById($item['id']);
 
         if (!$ticket) {
             throw $this->createNotFoundException(
-                'Pas de ticket avec un id '.$req_post['id']
+                'Pas de ticket avec un id '.$item['id']
             );
         }
 
-        $ticket->setId($req_post['id']);
-        $ticket->setNumTicket($req_post['NumTicket']);
-        $ticket->setSujet($req_post['Sujet']);
-        $ticket->setDescription($req_post['Description']);
-        $ticket->setSatisfaction($req_post['Satisfaction']);
-        $ticket->setConformite($req_post['Conformite']);
-        $ticket->setAccompagnement($req_post['Accompagnement']);
-        $ticket->setDelais($req_post['Delais']);
-        $ticket->setCommentaires($req_post['Commentaires']);
+        $ticket->setId($item['id']);
+        $ticket->setNumTicket($item['NumTicket']);
+        $ticket->setSujet($item['Sujet']);
+        $ticket->setDescription($item['Description']);
+        $ticket->setSatisfaction($item['Satisfaction']);
+        $ticket->setConformite($item['Conformite']);
+        $ticket->setAccompagnement($item['Accompagnement']);
+        $ticket->setDelais($item['Delais']);
+        $ticket->setCommentaires($item['Commentaires']);
         $ticket->setStatus('Answered');
         $em->flush();
 
@@ -150,9 +123,9 @@ class DefaultController extends Controller
     public function satupdateAction(Request $request)
     {
 
-        $req_post = $request->request->get('ticket');
+        $req_post = $request->request->get('ticket_type_new');
 
-        $ticket = $this->setTheTicket($request);
+        $ticket = $this->setTheTicket($req_post);
 
         if(isset($req_post['Envoyer'])) {
 
